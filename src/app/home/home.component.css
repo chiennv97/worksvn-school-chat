@@ -1,0 +1,98 @@
+.rowrr{
+  padding-top: 100px;
+}
+
+.inner-addon {
+  position: relative; }
+
+.inner-addon .icon-input {
+  position: absolute;
+  margin: 16px 0 0 8px;
+  pointer-events: none; }
+
+div.content .title h2 {
+  font-size: 24px;
+  font-weight: bold; }
+div.content .title p {
+  text-align: center;
+  color: #464646; }
+div.content .loginfbgg .loginw-gg {
+  padding-top: 20px; }
+div.content .loginfbgg .loginw-gg button {
+  background-color: #dd4e42; }
+div.content .loginfbgg .loginw-gg button .icon {
+  display: inline-block;
+  margin-right: 4px;
+  width: 25px;
+  height: 24px;
+  background-size: 25px 25px;
+  float: left; }
+div.content .loginfbgg .loginw-fb {
+  padding-top: 20px; }
+div.content .loginfbgg .loginw-fb button {
+  background-color: #4267b2; }
+div.content .loginfbgg .loginw-fb button .icon {
+  display: inline-block;
+  margin-right: 3px;
+  width: 20px;
+  height: 20px;
+  background-size: 20px 20px;
+  float: left;
+  border-radius: 3px; }
+div.content .loginfbgg button {
+  height: 40px;
+  margin-left: 5px;
+  border-radius: 4px; }
+div.content .loginfbgg button .text {
+  color: white; }
+div.content .disconnect {
+  margin-top: 20px; }
+div.content .disconnect p {
+  margin-top: 10px;
+  text-align: center; }
+@media screen and (min-width: 1200px) {
+  div.content .disconnect {
+    padding-left: 20px;
+    padding-right: 10px; } }
+div.content input {
+  background-color: #ffffff;
+  display: inline-block;
+  height: 40px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+div.content .name .lastname .left-addon input {
+  padding-left: 35px; }
+
+div.content .email .left-addon input {
+  padding-left: 35px; }
+
+div.content .password .left-addon input {
+  padding-left: 35px; }
+
+div.content .submit {
+  margin-top: 20px; }
+div.content .submit button {
+  /*background-color: #499AE0;*/
+  border: none;
+  height: 40px; }
+
+
+input.ng-invalid.ng-touched {
+  border: 1.5px solid #E04B39;
+}
+.alert-dangerous{
+  color: #E04B39;
+  text-align: left;
+}
+.form-control{
+  border-radius: 0.25rem !important;
+}
+.row {
+  margin: 0;
+}
+.home-body__title{
+  width: 100%;
+  padding-top: 100px;
+}
