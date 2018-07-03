@@ -1,0 +1,171 @@
+.container-fluid {
+  background-color: #f3f3f4;
+  padding: 100px 80px 20px 80px;
+}
+
+.panel-body {
+  background-color: white;
+  /*margin-bottom: 15px;*/
+}
+
+.wrapper {
+  margin-bottom: 30px;
+}
+
+label {
+  font-weight: 600;
+}
+
+h2 {
+  font-weight: 100;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  margin-top: 1.5rem;
+}
+
+fa {
+  font-size: 1.5rem;
+}
+.form-inline{
+  margin-bottom: 1rem;
+}
+.form-inline .form-control {
+  display: inline-block;
+  width: 100% !important;
+  vertical-align: middle;
+}
+
+.form-inline .control-label {
+  padding-top: 7px;
+  margin-bottom: 0;
+}
+
+.form-inline label {
+  justify-content: right;
+  text-align: right;
+  display: block;
+}
+
+.upload {
+  border: none;
+  height: 50px;
+  width: 50px;
+  background-color: #ffffff;
+}
+
+.svg-inline--fa.fa-w-16{
+  font-size: 3rem;
+  color: #777777;
+}
+.fa-trash-alt, .fa-edit{
+  font-size: 30px;
+}
+
+.content .row {
+  position: relative;
+}
+
+.edit {
+  position: absolute;
+  top: 1.5rem;
+  right: 2rem;
+  border: none;
+  background-color: #ffffff;
+}
+
+.edit .svg-inline--fa {
+  font-size: 1.6rem;
+}
+
+ul {
+  width: 100%;
+}
+
+.information {
+  margin-bottom: 10px;
+}
+
+.information-content {
+  font-weight: 600;
+}
+
+
+ul{
+  padding-left: 10px;
+}
+
+input.ng-invalid.ng-touched {
+  border: 1.5px solid #E04B39;
+}
+.alert-dangerous{
+  color: #E04B39;
+  text-align: left;
+}
+.wrapper_img{
+  position: relative;
+  max-width: 180px;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .3s ease;
+  background-color: #FFFFFF;
+}
+
+.wrapper_img:hover .overlay {
+  opacity: 0.86;
+}
+
+.icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+
+.button_img__edit {
+  background-color: #f7941d;
+  border: none;
+}
+.button_img__del {
+  background-color: #c2c2c2;
+  border: none;
+}
+.button_img{
+  height: 40px;
+  width: 40px;
+  margin-right: 1em;
+}
+
+.image {
+  display: block;
+  /*height: auto;*/
+  max-height: 100px;
+}
+
+
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+

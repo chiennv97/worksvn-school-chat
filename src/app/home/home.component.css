@@ -1,7 +1,9 @@
 .rowrr{
   padding-top: 100px;
 }
-
+.form-login{
+  padding: 150px 60px 10px 0;
+}
 .inner-addon {
   position: relative; }
 
@@ -95,4 +97,9 @@ input.ng-invalid.ng-touched {
 .home-body__title{
   width: 100%;
   padding-top: 100px;
+}
+.home-foot__title{
+  width: 100%;
+  padding-top: 100px;
+  padding-bottom: 50px;
 }

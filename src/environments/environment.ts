@@ -3,7 +3,15 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: 'AIzaSyBhUfLdKwxez78Cvujj0K9E9CfKkekz_Ic',
+    authDomain: 'worksfit-uv-android.firebaseapp.com',
+    databaseURL: 'https://worksfit-uv-android.firebaseio.com',
+    projectId: 'worksfit-uv-android',
+    storageBucket: 'worksfit-uv-android.appspot.com',
+    messagingSenderId: '606882187887'
+  }
 };
 
 /*

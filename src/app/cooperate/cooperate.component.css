@@ -1,0 +1,355 @@
+
+agm-map {
+  height: 400px;
+}
+
+.mod-content {
+  width: 600px;
+}
+
+.inner-addon {
+  position: relative;
+}
+
+.inner-addon .icon-input {
+  position: absolute;
+  margin: 16px 0 0 8px;
+  pointer-events: none; }
+
+.left-addon .svg-inline--fa {
+  left: 0px;
+  color: #5f5757;
+}
+
+div.content {
+  padding-top: 150px;
+}
+
+div.content .title h2 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+div.content .title p {
+  text-align: center;
+  color: #464646;
+}
+
+div.content .loginfbgg .loginw-gg {
+  padding-top: 20px;
+}
+
+div.content .loginfbgg .loginw-gg button {
+  background-color: #dd4e42;
+}
+
+div.content .loginfbgg .loginw-gg button .icon {
+  display: inline-block;
+  margin-right: 4px;
+  width: 25px;
+  height: 24px;
+  /*background-image: url("./assets/img/GoogleIcon.png");*/
+  background-size: 25px 25px;
+  float: left;
+}
+
+div.content .loginfbgg .loginw-fb {
+  padding-top: 20px;
+}
+
+div.content .loginfbgg .loginw-fb button {
+  background-color: #4267b2;
+}
+
+div.content .loginfbgg .loginw-fb button .icon {
+  display: inline-block;
+  margin-right: 3px;
+  width: 20px;
+  height: 20px;
+  /*background-image: url('./assets/img/bg.jpg');*/
+  background-size: 20px 20px;
+  float: left;
+  border-radius: 3px;
+}
+
+div.content .loginfbgg button {
+  height: 40px;
+  margin-left: 5px;
+  border-radius: 4px;
+}
+
+div.content .loginfbgg button .text {
+  color: white;
+}
+
+div.content .disconnect {
+  margin-top: 20px;
+}
+
+div.content .disconnect p {
+  margin-top: 10px;
+  text-align: center;
+}
+
+@media screen and (min-width: 1200px) {
+  div.content .disconnect {
+    padding-left: 20px;
+    padding-right: 10px;
+  }
+}
+
+div.content input {
+  background-color: #f1f1f1;
+  display: inline-block;
+  height: 40px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+div.content .name .lastname .glyphicon-person {
+  /*background-image: url("./assets/img/person-2x.png");*/
+  background-repeat: no-repeat;
+  margin: 20px 0px 0px 13px;
+}
+
+div.content .name .lastname .left-addon input {
+  padding-left: 35px;
+}
+
+div.content .email .glyphicon-email {
+  /*background-image: url("./assets/img/email-2x.png");*/
+  background-repeat: no-repeat;
+  margin: 20px 0px 0px 10px;
+}
+
+div.content .email .left-addon input {
+  padding-left: 35px;
+}
+
+div.content .password .glyphicon-key {
+  /*background-image: url("./assets/img/key-2x.png");*/
+  background-repeat: no-repeat;
+  margin: 20px 0px 0px 10px;
+}
+
+div.content .password .left-addon input {
+  padding-left: 35px;
+}
+
+div.content .name .left-addon input {
+  padding-left: 35px;
+}
+
+div.content .address .left-addon input {
+  padding-left: 35px;
+}
+
+div.content .phone .left-addon input {
+  padding-left: 35px;
+}
+
+div.content .website .left-addon input {
+  padding-left: 35px;
+}
+
+div.content .agree .checkbox {
+  display: inline-block;
+  width: 420px;
+  height: 40px;
+}
+
+div.content .agree .checkbox input {
+  display: inline-block;
+  width: 17px;
+  height: 17px;
+  left: 0px;
+  right: 0px;
+  margin-left: 20px;
+}
+
+div.content .agree .checkbox label {
+  padding-left: 10px;
+  padding-right: 0px;
+  padding-top: 10px;
+}
+
+div.content .agree .forgetpwd {
+  /* margin-top: 20px; */
+  text-align: right;
+}
+
+div.content .agree .forgetpwd label {
+  padding-right: 20px;
+}
+
+div.content .agree .forgetpwd label a {
+  color: #464646;
+  font-weight: lighter;
+}
+
+div.content .submit {
+  margin-top: 20px;
+}
+
+div.content .submit button {
+  background-color: #499ae0;
+  border: none;
+  height: 40px;
+}
+
+div.content .askcomfirm {
+  margin-top: 20px;
+  margin-bottom: 35px;
+}
+
+div.content .askcomfirm a {
+  color: #f26c4f;
+}
+
+div.content .askcomfirm .help {
+  padding-bottom: 50px;
+}
+
+div.content .askcomfirm .help a {
+  color: #499ae0;
+  text-decoration: underline;
+}
+
+input.ng-invalid.ng-touched {
+  /*border: 1.5px solid #E04B39;*/
+  border: 1.3px solid #dd4b39;
+
+}
+.alert-dangerous{
+  color: #E04B39;
+  text-align: left;
+}
+.form-control {
+  border-radius: 0.25rem !important;
+}
+.container-fluid{
+  position: relative;
+  padding-bottom: 100px;
+}
+.coppyright {
+  background-color: #2975b6;
+  /*position: absolute;*/
+  /*bottom: 0;*/
+  /*width: 100%;*/
+  /*margin: 0 -30px!important;*/
+}
+
+.coppyright div {
+  color: white;
+  padding-top: 10px;
+  margin: 0;
+}
+
+nav.navbar {
+  padding: 0;
+  z-index: 999;
+  position: fixed;
+}
+.header{
+  z-index: 999;
+  position: fixed;
+  top: 0;
+  background-color: grey;
+  height: 42px;
+  width: 100%;
+}
+.navbar-brand {
+  text-align: right;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+.logo-header{
+  float: left;
+}
+
+.fa-exchange-alt {
+  margin-left: 10px;
+}
+
+.icon-google-play {
+  padding: 0 30px 0 0;
+  text-align: center;
+}
+
+.candidate {
+  border-radius: 10px;
+  border: 1.5px solid #0095ff;
+  color: #0095ff;
+  background-color: white;
+}
+
+.logo {
+  height: 60px;
+}
+
+@media (max-width: 767px) {
+
+  .icon-google-play {
+    padding: 0;
+  }
+
+  .item-candidate {
+    padding-bottom: 0.5rem;
+    padding-left: 0;
+  }
+
+  .collapse {
+    flex-grow: 1 !important;
+    flex-basis: 100% !important;
+  }
+  .navbar {
+    text-align: center;
+  }
+  .menu-btn{
+    display: block !important;
+  }
+}
+
+@media (max-width: 330px) {
+  .navbar-brand {
+    text-align: left;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.navbar_link .nav-item {
+  padding-left: 15px;
+}
+
+.header-right {
+  display: flex;
+}
+
+.collapse {
+  flex: 0;
+}
+
+.fa-sign-out-alt, .fa-user, .fa-key {
+  font-size: 1rem;
+  margin-right: 0.5rem;
+  margin-top: 0.1rem;
+}
+
+.menu-btn {
+  margin-left: 15px;
+  display: none;
+}
+
+nav.navbar .menu-btn span:nth-of-type(2)::before, nav.navbar .menu-btn span:nth-of-type(2)::after {
+  background-color: black;
+}
+
+.navbar-light .navbar-toggler {
+  border: none;
+}
+
+.dropdown-item{
+  white-space: normal;
+}

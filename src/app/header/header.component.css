@@ -1,0 +1,17 @@
+.navbar-brand{
+  width: 30%;
+  text-align: center;
+}
+.navbar-nav{
+  width: 70%;
+}
+.nav-item{
+  width: 20%;
+  text-align: center;
+}
+.nav-item:hover{
+  background-color: #e0e2e4;
+}
+.navbar {
+   padding: 0;
+}
