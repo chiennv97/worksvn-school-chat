@@ -29,7 +29,7 @@ export class ProfileComponent implements OnInit {
     '', '', 21.029145, 105.851726);
   ngOnInit() {
     this.accessToken = localStorage.getItem('accessToken');
-    console.log(this.accessToken);
+    // console.log(this.accessToken);
     this.Authorization = 'Bearer ' + this.accessToken;
     this.httpOptions = {
       headers: new HttpHeaders({

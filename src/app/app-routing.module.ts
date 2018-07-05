@@ -8,6 +8,8 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { PasswordResetComponent } from './password-reset/password-reset.component';
 import { BranchComponent } from './branch/branch.component';
+import {EnrollmentsComponent} from './enrollments/enrollments.component';
+import {UpPostEnrollmentComponent} from './up-post-enrollment/up-post-enrollment.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'profile', component: ProfileComponent},
@@ -16,6 +18,8 @@ const routes: Routes = [
   { path: 'password-reset/:id', component: PasswordResetComponent},
   { path: 'change-password', component: ChangePasswordComponent},
   { path: 'branchs', component: BranchComponent},
+  { path: 'enrollments', component: EnrollmentsComponent},
+  { path: 'up-post-enrollment', component: UpPostEnrollmentComponent},
 ];
 @NgModule({
   imports: [

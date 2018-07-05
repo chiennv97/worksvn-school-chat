@@ -1,0 +1,238 @@
+<div class="container-fluid">
+  <div class="bg-white has-shadow">
+    <h3>Đăng bài tuyển sinh</h3>
+    <form (ngSubmit)="onSubmit();" [formGroup]="formUploadService.formUpload">
+      <!--tieu de-->
+      <div class="form-group">
+        <div class="row padding-row">
+          <div class="col-md-2 col-12 title">
+            <label class="form-control-label">Tiêu đề công việc</label>
+          </div>
+          <div class="col-md-9 col-12">
+            <input type="email" placeholder="Tiêu đề công việc" class="form-control" formControlName="enrollmentJobTitle">
+            <div *ngIf="enrollmentJobTitle.invalid && (enrollmentJobTitle.dirty || enrollmentJobTitle.touched || upPost)" class="alert-dangerous">
+              <div *ngIf="enrollmentJobTitle.errors.required">
+                Bạn không được để trống trường này.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--het han-->
+      <div class="form-group">
+        <div class="row padding-row">
+          <div class="col-md-2 col-12 specail-title">
+            <label class="form-control-label">Ngày hết hạn</label>
+          </div>
+          <div class="col-md-9 col-12">
+            <input matInput formControlName="expirationDate" class="form-control"  [matDatepicker]="picker" placeholder="Choose a date" (dateInput)="changeExpirationDate('input', $event)" (dateChange)="changeExpirationDate('change', $event)">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker touchUi="true" ></mat-datepicker>
+            <div *ngIf="expirationDate.invalid && (expirationDate.dirty || expirationDate.touched || upPost)" class="alert-dangerous">
+              <div *ngIf="expirationDate.errors.required">
+                Bạn không được để trống trường này.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--chi nhanh-->
+      <div class="form-group">
+        <div class="row padding-row">
+          <div class="col-md-2 col-12 title">
+            <label class="form-control-label">Chi Nhánh</label>
+          </div>
+          <div class="col-md-9 col-12">
+            <select2 [data]="branchsService?.select2datas" [value]="branchsService?.currentSelectId"
+                     (valueChanged)="changedBranch($event)"></select2>
+          </div>
+        </div>
+      </div>
+      <!--loai cong viec-->
+      <div class="form-group">
+        <div class="row padding-row">
+          <div class="col-md-2 col-12 title">
+            <label class="form-control-label">Loại công việc</label>
+          </div>
+          <div class="col-md-9 col-12">
+            <select2 [data]="jobNameIdService?.select2datas" [value]="jobNameIdService?.currentSelectId"
+                     (valueChanged)="changedJobName($event)"></select2>
+          </div>
+        </div>
+      </div>
+      <!--ky nang-->
+      <div class="form-group">
+        <div class="row padding-row">
+          <div class="col-md-2 col-12 title">
+            <label class="form-control-label">Kỹ Năng</label>
+          </div>
+          <div class="col-md-9 col-12">
+            <select2 [data]="skillService?.select2datas"
+                     [options]="options"
+                     [value]="skillService?.currentSelectId"
+                     (valueChanged)="changedMuti($event)"
+            ></select2>
+          </div>
+        </div>
+      </div>
+      <!--mo ta-->
+      <div class="form-group">
+        <div class="row padding-row">
+          <div class="col-md-2 col-12 specail-title">
+            <label class="form-control-label">Mô tả</label>
+          </div>
+          <div class="col-md-9 col-12">
+            <textarea spellcheck="false" class="form-control" rows="7" id="comment"
+                      formControlName="description" placeholder="Mô tả công việc"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="row padding-row">
+        <div class="col-md-2 col-12 specail-title">
+          <label class="form-control-label">Các ca học</label>
+        </div>
+        <div class="col-md-9 col-12">
+          <ul class="list-group" formArrayName="users">
+            <li class="list-group-item" *ngFor="let shift of enrollmentPostService?.shiftBodies; index as i">
+              <div>
+                <span style="font-size: 1em; font-weight: bold">Ca {{i+1}}</span>
+                <span class="float-right" (click)="deleteShift(i)"><i class="far fa-trash-alt"></i></span>
+              </div>
+              <!--thoi gian-->
+              <div class="row itemmar padding-shift">
+                <div class="col-md-3 col-12 remove-padding">
+                  <label>Thời gian</label>
+                </div>
+                <div class="col-md-9 col-12 remove-padding">
+                  <button type="button" class="btn" (click)="openTime(i, 0)">{{shift.startTime |
+                    converttime}}</button>
+                  -
+                  <button type="button" class="btn" (click)="openTime(i, 1)">{{shift.endTime |
+                    converttime}}</button>
+                  <div *ngIf="shift.startTime > shift.endTime" class="alert-dangerous">Giờ bắt đầu phải < Giờ kết thúc</div>
+                </div>
+              </div>
+              <!--chon thu-->
+              <div class="row itemmar padding-shift">
+                <div class="col-md-3 col-12 remove-padding">
+                  <label>Chọn thứ</label>
+                </div>
+                <div class="col-md-9 col-12 remove-padding">
+                  <button type="button" class="btn btn-default btn-circle"
+                          (click)="shift.mon ? (shift.mon = false) : (shift.mon = true)"
+                          [ngStyle]="{
+                                'background-color': shift.mon ? '#57b4ff' : '',
+                                'color': shift.mon ? 'white' : ''
+                              }">2
+                  </button>
+                  <button type="button" class="btn btn-default btn-circle"
+                          (click)="shift.tue ? (shift.tue = false) : (shift.tue = true)"
+                          [ngStyle]="{
+                                'background-color': shift.tue ? '#57b4ff' : '',
+                                'color': shift.tue ? 'white' : ''
+                              }">3
+                  </button>
+                  <button type="button" class="btn btn-default btn-circle"
+                          (click)="shift.wed ? (shift.wed = false) : (shift.wed = true)"
+                          [ngStyle]="{
+                                'background-color': shift.wed ? '#57b4ff' : '',
+                                'color': shift.wed ? 'white' : ''
+                              }">4
+                  </button>
+                  <button type="button" class="btn btn-default btn-circle"
+                          (click)="shift.thu ? (shift.thu = false) : (shift.thu = true)"
+                          [ngStyle]="{
+                                'background-color': shift.thu ? '#57b4ff' : '',
+                                'color': shift.thu ? 'white' : ''
+                              }">5
+                  </button>
+                  <button type="button" class="btn btn-default btn-circle"
+                          (click)="shift.fri ? (shift.fri = false) : (shift.fri = true)"
+                          [ngStyle]="{
+                                'background-color': shift.fri ? '#57b4ff' : '',
+                                'color': shift.fri ? 'white' : ''
+                              }">6
+                  </button>
+                  <button type="button" class="btn btn-default btn-circle"
+                          (click)="shift.sat ? (shift.sat = false) : (shift.sat = true)"
+                          [ngStyle]="{
+                                'background-color': shift.sat ? '#57b4ff' : '',
+                                'color': shift.sat ? 'white' : ''
+                              }">7
+                  </button>
+                  <button type="button" class="btn btn-default btn-circle"
+                          (click)="shift.sun ? (shift.sun = false) : (shift.sun = true)"
+                          [ngStyle]="{
+                                'background-color': shift.sun ? '#57b4ff' : '',
+                                'color': shift.sun ? 'white' : ''
+                              }">CN
+                  </button>
+                </div>
+              </div>
+              <div *ngIf="shift">
+                <div [formGroupName]="i">
+                  <!--so luong-->
+                  <div class="row itemmar padding-shift">
+                    <div class="col-md-3 col-12 remove-padding">
+                      <label>Số lượng</label>
+                    </div>
+                    <div class="col-md-9 col-12 remove-padding">
+                      <div class="row" style="margin-left: 0">
+                        <ui-switch size="small" [checked]="shiftOptionService?.soluongtheogioitinh[i]"
+                                   (change)="shiftOptionService?.soluongtheogioitinh[i] =! shiftOptionService?.soluongtheogioitinh[i]"></ui-switch>
+                        <div class="salary">&nbsp; Theo Giới Tính</div>
+                      </div>
+                      <div style="margin-top: 10px">
+                          <span *ngIf="shiftOptionService.soluongtheogioitinh[i]" id="mars">
+                            <input size="{{widthDisplay > 768 ? 9 : 4}}" class="new-form" placeholder="Nam" formControlName="genderMan"><i class="fas fa-mars fa-lg" style="margin-left: 10px; margin-right: 20px"></i>
+                          </span>
+                        <span *ngIf="shiftOptionService.soluongtheogioitinh[i]" id="venus">
+                            <input size="{{widthDisplay > 768 ? 9 : 4}}" class="new-form" placeholder="Nữ" formControlName="genderFemale"><i class="fas fa-venus fa-lg" style="margin: 0 10px"></i>
+                          </span>
+                        <span *ngIf="!shiftOptionService.soluongtheogioitinh[i]" id="mars">
+                            <input size="22" class="new-form" placeholder="Nam và Nữ" formControlName="genderQuatity"><i class="fas fa-venus-mars fa-lg" style="margin-left: 10px"></i>
+                          </span>
+                      </div>
+                    </div>
+                  </div>
+                  <!--luong-->
+                  <div class="row itemmar padding-shift">
+                    <div class="col-md-3 col-12 remove-padding">
+                      <label>Học phí</label>
+                    </div>
+                    <div class="col-md-9 col-12 remove-padding">
+                      <div class="row" style="margin: 0">
+                        <ui-switch size="small" [checked]="shiftOptionService?.fee[i]"
+                                   (change)="shiftOptionService?.fee[i] =! shiftOptionService?.fee[i]"></ui-switch>
+                        <div class="salary">&nbsp; MIỄN PHÍ</div>
+                      </div>
+                      <span style="margin-top: 1em;"
+                            [ngStyle]="{'display': shiftOptionService?.fee[i] ? 'none': 'block'}">
+                        <span class=".col-lg-6 .col-sm-6 .col-12">
+                          <input size="{{widthDisplay > 768 ? 12 : 6}}" type="email" class="new-form" formControlName="fee" placeholder="Phí">
+                          </span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <!--them ca-->
+            <div class="float-right-add list-group-item" style="padding: 0.4rem">
+              <button type="button" class="btn add-shift" (click)="addShift(enrollmentPostService.shiftBodies.length+1)">
+                <i class="fas fa-plus"></i> <b>Thêm Ca</b>
+              </button>
+            </div>
+          </ul>
+        </div>
+      </div>
+    </form>
+    <div class="row padding-row">
+      <div class="col-md-11 col-12" style="text-align: right; margin-bottom: 20px">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="onSubmit()">Đăng bài
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
