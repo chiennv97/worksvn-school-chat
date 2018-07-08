@@ -1,23 +1,22 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AgmCoreModule } from '@agm/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {AgmCoreModule} from '@agm/core';
 
-import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { AppRoutingModule } from './app-routing.module';
+import {AppComponent} from './app.component';
+import {HomeComponent} from './home/home.component';
+import {AppRoutingModule} from './app-routing.module';
 import {HttpClientModule} from '@angular/common/http';
-import { HeaderComponent } from './header/header.component';
-import { ProfileComponent } from './profile/profile.component';
-import { SignInService } from './service/sign-in.service';
+import {HeaderComponent} from './header/header.component';
+import {ProfileComponent} from './profile/profile.component';
+import {SignInService} from './service/sign-in.service';
 
-import { CooperateComponent } from './cooperate/cooperate.component';
-import { ChangePasswordComponent } from './change-password/change-password.component';
-import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-import { PasswordResetComponent } from './password-reset/password-reset.component';
-import { BranchComponent } from './branch/branch.component';
-import { EnrollmentsComponent } from './enrollments/enrollments.component';
-import { UpPostEnrollmentComponent } from './up-post-enrollment/up-post-enrollment.component';
+import {CooperateComponent} from './cooperate/cooperate.component';
+import {ChangePasswordComponent} from './change-password/change-password.component';
+import {ForgotPasswordComponent} from './forgot-password/forgot-password.component';
+import {PasswordResetComponent} from './password-reset/password-reset.component';
+import {BranchComponent} from './branch/branch.component';
+import {UpPostEnrollmentComponent} from './up-post-enrollment/up-post-enrollment.component';
 import {BranchsService} from './service/branchs.service';
 import {JobNameIdService} from './service/job-name-id.service';
 import {SkillService} from './service/skill.service';
@@ -31,9 +30,27 @@ import {AmazingTimePickerModule} from 'amazing-time-picker';
 import {UpOrEditService} from './service/up-or-edit.service';
 import {JobIdService} from './service/job-id.service';
 import {ChoosePostTypeService} from './service/choose-post-type.service';
-import {DateAdapter, MatDatepickerModule, MatNativeDateModule, MatSnackBarModule} from '@angular/material';
+import {DateAdapter, MatDatepickerModule, MatNativeDateModule, MatSnackBarModule, MatTabsModule} from '@angular/material';
 import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {DateFormat} from './class/date-format';
+import {ListEnrollmentsComponent} from './list-enrollments/list-enrollments.component';
+import {PaginationService} from './service/pagination.service';
+import {OverviewPostService} from './service/overview-post.service';
+import {NgxPaginationModule} from 'ngx-pagination';
+import {ChangeTabService} from './service/change-tab.service';
+import { EnrollmentDetailComponent } from './enrollment-detail/enrollment-detail.component';
+import {TabEnrollmentDetailService} from './service/tab-enrollment-detail.service';
+import { TabEnrollmentDetailComponent } from './tab-enrollment-detail/tab-enrollment-detail.component';
+import { TabEnrollmentApplyComponent } from './tab-enrollment-apply/tab-enrollment-apply.component';
+import {CandidateIdService} from './service/candidate-id.service';
+import {ApplyAEnrollmentService} from './service/apply-a-enrollment.service';
+import {ProfileApplyCandidateService} from './service/profile-apply-candidate.service';
+import { CandidateApplyComponent } from './candidate-apply/candidate-apply.component';
+import {ProfilePipe} from './pipe/profile.pipe';
+import {IdentityCardPipe} from './pipe/identity-card.pipe';
+import { ManagerStudentComponent } from './manager-student/manager-student.component';
+import {YearService} from './service/year.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,9 +62,16 @@ import {DateFormat} from './class/date-format';
     ForgotPasswordComponent,
     PasswordResetComponent,
     BranchComponent,
-    EnrollmentsComponent,
     UpPostEnrollmentComponent,
-    ConvertTimePipe
+    ConvertTimePipe,
+    ListEnrollmentsComponent,
+    EnrollmentDetailComponent,
+    TabEnrollmentDetailComponent,
+    TabEnrollmentApplyComponent,
+    CandidateApplyComponent,
+    ProfilePipe,
+    IdentityCardPipe,
+    ManagerStudentComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +90,9 @@ import {DateFormat} from './class/date-format';
     NoopAnimationsModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgxPaginationModule,
+    MatTabsModule,
   ],
   providers: [
     SignInService,
@@ -79,6 +105,14 @@ import {DateFormat} from './class/date-format';
     UpOrEditService,
     JobIdService,
     ChoosePostTypeService,
+    PaginationService,
+    OverviewPostService,
+    ChangeTabService,
+    TabEnrollmentDetailService,
+    CandidateIdService,
+    ApplyAEnrollmentService,
+    ProfileApplyCandidateService,
+    YearService,
     { provide: DateAdapter, useClass: DateFormat },
   ],
   bootstrap: [AppComponent]

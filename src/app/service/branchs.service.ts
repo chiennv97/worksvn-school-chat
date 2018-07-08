@@ -7,7 +7,7 @@ import {Select2data} from '../class/select2data';
 export class BranchsService {
   Authorization: string;
   httpOptions;
-  getBranchsUrl = DEVSERVER + '/api/schools/schoolBranchs';
+  getBranchsUrl = DEVSERVER + 'api/schools/schoolBranchs';
   branchId: Array<string>;
   name: Array<string>;
   address: Array<string>;

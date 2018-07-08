@@ -14,7 +14,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {UpOrEditService} from '../service/up-or-edit.service';
 import {DEVSERVER} from '../service/serve';
 import {JobIdService} from '../service/job-id.service';
-import {Router} from '@angular/router';
+import {ActivationEnd, Router} from '@angular/router';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatDatepickerInputEvent, MatSnackBar} from '@angular/material';
 import {ChoosePostTypeService} from '../service/choose-post-type.service';
 @Component({
@@ -33,7 +33,8 @@ export class UpPostEnrollmentComponent implements OnInit {
   Authorization: string;
   httpOptions;
   upPost = false;
-  postPendingJobUrl = DEVSERVER + 'api/schools/jobs/pendingPosts';
+  postPendingJobUrl = DEVSERVER + 'api/schools/jobs/pendingPosts/';
+  editPostUrl = DEVSERVER + '/api/schools/enrollmentJobs/';
   constructor(
     public branchsService: BranchsService,
     public jobNameIdService: JobNameIdService,
@@ -53,6 +54,22 @@ export class UpPostEnrollmentComponent implements OnInit {
     public choosePostTypeService: ChoosePostTypeService,
   ) {
     this.Authorization = 'Bearer' + localStorage.getItem('accessToken');
+    router.events.subscribe((val) => {
+      if (val instanceof ActivationEnd) {
+        if ( val.snapshot.paramMap.get('type') === 'editPenPost') {
+          this.upOrEditService.type = 2;
+        }
+        if ( val.snapshot.paramMap.get('type') === 'upClonePost') {
+          this.upOrEditService.type = 1;
+        }
+        if ( val.snapshot.paramMap.get('type') === 'upPost') {
+          this.upOrEditService.type = 1;
+        }
+        if ( val.snapshot.paramMap.get('type') === 'editPost') {
+          this.upOrEditService.type = 3;
+        }
+      }
+    });
   }
 
   ngOnInit() {
@@ -174,9 +191,17 @@ export class UpPostEnrollmentComponent implements OnInit {
             rawObject => this.afterSubmit(rawObject),
             err => console.log(err)
           );
-      } else {
+      }
+      if (this.upOrEditService.type === 1) {
         console.log(this.enrollmentPostService);
         this.http.post(this.postPendingJobUrl , this.enrollmentPostService, this.httpOptions)
+          .subscribe(
+            rawObject => this.afterSubmit(rawObject),
+            err => this.openSnackBar('Đăng bài không thành công, vui lòng xem lại các thông tin', err)
+          );
+      }
+      if (this.upOrEditService.type === 3) {
+        this.http.put(this.editPostUrl + this.jobIdService.idJob + '/pendingPosts' , this.enrollmentPostService, this.httpOptions)
           .subscribe(
             rawObject => this.afterSubmit(rawObject),
             err => this.openSnackBar('Đăng bài không thành công, vui lòng xem lại các thông tin', err)
@@ -210,7 +235,7 @@ export class UpPostEnrollmentComponent implements OnInit {
   }
   addShift(shiftIndex) {
     this.enrollmentPostService.shiftBodies.push(new Shift('739d0b98-a3cb-46ca-ac92-46219aa3f867', 0, 0, 0, '', false,
-      false, false, false, false, false, false, new GenderRequired(0, null, 0), shiftIndex
+      false, false, false, false, false, false, new GenderRequired(0, null, 0)
     ));
     this.shiftOptionService.fee.push(false);
     this.shiftOptionService.soluongtheogioitinh.push(false);
@@ -223,7 +248,7 @@ export class UpPostEnrollmentComponent implements OnInit {
   }
   changedMuti(data: {value: string[]}) {
     if (data.value !== null) {
-      this.enrollmentPostService.requiredSkillIDs = data.value;
+      this.enrollmentPostService.accquiredSkillIDs = data.value;
     }
   }
   openTime(i, type) {

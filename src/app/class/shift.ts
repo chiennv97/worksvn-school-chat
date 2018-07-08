@@ -13,12 +13,10 @@ export class Shift {
   fri: boolean;
   sat: boolean;
   sun: boolean;
-  shiftIndex: number;
   genderRequireds: Array<GenderRequired>;
   constructor (id, startTime, endTime, fee,
                name, mon, tue, wed, thu,
-               fri, sat, sun, genderRequireds, shiftIndex
-  ) {
+               fri, sat, sun, genderRequireds  ) {
     this.id = id;
     this.startTime = startTime;
     this.endTime = endTime;
@@ -32,6 +30,5 @@ export class Shift {
     this.sat = sat;
     this.sun = sun;
     this.genderRequireds = genderRequireds;
-    this.shiftIndex = shiftIndex;
-  }
+    }
 }
