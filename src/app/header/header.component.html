@@ -15,6 +15,21 @@
     <li class="nav-item">
       <a class="nav-link" href="#">Quản lý</a>
     </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        Sự kiện
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" routerLink="/events/create">Tạo sự kiện</a>
+        <a class="nav-link dropdown-toggle dropright" href="#" id="navbardrop2" data-toggle="dropdown">
+          Quản lý sự kiện
+        </a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" routerLink="/events/active">Sự kiện đang diễn ra</a>
+          <a class="dropdown-item" href="#">Sự kiện hết hạn</a>
+        </div>
+      </div>
+    </li>
     <li class="nav-item">
       <a class="nav-link" routerLink="cooperate">Hợp tác</a>
     </li>
