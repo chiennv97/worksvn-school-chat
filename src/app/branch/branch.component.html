@@ -7,7 +7,7 @@
             Chi nhánh đăng tuyển
           </h2>
           <button class="edit" data-toggle="modal" data-target="#mybranch" (click)="openModal()">
-            <i class="icon-input"><img src="../assets/img/plus.png" alt=""> </i>
+            <i class="icon-input"><img src="../assets/img/plus.png" alt="" style="height:36px"> </i>
           </button>
         </div>
         <hr>
@@ -24,9 +24,11 @@
                   <span class="icon-timeline">
                     <button data-toggle="modal" data-target="#mybranch"
                             (click)="openModalEdit(i, branch.id, branch.lat, branch.lon, branch.branchName, branch.contactEmail, branch.contactPhone)">
-                      <i class="far fa-edit" style="margin-right: 1rem"></i>
+                      <i class="icon-input"><img src="../assets/img/create.png" alt=""> </i>
                     </button>
-                    <button (click)="askDelete(branch.id)"><i class="fas fa-trash-alt"></i></button>
+                    <button (click)="askDelete(branch.id)">
+                      <i class="icon-input"><img src="../assets/img/trash.png" alt=""> </i>
+                    </button>
                   </span>
                 </div>
                 <div class="desc">

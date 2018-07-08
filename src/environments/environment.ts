@@ -5,12 +5,12 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: 'AIzaSyBhUfLdKwxez78Cvujj0K9E9CfKkekz_Ic',
-    authDomain: 'worksfit-uv-android.firebaseapp.com',
-    databaseURL: 'https://worksfit-uv-android.firebaseio.com',
-    projectId: 'worksfit-uv-android',
-    storageBucket: 'worksfit-uv-android.appspot.com',
-    messagingSenderId: '606882187887'
+    apiKey: 'AIzaSyBh6Odwox1bWmoMUHbHNZzX2SxZCrR5194',
+    authDomain: 'worksfit-web-uv.firebaseapp.com',
+    databaseURL: 'https://worksfit-web-uv.firebaseio.com',
+    projectId: 'worksfit-web-uv',
+    storageBucket: 'worksfit-web-uv.appspot.com',
+    messagingSenderId: '965443624804'
   }
 };
 

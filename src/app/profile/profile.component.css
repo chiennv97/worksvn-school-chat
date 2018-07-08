@@ -168,4 +168,7 @@ input.ng-invalid.ng-touched {
   text-decoration: none;
   cursor: pointer;
 }
+agm-map {
+  height: 400px;
+}
 

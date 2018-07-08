@@ -8,7 +8,10 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { PasswordResetComponent } from './password-reset/password-reset.component';
 import { BranchComponent } from './branch/branch.component';
+import { EventComponent } from './event/event.component';
+import { EventModule } from './event/event.module';
 const routes: Routes = [
+  { path: 'events', loadChildren: 'app/event/event.module#EventModule'},
   { path: '', component: HomeComponent },
   { path: 'profile', component: ProfileComponent},
   { path: 'cooperate', component: CooperateComponent},
@@ -16,13 +19,19 @@ const routes: Routes = [
   { path: 'password-reset/:id', component: PasswordResetComponent},
   { path: 'change-password', component: ChangePasswordComponent},
   { path: 'branchs', component: BranchComponent},
+  { path: 'events', component: EventComponent},
 ];
+
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forRoot(routes),
+    // RouterModule.forChild(routes),
   ],
   declarations: [],
-  exports: [ RouterModule ]
+  exports: [
+    RouterModule,
+    EventModule,
+  ]
 })
 export class AppRoutingModule { }
