@@ -8,10 +8,13 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { PasswordResetComponent } from './password-reset/password-reset.component';
 import { BranchComponent } from './branch/branch.component';
-import { EventComponent } from './event/event.component';
-import { EventModule } from './event/event.module';
+import {UpPostEnrollmentComponent} from './up-post-enrollment/up-post-enrollment.component';
+import {ListEnrollmentsComponent} from './list-enrollments/list-enrollments.component';
+import {EnrollmentDetailComponent} from './enrollment-detail/enrollment-detail.component';
+import {ManagerStudentComponent} from './manager-student/manager-student.component';
+import {EventModule} from './event/event.module';
 const routes: Routes = [
-  { path: 'events', loadChildren: 'app/event/event.module#EventModule'},
+  { path: 'event', loadChildren: './event/event.module#EventModule'},
   { path: '', component: HomeComponent },
   { path: 'profile', component: ProfileComponent},
   { path: 'cooperate', component: CooperateComponent},
@@ -19,19 +22,20 @@ const routes: Routes = [
   { path: 'password-reset/:id', component: PasswordResetComponent},
   { path: 'change-password', component: ChangePasswordComponent},
   { path: 'branchs', component: BranchComponent},
-  { path: 'events', component: EventComponent},
+  { path: 'up-post-enrollment/:type', component: UpPostEnrollmentComponent},
+  { path: 'edit-post-enrollment/:type/:id', component: UpPostEnrollmentComponent},
+  { path: 'enrollment-detail/:id', component: EnrollmentDetailComponent},
+  { path: 'list-enrollments', component: ListEnrollmentsComponent},
+  { path: 'manage-student', component: ManagerStudentComponent},
 ];
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forRoot(routes),
-    // RouterModule.forChild(routes),
+    EventModule,
   ],
   declarations: [],
-  exports: [
-    RouterModule,
-    EventModule,
-  ]
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }

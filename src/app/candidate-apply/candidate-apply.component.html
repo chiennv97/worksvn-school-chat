@@ -1,0 +1,209 @@
+
+<!-- The Modal -->
+<div class="modal fade" id="candidate-apply">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <!--<div class="modal-header-manager">-->
+      <!--<h4 class="modal-title">Modal Heading</h4>-->
+      <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+      <!--</div>-->
+      <div class="crop">
+        <img class="cover" *ngIf="profileApplyCandidateService?.coverUrl !== null" src="{{profileApplyCandidateService?.coverUrl}}" onerror="this.src='../assets/images/defaut-cover.jpg'" alt="">
+        <img class="cover" *ngIf="profileApplyCandidateService?.coverUrl === null" src="../assets/images/defaut-cover.jpg" alt="">
+      </div>
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-xl-3 col-md-12 col-avatar">
+            <img class="avatar center-block" *ngIf="profileApplyCandidateService?.avatarUrl === null" src="../assets/img/avartar.png" alt="">
+            <!--<img class="avatar" *ngIf="profileApplyCandidateService?.avatarUrl !== null" src="{{profileApplyCandidateService?.avatarUrl}}" alt="">-->
+            <span *ngIf="profileApplyCandidateService?.avatarUrl !== null" class="image-cropper">
+              <span class="rounded" id="rounded" [ngStyle]="{'background' : 'url('+ profileApplyCandidateService?.avatarUrl+ '), url(../assets/img/avartar.png) center no-repeat'}"></span>
+            </span>
+            <div><b>{{profileApplyCandidateService?.lastName}} {{profileApplyCandidateService?.firstName}}</b></div>
+          </div>
+          <div class="col-xl-9 col-md-12" style="margin: auto;">
+            <div class="row" style="text-align: center">
+              <div class="col-xl-4 col-lg-4 col-md-4">
+                <div>KỸ NĂNG</div>
+                <div class="merchant-stars">
+                  <div class="stars default">
+                    <i class="lz lz-star"></i>
+                    <i class="lz lz-star"></i>
+                    <i class="lz lz-star"></i>
+                    <i class="lz lz-star"></i>
+                    <i class="lz lz-star"></i>
+                  </div>
+                  <div class="lozi" [ngStyle]="{'width' : profileApplyCandidateService.rating?.skillRating *20 + '%'}">
+                    <i class="lz lz-star2"></i>
+                    <i class="lz lz-star2"></i>
+                    <i class="lz lz-star2"></i>
+                    <i class="lz lz-star2"></i>
+                    <i class="lz lz-star2"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-4 col-lg-4 col-md-4">
+                <div>THÁI ĐỘ</div>
+                <div class="merchant-stars">
+                  <div class="stars default">
+                    <i class="lz lz-star"></i>
+                    <i class="lz lz-star"></i>
+                    <i class="lz lz-star"></i>
+                    <i class="lz lz-star"></i>
+                    <i class="lz lz-star"></i>
+                  </div>
+                  <div class="lozi" [ngStyle]="{'width' : profileApplyCandidateService.rating?.attitudeRating *20 + '%'}">
+                    <i class="lz lz-star2"></i>
+                    <i class="lz lz-star2"></i>
+                    <i class="lz lz-star2"></i>
+                    <i class="lz lz-star2"></i>
+                    <i class="lz lz-star2"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-4 col-lg-4 col-md-4">
+                <div>ĐỘ HÀI LÒNG</div>
+                <div class="merchant-stars">
+                  <div class="stars default">
+                    <i class="lz lz-star"></i>
+                    <i class="lz lz-star"></i>
+                    <i class="lz lz-star"></i>
+                    <i class="lz lz-star"></i>
+                    <i class="lz lz-star"></i>
+                  </div>
+                  <div class="lozi" [ngStyle]="{'width' : profileApplyCandidateService.rating?.jobAccomplishmentRating *20 + '%'}">
+                    <i class="lz lz-star2"></i>
+                    <i class="lz lz-star2"></i>
+                    <i class="lz lz-star2"></i>
+                    <i class="lz lz-star2"></i>
+                    <i class="lz lz-star2"></i>
+                  </div>
+                </div>
+              </div>
+              <!--<div class="col-xl-12 col-lg-2 col-md-12" style="padding: 10px">-->
+                <!--<a *ngIf="profileApplyCandidateService?.status === 'accepted'" id="accepted">Ứng Viên Đã Được Chấp Nhận</a>-->
+                <!--<a *ngIf="profileApplyCandidateService?.status === 'pending' && profileApplyCandidateService?.typeOfProfile === 1" id="pending">Ứng viên Chờ Duyệt</a>-->
+              <!--</div>-->
+            </div>
+            <!--<div class="row" style="text-align: center">-->
+              <!--<div class="col-12">-->
+                <!--<div *ngIf="profileApplyCandidateService?.status === 'pending' && profileApplyCandidateService?.typeOfProfile === 2">-->
+                  <!--<a id="action" class="ratingaction">ĐÃ GỪI LỜI MỜI</a>-->
+                <!--</div>-->
+              <!--</div>-->
+              <!--<div class="col-12">-->
+                <!--<div *ngIf="profileApplyCandidateService?.status === 'none'">-->
+                  <!--<a id="action" class="ratingaction" (click)="offerJob()">GỬI LỜI MỜI</a>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
+          </div>
+          <!--<div class="col-xl-12 col-md-12" style="margin: 15px 0px" *ngIf="profileApplyCandidateService?.status === 'accepted'">-->
+            <!--<div class="row">-->
+              <!--<div class="col-xl-4 col-lg-4 col-md-4" style="text-align: right">-->
+                <!--&lt;!&ndash;<a id="action" class="reject"><i class="fas fa-ban"></i> Từ chối hồ sơ</a>&ndash;&gt;-->
+              <!--</div>-->
+              <!--<div class="col-xl-4 col-lg-4 col-md-4" style="text-align: center">-->
+                <!--<a id="action" class="ratingaction" (click)="open()"><i class="far fa-star"></i> Đánh giá ứng viên</a>-->
+              <!--</div>-->
+              <!--<div class="col-xl-4 col-lg-4 col-md-4" style="text-align: left">-->
+                <!--&lt;!&ndash;<a id="action" class="save"><i class="far fa-bookmark"></i> Lưu hồ sơ</a>&ndash;&gt;-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+        </div>
+        <div class="block-content">
+          <h5>Thông tin cá nhân</h5>
+          <div class="row inrow">
+            <div class="col-xl-3 col-md-12 title">
+              <i class="far fa-calendar-alt"></i>
+              <span class="truetitle">Ngày sinh:</span>
+            </div>
+            <div class="col-xl-9 col-md-12" *ngIf="profileApplyCandidateService?.birthday === -1">__</div>
+            <div class="col-xl-9 col-md-12" *ngIf="profileApplyCandidateService?.birthday === null">Thông tin được bảo mật</div>
+            <div class="col-xl-9 col-md-12" *ngIf="profileApplyCandidateService?.birthday !== null && profileApplyCandidateService?.birthday !== -1">{{profileApplyCandidateService?.birthday | date: 'dd/MM/yyyy'}}</div>
+          </div>
+          <div class="row inrow">
+            <div class="col-xl-3 col-md-12 title">
+              <i class="fas fa-venus-mars"></i>
+              <span class="truetitle">Giới tính:</span>
+            </div>
+            <div class="col-xl-9 col-md-12">{{profileApplyCandidateService?.gender | profilepipe}}</div>
+          </div>
+          <div class="row inrow">
+            <div class="col-xl-3 col-md-12 title">
+              <i class="fas fa-home"></i>
+              <span class="truetitle">Địa chỉ:</span>
+            </div>
+            <div class="col-xl-9 col-md-12">{{profileApplyCandidateService?.address | profilepipe}}</div>
+          </div>
+          <div class="row inrow">
+            <div class="col-xl-3 col-md-12 title">
+              <i class="far fa-envelope"></i>
+              <span class="truetitle">Email:</span>
+            </div>
+            <div class="col-xl-9 col-md-12">{{profileApplyCandidateService?.email | profilepipe}}</div>
+          </div>
+          <div class="row inrow">
+            <div class="col-xl-3 col-md-12 title">
+              <i class="fas fa-phone"></i>
+              <span class="truetitle">Điện thoại liên hệ:</span>
+            </div>
+            <div class="col-xl-9 col-md-12">{{profileApplyCandidateService?.phone | profilepipe}}</div>
+          </div>
+          <div class="row inrow">
+            <div class="col-xl-3 col-md-12 title">
+              <i class="far fa-address-card"></i>
+              <span class="truetitle">Số CMND:</span>
+            </div>
+            <div class="col-xl-9 col-md-12">{{profileApplyCandidateService?.identityCard | identitycardpipe}}</div>
+          </div>
+        </div>
+        <div class="block-content">
+          <h5>Ảnh thẻ</h5>
+          <div class="row">
+            <div class="col-xl-6 col-md-12">
+              <img class="identityCard" *ngIf="profileApplyCandidateService?.identityCardFrontImageUrl !== null" src="{{profileApplyCandidateService?.identityCardFrontImageUrl}}" alt="">
+              <img class="identityCard" *ngIf="profileApplyCandidateService?.identityCardFrontImageUrl === null" src="./assets/images/identityCard_default.png" alt="">
+            </div>
+            <div class="col-xl-6 col-md-12">
+              <img class="identityCard" *ngIf="profileApplyCandidateService?.identityCardBackImageUrl !== null" src="{{profileApplyCandidateService?.identityCardBackImageUrl}}" alt="">
+              <img class="identityCard" *ngIf="profileApplyCandidateService?.identityCardBackImageUrl === null" src="./assets/images/identityCard_default.png" alt="">
+            </div>
+          </div>
+        </div>
+        <div class="block-content">
+          <h5>Mô tả bản thân</h5>
+          <p style="margin-bottom: 0">
+            {{profileApplyCandidateService.description}}
+          </p>
+        </div>
+        <div class="block-content">
+          <h5>Kỹ năng</h5>
+          <span *ngFor="let skill of profileApplyCandidateService?.skills"  class="badge badge-pill badge-info"> {{skill?.name}} </span>
+        </div>
+        <div class="block-end">
+          <h5>Trình độ ngoại ngữ</h5>
+          <div class="row drop-shadow" *ngFor="let languages of profileApplyCandidateService?.languageSkills">
+            <div class="col-xl-3 col-md-6 col-12"><b>{{languages.language}}</b></div>
+            <div class="col-xl-3 col-md-6 col-12">{{languages.level}}</div>
+            <div class="col-xl-3 col-md-6 col-12" *ngIf="languages?.certificate !== null">
+              <i class="fas fa-graduation-cap"></i> Chứng chỉ: {{languages.certificate}}
+            </div>
+            <div class="col-xl-3 col-md-6 col-12" *ngIf="languages?.score !== null">
+              <i class="fas fa-certificate"></i> Điểm số: {{languages.score}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+      </div>
+    </div>
+  </div>
+</div>
+

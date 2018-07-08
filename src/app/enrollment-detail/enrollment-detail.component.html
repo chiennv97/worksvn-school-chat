@@ -1,0 +1,91 @@
+
+<div class="content-inner">
+
+  <!--bootstrap select - chon loai bai dang -->
+  <section>
+    <!--job detail-->
+    <div class="container-fluid">
+      <section class="dashboard-counts">
+        <div class="row bg-white has-shadow">
+          <!-- Item -->
+          <div class="col-xl-3 col-sm-4 col-12" align="center" style="margin: auto">
+            <!--logoUrl-->
+            <img src="{{tabEnrollmentDetailService?.schoolLogoUrl}}" alt="logo" id="logo">
+          </div>
+          <!-- Item -->
+          <div class="col-xl-6 col-sm-5 col-12">
+            <div class="jobName align-center"><h3>{{tabEnrollmentDetailService.jobTitle}}</h3></div>
+            <!--employerName-->
+            <h5 style="color: #5b5b5b;" class="align-center">{{tabEnrollmentDetailService.schoolBranchName | uppercase}}</h5>
+            <div class="row align-center">
+              <div class="col-xl-6 col-6">
+                <i class="far fa-clock"></i>
+                <span *ngIf="widthDisplay >= 768"> Ngày đăng: </span>
+                <span>{{tabEnrollmentDetailService.createdDate | date: 'dd/MM/yyyy'}}</span>
+              </div>
+              <div class="col-xl-6 col-6">
+                  <span class="expirationDate">
+                    <i class="far fa-calendar-alt"></i>
+                    <span *ngIf="widthDisplay >= 768"> Hết hạn: </span>
+                    <span>{{tabEnrollmentDetailService.expirationDate | date: 'dd/MM/yyyy'}}</span>
+                  </span>
+              </div>
+            </div>
+          </div>
+          <!-- Item -->
+          <div class="col-xl-3 col-sm-3" align="center" *ngIf="widthDisplay >= 768">
+            <div>
+              <a *ngIf="tabEnrollmentDetailService.hasAppliedCandidate === true" class="button edit" id="buttonEdit" (click)="cannotEditOrRemove()">
+                <i class="fas fa-pencil-alt"></i> Chỉnh sửa</a>
+              <a *ngIf="tabEnrollmentDetailService.hasAppliedCandidate === false" class="button edit" id="buttonEdit" (click)="editPost()">
+                <i class="fas fa-pencil-alt"></i> Chỉnh sửa</a>
+            </div>
+            <div><a class="button delete" id="buttonDelete" (click)="deleteJob()"><i class="far fa-trash-alt"></i> Xóa bài đăng</a>
+            </div>
+          </div>
+          <!--mobile-->
+          <div class="row align-center" *ngIf="widthDisplay < 768" style="margin: auto">
+            <div class="col-6">
+                  <span *ngIf="tabEnrollmentDetailService.hasAppliedCandidate === true" class="button edit" id="buttonEdit" (click)="cannotEditOrRemove()">
+                    <i class="fas fa-pencil-alt"></i> Sửa bài</span>
+              <span *ngIf="tabEnrollmentDetailService.hasAppliedCandidate === false" class="button edit" id="buttonEdit" (click)="editPost()">
+                    <i class="fas fa-pencil-alt"></i> Sửa bài</span>
+            </div>
+            <div class="col-6">
+              <span class="button delete" id="buttonDelete" (click)="deleteJob()"><i class="far fa-trash-alt"></i> Xóa bài</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!--tabs-->
+      <div class="bg-white has-shadow">
+        <mat-tab-group [(selectedIndex)]="changeTabService.tabChange" [@.disabled]="true">
+          <mat-tab label="Chi tiết">
+            <!--<app-tab-job-detail #detail></app-tab-job-detail>-->
+            <app-tab-enrollment-detail></app-tab-enrollment-detail>
+            <!--<router-outlet></router-outlet>-->
+          </mat-tab>
+          <mat-tab label="Ứng tuyển">
+            <app-tab-enrollment-apply></app-tab-enrollment-apply>
+            <!--<app-tab-job-apply></app-tab-job-apply>-->
+            <!--<router-outlet></router-outlet>-->
+          </mat-tab>
+        </mat-tab-group>
+        <!--<nav mat-tab-nav-bar>-->
+        <!--<a mat-tab-link-->
+        <!--*ngFor="let link of navLinks"-->
+        <!--[routerLink]="link.path"-->
+        <!--routerLinkActive #rla="routerLinkActive"-->
+        <!--[active]="rla.isActive">-->
+        <!--{{link.label}}-->
+        <!--</a>-->
+        <!--</nav>-->
+
+        <!--<router-outlet></router-outlet>-->
+      </div>
+    </div>
+  </section>
+</div>
+<app-candidate-apply></app-candidate-apply>
+

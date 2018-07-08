@@ -47,9 +47,11 @@ export class ProfileComponent implements OnInit {
   ) { }
   model = new InforSchool('', '', '', '',
     '', '', 21.029145, 105.851726);
+  mobnumPattern = '^((\\+91-?)|0)?[0-9]{10}$';
+  emailPattern = '^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$';
   ngOnInit() {
     this.accessToken = localStorage.getItem('accessToken');
-    console.log(this.accessToken);
+    // console.log(this.accessToken);
     this.Authorization = 'Bearer ' + this.accessToken;
     this.httpOptions = {
       headers: new HttpHeaders({

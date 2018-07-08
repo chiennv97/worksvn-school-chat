@@ -1,0 +1,73 @@
+<div class="row">
+  <h5 class="header-margin">VỊ TRÍ:  &nbsp;<span style="font-size: 110%">{{tabEnrollmentDetailService?.jobName}}</span></h5>
+</div>
+<!--<h6>{{tabJobDetailService.address}}</h6>-->
+<!--<div><span>{{tabJobDetailService.createdDate | date :'mediumDate'}} - {{tabJobDetailService.expirationDate | date :'mediumDate'}}</span></div>-->
+<h5 class="row-margin">MÔ TẢ CÔNG VIỆC:</h5>
+<div class="content-margin">
+  <p style="white-space: pre-wrap;">{{tabEnrollmentDetailService.description}}</p>
+</div>
+<h5 class="row-margin">CA LÀM VIỆC:</h5>
+<ul class="list-group content-margin">
+  <li class="list-group-item" *ngFor="let shift of tabEnrollmentDetailService.shifts; index as i">
+    <div class="row">
+      <div *ngIf="widthDisplay >=768" class="icon col-xl-2 col-sm-6 col-12" align="center" style="border-right: 1px solid #eee; padding-right: 0px"><i class="fas fa-users fa-4x"></i></div>
+      <div class="col-xl-2 col-sm-6 col-12" id="remove-padding" align="center">
+        <div *ngIf="widthDisplay >=768" class="nameShift"><span>Ca </span><span>&nbsp;</span><span>{{i+1}}</span></div>
+        <span *ngIf="widthDisplay <768" class="nameShift can-left"><span>Ca </span><span>&nbsp;</span><span>{{i+1}}</span></span>
+        <span class="can-right">
+          <span><i class="far fa-clock"></i></span>
+          <span>{{shift.startTime | converttime}} - {{shift.endTime | converttime}}</span>
+        </span>
+      </div>
+      <div class="col-xl-3 col-sm-6 col-12 salary" style="margin: auto">
+        <span><i class="fas fa-dollar-sign"></i></span>
+        <span *ngIf="shift.fee !== 0">{{shift.fee | number:'.0-2'}}</span>
+        <span *ngIf="shift.fee === 0">MIỄN PHÍ</span>
+      </div>
+      <div class="col-xl-3 col-sm-6 col-12 dayOfWeek" style="margin: auto">
+        <span><i class="far fa-calendar-check"></i></span>
+        <span *ngIf="widthDisplay >=768">Ngày làm việc: thứ</span>
+        <span *ngIf="shift.mon">2 </span>
+        <span *ngIf="shift.tue">3 </span>
+        <span *ngIf="shift.wed">4 </span>
+        <span *ngIf="shift.thu">5 </span>
+        <span *ngIf="shift.fri">6 </span>
+        <span *ngIf="shift.sat">7 </span>
+        <span *ngIf="shift.sun">CN</span>
+      </div>
+      <div class="col-xl-2 col-sm-6 col-12" style="margin: auto" align="center">
+        <div *ngFor="let gender of shift.genderRequireds">
+          <div *ngIf="gender.gender==2" style="background-color: #ff9655; color: white;  margin-bottom: 5px; max-width: 130px;">
+            <span id="mars"><i class="fas fa-venus-mars"></i></span>
+            {{gender.applied}}/{{gender.quantity}}
+          </div>
+          <div *ngIf="gender.gender==1" style="background-color: #2dd1f3; color: white;  margin-bottom: 5px; max-width: 130px;">
+            <span id="mars"><i class="fas fa-mars fa-lg"></i></span>
+            {{gender.applied}}/{{gender.quantity}}
+          </div>
+          <div *ngIf="gender.gender==0" style="background-color: #ff5d76; color: white;  margin-bottom: 5px; max-width: 130px;">
+            <span id="venus"><i class="fas fa-venus fa-lg"></i></span>
+            {{gender.applied}}/{{gender.quantity}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </li>
+</ul>
+<h5 class="row-margin">KỸ NĂNG:</h5>
+<div class="content-margin">
+  <span *ngFor="let reSkill of tabEnrollmentDetailService.accquiredSkills"  class="badge badge-pill badge-info"> {{reSkill}} </span>
+</div>
+
+
+<h5 class="row-margin">ĐỊA CHỈ: </h5>
+<div class="content-margin">
+  <div class="location"><i class="fas fa-map-marker-alt"></i> {{tabEnrollmentDetailService.address}}</div>
+</div>
+<div class="content-margin">
+  <agm-map [latitude]="tabEnrollmentDetailService.lat" [longitude]="tabEnrollmentDetailService.lon" [zoom]="15">
+    <agm-marker [latitude]="tabEnrollmentDetailService.lat" [longitude]="tabEnrollmentDetailService.lon"></agm-marker>
+  </agm-map>
+</div>
+

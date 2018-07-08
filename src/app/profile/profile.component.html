@@ -171,9 +171,9 @@
                       <button type="button" title="Chỉnh sửa" class="button_img__edit" (click)="logo.click()">
                         <img src="../assets/img/create.png" alt="">
                       </button>
-                      <button type="button" title="Xóa" class="button_img__del" (click)="deleteImg(profile.id, 'url1')">
-                        <img src="../assets/img/trash.png" alt="">
-                      </button>
+                      <!--<button type="button" title="Xóa" class="button_img__del" (click)="deleteImg(profile.id, 'url1')">-->
+                        <!--<img src="../assets/img/trash.png" alt="">-->
+                      <!--</button>-->
                     </a>
                   </div>
                 </div>
@@ -183,10 +183,10 @@
             <div class="form-inline">
               <label class="col-sm-3 control-label">Hình ảnh nhà trường</label>
               <div class="col-sm-9">
-                <span class="upload" #upload (click)="file.click()" [hidden]="buttonUpImg">
+                <!--<span class="upload" #upload (click)="file.click()" [hidden]="buttonUpImg">-->
                   <i class="fas fa-camera"></i>
-                </span>
-                <input #file type="file" (change)="upanh($event, profile.id, 'url2')" hidden ng2FileSelect>
+                <!--</span>-->
+                <!--<input #file type="file" (change)="upanh($event, profile.id, 'url2')" hidden ng2FileSelect>-->
 
 
                 <!--<div class="wrapper_img">-->
@@ -205,13 +205,13 @@
                   <img src="{{profile?.coverUrl}}" alt="" class="image">
                   <div class="overlay"
                        [ngStyle]="{'display':(profile?.coverUrl !== null) ? 'block': 'none'}">
-                    <a class="icon">
-                      <button type="button" title="Chỉnh sửa" class="button_img__edit" (click)="file.click()">
-                        <img src="../assets/img/create.png" alt="">
-                      </button>
-                      <button type="button" title="Xóa" class="button_img__del" (click)="deleteImg(profile.id, 'url2')">
-                        <img src="../assets/img/trash.png" alt=""></button>
-                    </a>
+                    <!--<a class="icon">-->
+                      <!--<button type="button" title="Chỉnh sửa" class="button_img__edit" (click)="file.click()">-->
+                        <!--<img src="../assets/img/create.png" alt="">-->
+                      <!--</button>-->
+                      <!--<button type="button" title="Xóa" class="button_img__del" (click)="deleteImg(profile.id, 'url2')">-->
+                        <!--<img src="../assets/img/trash.png" alt=""></button>-->
+                    <!--</a>-->
                   </div>
                 </div>
               </div>

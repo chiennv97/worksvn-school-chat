@@ -15,13 +15,8 @@ const eventRoutes: Routes = [
     ]
   }
 ];
-// const Routing: ModuleWithProviders = RouterModule.forRoot(routesConfig,
-//   { preloadingStrategy: PreloadAllModules, scrollPositionRestoration: 'enabled',
-//     anchorScrolling: 'enabled'});
 @NgModule({
   imports: [
-    // JobDetailModule,
-    // Routing,
     CommonModule,
     RouterModule.forChild(eventRoutes)
   ],

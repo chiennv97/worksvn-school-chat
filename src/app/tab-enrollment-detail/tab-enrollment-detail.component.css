@@ -1,0 +1,111 @@
+.card{
+  margin: 15px;
+}
+.card-block{
+  border-bottom: 1px solid #eae5e5;
+  padding-bottom: 5px;
+}
+.badge{
+  margin-right: 0.4em;
+  font-size: 100%;
+  background-color: #efefef;
+  color: #0b2e13;
+  margin-bottom: 0.3em;
+}
+.icon{
+  color: #379ff3;
+}
+.salary{
+  color: #fd6e15f0;
+}
+.dayOfWeek{
+  color: #616161;
+}
+.nameShift{
+  font-size: 1.5em;
+}
+#venus{
+  color: white;
+  padding-bottom: 10px;
+}
+#mars{
+  color: white;
+  padding-bottom: 10px;
+}
+.submain{
+  margin-top: 1.25em;
+}
+agm-map {
+  height: 400px;
+}
+.location{
+  color: #1c9aff;
+}
+.title-margin {
+  margin: 1.5em 1em 0px 1em;
+}
+.row-margin {
+  margin: 1.5em 0em 0px 2em;
+}
+.content-margin {
+  margin: 1em 2em 2em 45px;
+}
+.text-margin {
+  margin-left: 30px;
+}
+
+.row {
+  margin-left: 0;
+  margin-right: 0;
+}
+.header-margin {
+  margin-left: 2em;
+  margin-top: 2.5em;
+}
+@media (max-width: 767px) {
+  h5{
+    font-size: 0.9em;
+  }
+  .header-margin {
+    margin-left: 1em;
+    margin-top: 1em;
+  }
+  .row-margin {
+    margin: 0.5em 0em 0em 1em;
+  }
+  .content-margin {
+    margin: 0.2em 1em 1em 1em;
+  }
+  .can-left{
+    float: left;
+  }
+  .can-right{
+    float: right;
+    margin-top: 0.35em;
+  }
+  #remove-padding{
+    padding: 0;
+  }
+  .nameShift{
+    font-size: 1.2em;
+  }
+  .content-margin {
+    font-size: 0.9em;
+  }
+  .badge{
+    /*margin-left: 0.4em;*/
+    font-size: 90%;
+    background-color: #efefef;
+    padding: .25em .4em 0.3em;
+    color: #0b2e13;
+  }
+  .location{
+    font-size: 0.9em;
+  }
+  agm-map {
+    height: 300px;
+  }
+}
+.badge {
+  font-weight: 400;
+}

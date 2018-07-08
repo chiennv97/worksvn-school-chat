@@ -1,0 +1,75 @@
+<div *ngIf="applyAEnrollmentService.applyAjobs?.length === 0" class="noApply">Chưa có ứng viên ứng tuyển</div>
+<div class="application" *ngFor="let obj of applyAEnrollmentService.applyAjobs; index as i">
+  <div class="app-content" (click)="showDetail(i)" data-toggle="modal" data-target="#candidate-apply">
+    <div class="row">
+      <!-- Name / Avatar -->
+      <div class="info col-xl-5 col-lg-5 col-md-5 col-sm-12" style="margin: auto">
+        <span *ngIf="obj.avatarUrl !== null" class="image-cropper" style="display: inline-block">
+          <span class="rounded" [ngStyle]="{'background' : 'url('+ obj.avatarUrl+ '), url(../assets/img/avartar.png) center no-repeat', 'background-size' : 'cover'}">
+          </span>
+        </span>
+        <span *ngIf="obj.avatarUrl === null" class="imgre"><i class="fas fa-users fa-4x"></i></span>
+        <span class="name-detail">
+          <div class="name-candidate">{{obj.lastName}} {{obj.firstName}}</div>
+          <div *ngIf="obj.isProfileVerified === true" class="verify">
+            Đã xác minh
+            <span style="color: green">
+              <i class="fas fa-check"></i>
+            </span>
+          </div>
+          <div *ngIf="obj.isProfileVerified === false" class="verify">
+            Chưa xác minh
+            <span style="color: red">
+              <i class="fas fa-times"></i>
+            </span>
+          </div>
+          <div>
+            <span class="badge badge-pill badge-info">{{obj?.appliedShifts[0]?.name}}</span>
+          </div>
+        </span>
+      </div>
+      <!--<div class="info col-xl-3 col-lg-3 col-md-3 col-sm-12" style="margin: auto">-->
+      <!--</div>-->
+      <div class="col-xl-7 col-lg-7 col-md-5 col-sm-12 more"
+           style="border-left: 1px solid #eee; padding-right: 0px; margin: auto">
+        <div class="row" style="text-align: center">
+              <div class="col-xl-4 col-lg-4 col-md-4 col-4">
+                <div class="vote">KỸ NĂNG</div>
+                <div class="merchant-stars">
+                  <div class="stars default">
+                    <i class="lz lz-star"></i>
+                  </div>
+                  <div>
+                    <i class="lz lz-star2" [ngStyle]="{'width': obj.skillRating * 20 + '%'}"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-4 col-lg-4 col-md-4 col-4">
+                <div class="vote">THÁI ĐỘ</div>
+                <div class="merchant-stars">
+                  <div class="stars default">
+                    <i class="lz lz-star"></i>
+                  </div>
+                  <div>
+                    <i class="lz lz-star2" [ngStyle]="{'width': obj.attitudeRating * 20 + '%'}"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-4 col-lg-4 col-md-4 col-4">
+                <div class="vote">ĐỘ HÀI LÒNG</div>
+                <div class="merchant-stars">
+                  <div class="stars default">
+                    <i class="lz lz-star"></i>
+                  </div>
+                  <div>
+                    <i class="lz lz-star2" [ngStyle]="{'width': obj.jobAccomplishmentRating * 20 + '%'}"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+      </div>
+      <div class="clearfix"></div>
+
+    </div>
+  </div>
+</div>
