@@ -1,3 +1,361 @@
 .container-fluid {
   padding-top: 60px;
 }
+
+.page_inner {
+  padding-top: 70px;
+  max-width: 1920px;
+  margin: auto;
+}
+table.manage-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+table.manage-table th {
+  background-color: #f6f6f6;
+  text-align: center;
+  padding: 18px 20px 18px 20px;
+  color: #333;
+  vertical-align: top;
+  font-size: 16px;
+  font-weight: 600;
+  position: relative;
+  line-height: 22px;
+  margin-left: 33px !important;
+}
+
+table.manage-table th i {
+  /*position: absolute;*/
+  left: 17px;
+  top: 21px;
+}
+
+table.manage-table a.button {
+  line-height: 26px;
+}
+
+table.manage-table tr:nth-child(2n+1) {
+  background-color: #fbfbfb;
+}
+
+table.manage-table th:first-child {
+  width: 32%;
+}
+
+table.manage-table th:first-child i {
+  left: 35px;
+}
+
+table.manage-table.resumes th:first-child {
+  width: auto;
+}
+
+table.manage-table.resumes td:first-child, table.manage-table td:first-child {
+  padding-left: 35px;
+  line-height: 25px;
+}
+
+table.manage-table tr td {
+  padding: 30px 15px;
+  vertical-align: middle;
+  border: 1px solid #e0e0e0;
+  border-left: none;
+  border-right: none;
+}
+
+table.manage-table tr:hover td {
+  border: 1px double rgba(80, 80, 80, 0.7);
+  border-left: none;
+  border-right: none;
+  background-color: rgba(80, 80, 80, 0.05);
+}
+
+table.manage-table.resumes td {
+  padding: 30px 20px;
+}
+
+table td.title a {
+  font-weight: 600;
+  color: #333;
+  font-size: 1.15em;
+  cursor: pointer;
+}
+
+table td.title a:hover {
+  color: #505050;
+}
+
+span.pending {
+  color: #53b427;
+  font-weight: 500;
+}
+
+table.manage-table td.centered {
+  text-align: center;
+}
+
+table.manage-table td.action a {
+  display: block;
+  color: #333;
+  line-height: 20px;
+  padding: 5px 0;
+  position: relative;
+  cursor: pointer;
+}
+
+table.manage-table td.action a.delete i {
+  left: -20px;
+}
+
+table.manage-table td.action a i {
+  position: absolute;
+  left: -21px;
+  top: 5px;
+}
+
+table.manage-table td.action a.delete:hover {
+  color: #f02929;
+}
+
+table.manage-table td.action a:hover {
+  color: #505050;
+}
+
+#current, .icon-box.rounded i:after, a.button.gray.app-link.opened, ul.float-right li a:hover, .menu ul li.sfHover a.sf-with-ul, .menu ul li a:hover, a.menu-trigger:hover, #jPanelMenu-menu li a:hover, .search-container button, .upload-btn, input[type="button"], input[type="submit"], a.button, .upload-btn:hover, #titlebar.photo-bg a.button.white:hover, a.button.dark:hover, #backtotop a:hover, .mfp-close:hover, .tabs-nav li.active a, .ui-accordion .ui-accordion-header-active:hover, .ui-accordion .ui-accordion-header-active, .highlight.color, .plan.color-2 .plan-price, .plan.color-2 a.button, .tp-leftarrow:hover, .tp-rightarrow:hover, .pagination ul li a.current-page, .pagination .current, .pagination ul li a:hover, .pagination-next-prev ul li a:hover, .infobox, .hover-icon, .comment-by a.reply:hover, .chosen-container .chosen-results li.highlighted, .chosen-container-multi .chosen-choices li.search-choice, .list-search button, .checkboxes input[type=checkbox]:checked + label:before {
+  background-color: #007bff;
+}
+
+/*a:hover, table td.title a:hover, .icon-box.rounded i, table.manage-table td.action a:hover, #breadcrumbs ul li a:hover, #titlebar span.icons a:hover, .counter-box i, .counter, #popular-categories li a i, .list-1 li:before, .dropcap, .resume-titlebar span a:hover i, .resumes-list-content h4, .job-overview ul li i, .company-info span a:hover, .infobox a:hover, .meta-tags span a:hover, .widget-text h5 a:hover, .app-content .info span, .app-content .info ul li a:hover {*/
+/*color: #007bff;*/
+/*}*/
+/*table tbody tr td.title a:hover{*/
+/*color: #007bff;*/
+/*}*/
+.icon-box.rounded i {
+  border-color: #007bff;
+}
+
+.resumes-list li a:before, .job-list li a:before, table.manage-table tr:before {
+  -webkit-box-shadow: 0px 1px 0px 0px rgba(36, 126, 174, 0.7);
+  -moz-box-shadow: 0px 1px 0px 0px rgba(36, 126, 174, 0.7);
+  box-shadow: 0px 1px 0px 0px rgba(36, 126, 174, 0.7);
+}
+
+#popular-categories li a:before {
+  -webkit-box-shadow: 0px 0px 0px 1px rgba(36, 126, 174, 0.7);
+  -moz-box-shadow: 0px 0px 0px 1px rgba(36, 126, 174, 0.7);
+  box-shadow: 0px 0px 0px 1px rgba(36, 126, 174, 0.7);
+}
+
+table.manage-table tr:hover td, .resumes-list li:hover, .job-list li:hover {
+  border-color: rgba(36, 126, 174, 0.7);
+}
+
+table.manage-table tr:hover td, .resumes-list li:hover, .job-list li:hover, #popular-categories li a:hover {
+  background-color: rgba(38, 174, 97, 0.05);
+}
+
+.resumes-list li:hover, .job-list li:hover {
+  border-color: #007bff !important;
+}
+
+.resumes-list li.highlighted a:after, .resumes-list li a:after, .job-list li.highlighted a:after, .job-list li a:after {
+  background-color: #007bff
+}
+
+.st-key {
+  border: none;
+  background-color: #f9f9f9;
+  text-align: left;
+  padding: 20px 22px;
+  color: #333;
+  vertical-align: top;
+  font-weight: 600;
+  width: 45%;
+  border: 1px solid #e4e4e4;
+}
+
+.st-key i {
+  margin-right: 4px;
+}
+
+.st-val {
+  width: 55%;
+  text-align: left;
+  padding: 20px 22px;
+  border: 1px solid #e4e4e4;
+  border-left: 0;
+}
+
+.st-val a {
+  font-weight: 600;
+  color: #333;
+  display: block;
+  line-height: 27px;
+}
+
+.st-val a.button {
+  color: #fff !important;
+  text-align: center;
+}
+
+.st-val a:hover {
+  color: #808080;
+}
+
+.st-space {
+  height: 40px;
+}
+
+.st-space:first-child {
+  height: 10px;
+}
+
+.st-head-row.st-head-row-main {
+  display: block;
+}
+
+#buttonShow {
+  cursor: pointer;
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  margin: auto;
+  display: inline-block;
+  padding: 5px 10px;
+}
+#buttonShow2 {
+  cursor: pointer;
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  margin: auto;
+  margin-right: 0.35em;
+  display: inline-block;
+  padding: 5px 10px;
+}
+section {
+  padding-top: 35px;
+  padding-bottom: 0px;
+}
+.list-unstyled li a{
+  cursor: pointer;
+}
+nav.side-navbar ul {
+  padding: 0 0 15px 0;
+}
+.dropdown{
+  cursor: pointer;
+}
+.background {
+  background-color: #eef5f9;
+}
+.overlay{
+  position:absolute;
+  background:red;
+  opacity:.5;
+}
+.dropdown-item.active, .dropdown-item:active {
+  background-color: #fff;
+}
+.row-button{
+  margin-top: 2em;
+}
+.pointer{
+  cursor: pointer;
+}
+@media (max-width: 576px) {
+  .content-inner__inner{
+    /*padding-top: 0!important;*/
+  }}
+@media (max-width: 767px) {
+  .row-button{
+    text-align: center;
+    margin-top: 1em;
+  }
+  section {
+    padding-top: 5px;
+  }
+}
+.noPost{
+  text-align: center;
+  margin-top: 2.5em;
+  margin-bottom: 0.75em;
+  color: #424242;
+}
+.card-custom{
+  background-color: white;
+  margin-bottom: 18px;
+}
+.row {
+  margin-left: 0;
+  margin-right: 0;
+}
+.col-8, .col-4{
+  padding-left: 0;
+  padding-right: 0;
+}
+.col-6 {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.sub-font{
+  font-size: 0.9rem;
+}
+.icon-item {
+  color: #969696;
+}
+.center {
+  text-align: center;
+  border-top: 1px solid #d4d4d4;
+  margin-top: 8px;
+  padding-bottom: 5px;
+}
+.image-cropper {
+  max-width: 100px;
+  height: auto;
+  position: relative;
+  overflow: hidden;
+}
+.rounded {
+  display: block;
+  margin: 0 auto;
+  height: 65px;
+  width: 65px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50% !important;
+}
+.no-padding{
+  /*padding: 0;*/
+}
+.title{
+  padding-left: 25px!important;
+  padding-right: 0!important;
+}
+.image-cropper {
+  max-width: 100px;
+  height: auto;
+  position: relative;
+  overflow: hidden;
+}
+.rounded {
+  display: inline-block;
+  margin: 0 auto;
+  height: 55px;
+  width: 55px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50% !important;
+}
+.name-student {
+  position: absolute;
+  margin-top: 15px;
+  margin-left: 10px;
+}

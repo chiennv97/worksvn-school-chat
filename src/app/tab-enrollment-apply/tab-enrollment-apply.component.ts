@@ -20,6 +20,6 @@ export class TabEnrollmentApplyComponent implements OnInit {
   }
   showDetail(i) {
     this.candidateIdService.idCandidate = this.applyAEnrollmentService.applyAjobs[i].id;
-    this.profileApplyCandidateService.onSubmit(1);
+    this.profileApplyCandidateService.onSubmit(1, this.candidateIdService.idCandidate);
   }
 }

@@ -42,7 +42,7 @@ export class ProfileApplyCandidateService {
   ) {
     this.Authorization = 'Bearer' + localStorage.getItem('accessToken');
   }
-  onSubmit(type) {
+  onSubmit(type, id) {
     this.httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -53,6 +53,11 @@ export class ProfileApplyCandidateService {
       this.typeOfProfile = 1;
       this.temptUrl = this.profileApplyCandidateUrl + this.jobIdService.idJob +
         '/registeredCandidates/' + this.candidateIdService.idCandidate + '/profile';
+    }
+    if ( type === 2 ) {
+      this.typeOfProfile = 2;
+      this.temptUrl = DEVSERVER +
+        'api/schools/students/' + id;
     }
     this.http.get(this.temptUrl ,
       this.httpOptions)

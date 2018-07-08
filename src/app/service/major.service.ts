@@ -31,7 +31,7 @@ export class MajorService {
   save(rawObject) {
     this.select2datas = [];
     for (const obj of rawObject.data.results ) {
-      this.select2datas.push(obj.id, obj.name);
+      this.select2datas.push(new Select2data(obj.id, obj.name));
     }
   }
 }

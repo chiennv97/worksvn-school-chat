@@ -1,5 +1,53 @@
-<div class="container-fluid">
+<div class="container-fluid" #dropdown>
   <span>Năm học</span>
-  <select2 [data]="yearService?.select2datas" [value]="yearService?.currentSelectId" [width]="100"></select2>
+  <select2 [data]="yearService?.select2datas" [value]="yearService?.currentSelectId" [width]="100" (valueChanged)="changedYear($event)"></select2>
+  <span>Ngành học</span>
+  <select2 [data]="majorService?.select2datas" [value]="majorService?.currentSelectId" [width]="500" (valueChanged)="changedMajor($event)"></select2>
 </div>
 
+<div class="bg-white" style="margin-top: 0.5em">
+  <div class="has-shadow">
+    <table class="manage-table responsive-table stacktable large-only">
+      <tbody>
+      <tr>
+        <th width="25%" style="text-align: left;padding-left: 55px;">
+          <i class="material-icons">person</i> Sinh Viên
+        </th>
+        <th width="40%"><i class="material-icons">location_on</i> Địa Chỉ</th>
+        <th width="15%" style="text-align: left;"><i class="material-icons">people</i> Giới Tính</th>
+        <th width="20%"><i class="material-icons">radio_button_checked</i> Trạng Thái</th>
+      </tr>
+
+      <!--Item #1 -->
+      <tr
+        *ngFor="let student of listStudentService.listStudent | paginate: { itemsPerPage: 10, currentPage: listStudentService.pageNum , totalItems: listStudentService.totalItem} ; index as i">
+        <td (click)="openProfile(i)"  data-toggle="modal" data-target="#candidate-apply" class="title pointer">
+            <span *ngIf="student?.avatarUrl !== null" class="image-cropper">
+                <span class="rounded" id="rounded" [ngStyle]="{'background' : 'url('+ student?.avatarUrl+ '), url(../assets/img/avartar.png) center no-repeat'}"></span>
+            </span>
+          <span class="name-student">
+            <a>{{student.lastName}} {{student.firstName}}</a>
+          </span>
+        </td>
+        <td (click)="openProfile(i)"  data-toggle="modal" data-target="#candidate-apply" class="pointer">
+          <div style="text-align: center;">
+            {{student.address}}
+          </div>
+        </td>
+        <td (click)="openProfile(i)"  data-toggle="modal" data-target="#candidate-apply" class="pointer">
+          <div *ngIf="student.gender === 1">Nam</div>
+          <div *ngIf="student.gender === 2">Nữ</div>
+        </td>
+        <td (click)="openProfile(i)"  data-toggle="modal" data-target="#candidate-apply" class="centered">
+          <a id="buttonShow" class="button" *ngIf="student.lookingForJob" style="background-color: #57b4ff;">Đang Tìm Việc</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="noPost" *ngIf="listStudentService.listStudent?.length === 0">
+      Chưa có bài đăng
+    </div>
+    <pagination-controls (pageChange)="changePage($event,dropdown);" style="text-align: center"></pagination-controls>
+  </div>
+</div>
+<app-candidate-apply></app-candidate-apply>

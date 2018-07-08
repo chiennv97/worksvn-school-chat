@@ -25,7 +25,9 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/js/select2.min.js"
+            ]
           },
           "configurations": {
             "production": {
