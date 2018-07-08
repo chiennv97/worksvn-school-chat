@@ -11,6 +11,7 @@ import {BranchComponent} from './branch/branch.component';
 import {UpPostEnrollmentComponent} from './up-post-enrollment/up-post-enrollment.component';
 import {ListEnrollmentsComponent} from './list-enrollments/list-enrollments.component';
 import {EnrollmentDetailComponent} from './enrollment-detail/enrollment-detail.component';
+import {ManagerStudentComponent} from './manager-student/manager-student.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'edit-post-enrollment/:type/:id', component: UpPostEnrollmentComponent},
   { path: 'enrollment-detail/:id', component: EnrollmentDetailComponent},
   { path: 'list-enrollments', component: ListEnrollmentsComponent},
+  { path: 'manage-student', component: ManagerStudentComponent},
 ];
 @NgModule({
   imports: [

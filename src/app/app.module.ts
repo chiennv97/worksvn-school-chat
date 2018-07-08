@@ -50,6 +50,7 @@ import {ProfilePipe} from './pipe/profile.pipe';
 import {IdentityCardPipe} from './pipe/identity-card.pipe';
 import { ManagerStudentComponent } from './manager-student/manager-student.component';
 import {YearService} from './service/year.service';
+import {MajorService} from './service/major.service';
 
 @NgModule({
   declarations: [
@@ -113,6 +114,7 @@ import {YearService} from './service/year.service';
     ApplyAEnrollmentService,
     ProfileApplyCandidateService,
     YearService,
+    MajorService,
     { provide: DateAdapter, useClass: DateFormat },
   ],
   bootstrap: [AppComponent]

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import {YearService} from '../service/year.service';
+import {MajorService} from '../service/major.service';
 @Component({
   selector: 'app-manager-student',
   templateUrl: './manager-student.component.html',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManagerStudentComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public yearService: YearService,
+    public majorService: MajorService
+  ) { }
 
   ngOnInit() {
+    this.yearService.onSubmit();
+    this.majorService.onSubmit();
   }
 
 }

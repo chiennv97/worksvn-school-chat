@@ -4,11 +4,11 @@ import {DEVSERVER} from './serve';
 import {Select2data} from '../class/select2data';
 
 @Injectable()
-export class YearService {
+export class MajorService {
   Authorization;
   httpOptions;
-  getYearUrl = DEVSERVER + 'api/schools/students/years';
   select2datas: Array<Select2data>;
+  getMajorUrl = DEVSERVER + 'api/majors';
   currentSelectId;
   constructor(
     private http: HttpClient,
@@ -22,7 +22,7 @@ export class YearService {
         'Authorization': this.Authorization
       })
     };
-    this.http.get(this.getYearUrl , this.httpOptions)
+    this.http.get(this.getMajorUrl , this.httpOptions)
       .subscribe(
         rawObject => this.save(rawObject),
         err => console.log(err)
@@ -30,8 +30,8 @@ export class YearService {
   }
   save(rawObject) {
     this.select2datas = [];
-    for (const obj of rawObject.data ) {
-      this.select2datas.push(new Select2data(obj, obj));
+    for (const obj of rawObject.data.results ) {
+      this.select2datas.push(obj.id, obj.name);
     }
   }
 }
