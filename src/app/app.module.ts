@@ -58,6 +58,11 @@ import {YearService} from './service/year.service';
 import {MajorService} from './service/major.service';
 import {ListStudentService} from './service/list-student.service';
 import {EventModule} from './event/event.module';
+import { ManageCooperationComponent } from './manage-cooperation/manage-cooperation.component';
+import {ManageCooperationService} from './service/manage-cooperation.service';
+import { ProfileEmployerComponent } from './profile-employer/profile-employer.component';
+import {ProfileEmployerService} from './service/profile-employer.service';
+import {CooperationService} from './service/cooperation.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -78,7 +83,9 @@ import {EventModule} from './event/event.module';
     CandidateApplyComponent,
     ProfilePipe,
     IdentityCardPipe,
-    ManagerStudentComponent
+    ManagerStudentComponent,
+    ManageCooperationComponent,
+    ProfileEmployerComponent
   ],
   imports: [
     BrowserModule,
@@ -126,6 +133,9 @@ import {EventModule} from './event/event.module';
     YearService,
     MajorService,
     ListStudentService,
+    ManageCooperationService,
+    ProfileEmployerService,
+    CooperationService,
     { provide: DateAdapter, useClass: DateFormat },
   ],
   bootstrap: [AppComponent]

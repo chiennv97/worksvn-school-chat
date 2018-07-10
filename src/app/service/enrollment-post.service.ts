@@ -31,7 +31,7 @@ export class EnrollmentPostService {
           this.tempGenderRequireds.push(new GenderRequired(s.gender, s.quantity, s.applied));
         }
         this.shiftBodies.push(new Shift(obj.id, obj.startTime, obj.endTime,
-          obj.fee, obj.unit, obj.mon, obj.tue, obj.wed, obj.thu,
+          obj.fee, obj.name, obj.mon, obj.tue, obj.wed, obj.thu,
           obj.fri, obj.sat, obj.sun, this.tempGenderRequireds));
       }
     }
@@ -54,7 +54,7 @@ export class EnrollmentPostService {
           this.tempGenderRequireds.push(new GenderRequired(s.gender, s.quantity, s.applied));
         }
         this.shiftBodies.push(new Shift(obj.id, obj.startTime, obj.endTime,
-          obj.fee, obj.unit, obj.mon, obj.tue, obj.wed, obj.thu,
+          obj.fee, obj.name, obj.mon, obj.tue, obj.wed, obj.thu,
           obj.fri, obj.sat, obj.sun, this.tempGenderRequireds));
       }
     }

@@ -33,8 +33,8 @@ export class UpPostEnrollmentComponent implements OnInit {
   Authorization: string;
   httpOptions;
   upPost = false;
-  postPendingJobUrl = DEVSERVER + 'api/schools/jobs/pendingPosts/';
-  editPostUrl = DEVSERVER + '/api/schools/enrollmentJobs/';
+  postPendingJobUrl = DEVSERVER + 'api/schools/enrollmentJobs/pendingPosts';
+  editPostUrl = DEVSERVER + 'api/schools/enrollmentJobs/';
   constructor(
     public branchsService: BranchsService,
     public jobNameIdService: JobNameIdService,
@@ -91,6 +91,7 @@ export class UpPostEnrollmentComponent implements OnInit {
     this.shiftOptionService.soluongtheogioitinh.push(true);
     this.enrollmentPostService.addNewUser();
     this.users.insert(0, this.fb.group({
+      name: null,
       fee: null,
       genderMan: null,
       genderFemale: null,
@@ -175,6 +176,7 @@ export class UpPostEnrollmentComponent implements OnInit {
               .push(new GenderRequired(0, this.users.value[indexOfShift].genderFemale, 0));
           }
         }
+        this.enrollmentPostService.shiftBodies[indexOfShift].name = this.users.value[indexOfShift].name;
         indexOfShift++;
       }
       this.httpOptions = {
@@ -186,7 +188,7 @@ export class UpPostEnrollmentComponent implements OnInit {
       // console.log('day la job post service');
       // console.log(this.jobPostService);
       if ( this.upOrEditService.type === 2 ) {
-        this.http.put(this.postPendingJobUrl + this.jobIdService.idJob, this.enrollmentPostService, this.httpOptions)
+        this.http.put(this.postPendingJobUrl + '/' + this.jobIdService.idJob, this.enrollmentPostService, this.httpOptions)
           .subscribe(
             rawObject => this.afterSubmit(rawObject),
             err => console.log(err)
@@ -194,13 +196,14 @@ export class UpPostEnrollmentComponent implements OnInit {
       }
       if (this.upOrEditService.type === 1) {
         console.log(this.enrollmentPostService);
-        this.http.post(this.postPendingJobUrl , this.enrollmentPostService, this.httpOptions)
+        this.http.post(DEVSERVER + 'api/schools/jobs/pendingPosts' , this.enrollmentPostService, this.httpOptions)
           .subscribe(
             rawObject => this.afterSubmit(rawObject),
             err => this.openSnackBar('Đăng bài không thành công, vui lòng xem lại các thông tin', err)
           );
       }
       if (this.upOrEditService.type === 3) {
+        console.log(this.enrollmentPostService);
         this.http.put(this.editPostUrl + this.jobIdService.idJob + '/pendingPosts' , this.enrollmentPostService, this.httpOptions)
           .subscribe(
             rawObject => this.afterSubmit(rawObject),
@@ -240,6 +243,7 @@ export class UpPostEnrollmentComponent implements OnInit {
     this.shiftOptionService.fee.push(false);
     this.shiftOptionService.soluongtheogioitinh.push(false);
     this.users.insert(this.shiftOptionService.soluongtheogioitinh.length, this.fb.group({
+      name: null,
       fee: null,
       genderMan: null,
       genderFemale: null,

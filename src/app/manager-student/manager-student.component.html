@@ -22,12 +22,16 @@
       <tr
         *ngFor="let student of listStudentService.listStudent | paginate: { itemsPerPage: 10, currentPage: listStudentService.pageNum , totalItems: listStudentService.totalItem} ; index as i">
         <td (click)="openProfile(i)"  data-toggle="modal" data-target="#candidate-apply" class="title pointer">
-            <span *ngIf="student?.avatarUrl !== null" class="image-cropper">
+          <div class="row">
+            <div class="col-4" style="text-align: center">
+              <span class="image-cropper">
                 <span class="rounded" id="rounded" [ngStyle]="{'background' : 'url('+ student?.avatarUrl+ '), url(../assets/img/avartar.png) center no-repeat'}"></span>
-            </span>
-          <span class="name-student">
-            <a>{{student.lastName}} {{student.firstName}}</a>
-          </span>
+              </span>
+            </div>
+            <div class="col-8" style="margin: auto">
+              <span><b>{{student.lastName}} {{student.firstName}}</b></span>
+            </div>
+          </div>
         </td>
         <td (click)="openProfile(i)"  data-toggle="modal" data-target="#candidate-apply" class="pointer">
           <div style="text-align: center;">

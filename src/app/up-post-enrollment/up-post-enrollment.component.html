@@ -93,10 +93,17 @@
         </div>
         <div class="col-md-9 col-12">
           <ul class="list-group" formArrayName="users">
-            <li class="list-group-item" *ngFor="let shift of enrollmentPostService?.shiftBodies; index as i">
-              <div>
-                <span style="font-size: 1em; font-weight: bold">Ca {{i+1}}</span>
-                <span class="float-right" (click)="deleteShift(i)"><i class="far fa-trash-alt"></i></span>
+            <li class="list-group-item" *ngFor="let shift of enrollmentPostService?.shiftBodies; index as i"  [formGroupName]="i">
+              <div class="row padding-shift">
+                <div class="col-md-3 col-12 remove-padding">
+                  <span style="font-size: 1em; font-weight: bold">Tên Lớp</span>
+                </div>
+                <div class="col-md-9 col-12 remove-padding">
+                  <span>
+                    <input placeholder="Tên lớp học" class="form-control" formControlName="name">
+                  </span>
+                </div>
+                <span class="float-right" (click)="deleteShift(i)" style="position: absolute; top: 0.5em; right: 0.5em;"><i class="material-icons">close</i></span>
               </div>
               <!--thoi gian-->
               <div class="row itemmar padding-shift">
@@ -169,8 +176,8 @@
                   </button>
                 </div>
               </div>
-              <div *ngIf="shift">
-                <div [formGroupName]="i">
+              <div>
+                <div>
                   <!--so luong-->
                   <div class="row itemmar padding-shift">
                     <div class="col-md-3 col-12 remove-padding">
