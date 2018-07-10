@@ -196,7 +196,7 @@ export class UpPostEnrollmentComponent implements OnInit {
       }
       if (this.upOrEditService.type === 1) {
         console.log(this.enrollmentPostService);
-        this.http.post(DEVSERVER + 'api/schools/jobs/pendingPosts' , this.enrollmentPostService, this.httpOptions)
+        this.http.post(DEVSERVER + 'api/schools/enrollmentJobs/pendingPosts' , this.enrollmentPostService, this.httpOptions)
           .subscribe(
             rawObject => this.afterSubmit(rawObject),
             err => this.openSnackBar('Đăng bài không thành công, vui lòng xem lại các thông tin', err)
