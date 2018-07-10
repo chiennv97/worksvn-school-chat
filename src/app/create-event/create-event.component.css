@@ -1,0 +1,45 @@
+.container-fluid {
+  background-color: #f3f3f4;
+  padding: 100px 80px 20px 80px;
+}
+.form-inline{
+  margin-bottom: 1rem;
+}
+.form-inline .form-control {
+  display: inline-block;
+  width: 100% !important;
+  vertical-align: middle;
+}
+
+.form-inline .control-label {
+  padding-top: 7px;
+  margin-bottom: 0;
+}
+
+.form-inline label {
+  justify-content: right;
+  text-align: right;
+  display: block;
+}
+input.ng-invalid.ng-touched, textarea.ng-invalid.ng-touched {
+  border: 1.5px solid #E04B39;
+}
+.alert-dangerous{
+  color: #E04B39;
+  text-align: left;
+}
+
+
+
+table {
+  border-collapse: collapse;
+}
+table, th, td {
+  border: 1px solid black;
+}
+.error {
+  color: red;
+}
+.success {
+  color: green;
+}
