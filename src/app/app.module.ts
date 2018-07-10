@@ -31,7 +31,7 @@ import {EnrollmentPostService} from './service/enrollment-post.service';
 import {Select2Module} from 'ng2-select2';
 import {ConvertTimePipe} from './pipe/convert-time.pipe';
 import {UiSwitchModule} from 'angular2-ui-switch';
-import {AmazingTimePickerModule} from 'amazing-time-picker';
+import {AmazingTimePickerModule, AmazingTimePickerService} from 'amazing-time-picker';
 import {UpOrEditService} from './service/up-or-edit.service';
 import {JobIdService} from './service/job-id.service';
 import {ChoosePostTypeService} from './service/choose-post-type.service';
@@ -131,6 +131,7 @@ import {CooperationService} from './service/cooperation.service';
     ApplyAEnrollmentService,
     ProfileApplyCandidateService,
     YearService,
+    AmazingTimePickerService,
     MajorService,
     ListStudentService,
     ManageCooperationService,
