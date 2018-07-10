@@ -56,8 +56,8 @@ import {IdentityCardPipe} from './pipe/identity-card.pipe';
 import { ManagerStudentComponent } from './manager-student/manager-student.component';
 import {YearService} from './service/year.service';
 import {MajorService} from './service/major.service';
+import {ListStudentService} from './service/list-student.service';
 import {EventModule} from './event/event.module';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -102,7 +102,7 @@ import {EventModule} from './event/event.module';
     NgxPaginationModule,
     MatTabsModule,
     BrowserAnimationsModule,
-    AmazingTimePickerModule,
+    AmazingTimePickerModule
   ],
   providers: [
     SignInService,
@@ -126,6 +126,7 @@ import {EventModule} from './event/event.module';
     YearService,
     AmazingTimePickerService,
     MajorService,
+    ListStudentService,
     { provide: DateAdapter, useClass: DateFormat },
   ],
   bootstrap: [AppComponent]
