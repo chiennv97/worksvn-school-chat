@@ -39,6 +39,7 @@ export class ListEnrollmentsComponent implements OnInit {
   temptGenderMan;
   styles;
   temptfee;
+  temptName;
   constructor(
     public choosePostTypeService: ChoosePostTypeService,
     public paginationService: PaginationService,
@@ -230,6 +231,7 @@ export class ListEnrollmentsComponent implements OnInit {
         this.shiftOptionService.fee[i] = false;
         this.temptfee = this.enrollmentPostService.shiftBodies[i].fee;
       }
+      this.temptName = this.enrollmentPostService.shiftBodies[i].name;
       if ( this.soluongtheogioitinh === true ) {
         for (const req of this.enrollmentPostService.shiftBodies[i].genderRequireds) {
           if (req.gender === 0) {
@@ -251,6 +253,7 @@ export class ListEnrollmentsComponent implements OnInit {
         this.temptGenderMan = 0;
       }
       this.users.insert(i, this.fb.group({
+        name: this.temptName,
         fee: this.temptfee,
         genderMan: this.temptGenderMan,
         genderFemale: this.temptGenderFemale,

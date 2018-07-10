@@ -1,0 +1,120 @@
+
+<!-- The Modal -->
+<div class="modal fade" id="profile-employer">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <!--<div class="modal-header-manager">-->
+      <!--<h4 class="modal-title">Modal Heading</h4>-->
+      <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+      <!--</div>-->
+      <div class="crop">
+        <img class="cover" *ngIf="profileEmployerService?.coverUrl !== null" src="{{profileEmployerService?.coverUrl}}" onerror="this.src='../assets/images/defaut-cover.jpg'" alt="">
+        <img class="cover" *ngIf="profileEmployerService?.coverUrl === null" src="../assets/images/defaut-cover.jpg" alt="">
+      </div>
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-xl-3 col-md-12 col-avatar">
+            <img class="avatar center-block" *ngIf="profileEmployerService?.logoUrl === null" src="../assets/img/avartar.png" alt="">
+            <!--<img class="avatar" *ngIf="profileApplyCandidateService?.avatarUrl !== null" src="{{profileApplyCandidateService?.avatarUrl}}" alt="">-->
+            <span *ngIf="profileEmployerService?.logoUrl !== null" class="image-cropper">
+              <span class="rounded" id="rounded" [ngStyle]="{'background' : 'url('+ profileEmployerService?.logoUrl+ '), url(../assets/img/avartar.png) center no-repeat'}"></span>
+            </span>
+            <div><b>{{profileEmployerService?.employerName}}</b></div>
+          </div>
+          <div class="col-xl-9 col-md-12" style="margin: auto;">
+            <div class="row" style="text-align: center">
+              <div class="col-xl-6 col-lg-6 col-md-6">
+                <div>MÔI TRƯỜNG LÀM VIỆC</div>
+                <div class="merchant-stars">
+                  <div class="stars default">
+                    <i class="lz lz-star"></i>
+                    <i class="lz lz-star"></i>
+                    <i class="lz lz-star"></i>
+                    <i class="lz lz-star"></i>
+                    <i class="lz lz-star"></i>
+                  </div>
+                  <div class="lozi" [ngStyle]="{'width' : profileEmployerService?.workingEnvironmentRating *20 + '%'}">
+                    <i class="lz lz-star2"></i>
+                    <i class="lz lz-star2"></i>
+                    <i class="lz lz-star2"></i>
+                    <i class="lz lz-star2"></i>
+                    <i class="lz lz-star2"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-6 col-lg-6 col-md-6">
+                <div>MỨC LƯƠNG</div>
+                <div class="merchant-stars">
+                  <div class="stars default">
+                    <i class="lz lz-star"></i>
+                    <i class="lz lz-star"></i>
+                    <i class="lz lz-star"></i>
+                    <i class="lz lz-star"></i>
+                    <i class="lz lz-star"></i>
+                  </div>
+                  <div class="lozi" [ngStyle]="{'width' : profileEmployerService?.salaryRating *20 + '%'}">
+                    <i class="lz lz-star2"></i>
+                    <i class="lz lz-star2"></i>
+                    <i class="lz lz-star2"></i>
+                    <i class="lz lz-star2"></i>
+                    <i class="lz lz-star2"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="block-content">
+          <h5>Thông tin cá nhân</h5>
+          <div class="row inrow">
+            <div class="col-xl-3 col-md-12 title">
+              <i class="fas fa-home"></i>
+              <span class="truetitle">Địa chỉ:</span>
+            </div>
+            <div class="col-xl-9 col-md-12">{{profileEmployerService?.address | profilepipe}}</div>
+          </div>
+          <div class="row inrow">
+            <div class="col-xl-3 col-md-12 title">
+              <i class="far fa-envelope"></i>
+              <span class="truetitle">Email:</span>
+            </div>
+            <div class="col-xl-9 col-md-12">{{profileEmployerService?.email | profilepipe}}</div>
+          </div>
+          <div class="row inrow">
+            <div class="col-xl-3 col-md-12 title">
+              <i class="fas fa-phone"></i>
+              <span class="truetitle">Điện thoại liên hệ:</span>
+            </div>
+            <div class="col-xl-9 col-md-12">{{profileEmployerService?.phone | profilepipe}}</div>
+          </div>
+        </div>
+        <div class="block-content">
+          <h5>Ảnh thẻ</h5>
+          <div class="row">
+            <div class="col-xl-6 col-md-12">
+              <img class="identityCard" *ngIf="profileEmployerService?.identityCardFrontImageUrl !== null" src="{{profileEmployerService?.identityCardFrontImageUrl}}" alt="">
+              <img class="identityCard" *ngIf="profileEmployerService?.identityCardFrontImageUrl === null" src="./assets/images/identityCard_default.png" alt="">
+            </div>
+            <div class="col-xl-6 col-md-12">
+              <img class="identityCard" *ngIf="profileEmployerService?.identityCardBackImageUrl !== null" src="{{profileEmployerService?.identityCardBackImageUrl}}" alt="">
+              <img class="identityCard" *ngIf="profileEmployerService?.identityCardBackImageUrl === null" src="./assets/images/identityCard_default.png" alt="">
+            </div>
+          </div>
+        </div>
+        <div class="block-end">
+          <h5>Mô tả</h5>
+          <p style="margin-bottom: 0">
+            {{profileEmployerService?.description}}
+          </p>
+        </div>
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+      </div>
+    </div>
+  </div>
+</div>
+

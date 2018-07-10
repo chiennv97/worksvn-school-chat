@@ -1,0 +1,62 @@
+<div class="container-fluid">
+  <div class="row-button">
+    <a class="button" id="buttonShow2" (click)="actionChooseType(1)" [ngStyle]="setMyStyles(1)">Đang Cộng Tác</a>
+    <a class="button" id="buttonShow2" (click)="actionChooseType(2)" [ngStyle]="setMyStyles(2)">Chờ Cộng Tác</a>
+    <a class="button" id="buttonShow2" (click)="actionChooseType(3)"[ngStyle]="setMyStyles(3)">Tìm Kiếm Nhà Tuyển Dụng</a>
+  </div>
+  <div class="bg-white" style="margin-top: 0.5em">
+    <div class="has-shadow">
+      <table class="manage-table responsive-table stacktable large-only">
+        <tbody>
+        <tr>
+          <th width="25%" style="text-align: left;padding-left: 55px;">
+            <i class="fas fa-briefcase"></i> Nhà Tuyển Dụng
+          </th>
+          <th width="20%"><i class="fas fa-map-marker-alt"></i> Địa Chỉ</th>
+          <th width="20%"><i class="fa fa-calendar"></i> Ngày Hợp Tác</th>
+          <th width="20%"><i class="fas fa-toggle-on"></i> Trạng Thái</th>
+          <th width="15%"></th>
+        </tr>
+
+        <!--Item #1 -->
+        <tr
+          *ngFor="let employer of manageCooperationService.listEmployer | paginate: { itemsPerPage: 10, currentPage: 1 , totalItems: 1} ; index as i">
+          <!--jobname-->
+          <td (click)="openProfileEmployer(i)"  data-toggle="modal" data-target="#profile-employer" class="title pointer">
+            <div class="row">
+              <div class="col-4" style="text-align: center">
+                <span class="rounded" id="rounded" [ngStyle]="{'background' : 'url('+ employer?.logoUrl+ '), url(../assets/img/avartar.png) center no-repeat'}"></span>
+              </div>
+              <div class="col-8" style="margin: auto">
+                <span><b>{{employer.employerName}}</b></span>
+              </div>
+            </div>
+          </td>
+          <td class="title pointer">
+            {{employer.address}}
+          </td>
+          <!--branch-->
+          <td class="pointer" style="text-align: center">
+            {{employer.createdDate |  date: 'dd/MM/yyyy'}}
+          </td>
+          <!--time-->
+          <td class="pointer" style="text-align: center">
+            <a id="buttonShow" class="button" style="background-color: #57b4ff;">{{employer.state}}</a>
+          </td>
+          <!--ung vien-->
+          <td class="centered" style="text-align: center">
+            <i class="material-icons" style="margin-right: 10px;" (click)="accept(i)">check</i>
+            <i class="material-icons" (click)="reject(i)">close</i>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <div class="noPost" *ngIf="manageCooperationService.listEmployer.length === 0">
+        Chưa có bài đăng
+      </div>
+      <pagination-controls style="text-align: center"></pagination-controls>
+    </div>
+  </div>
+</div>
+<app-profile-employer></app-profile-employer>
+

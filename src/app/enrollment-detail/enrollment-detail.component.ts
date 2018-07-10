@@ -36,6 +36,7 @@ export class EnrollmentDetailComponent implements OnInit {
   temptGenderFemale;
   temptGenderMan;
   temptfee;
+  temptName;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -163,6 +164,7 @@ export class EnrollmentDetailComponent implements OnInit {
       // } else {
       //   this.temptMaxSalary = this.jobPostService.shiftBodies[i].maxSalary;
       // }
+      this.temptName = this.enrollmentPostService.shiftBodies[i].name;
       if ( this.enrollmentPostService.shiftBodies[i].fee ===  0 ) {
         this.shiftOptionService.fee[i] = true;
       } else {
@@ -190,6 +192,7 @@ export class EnrollmentDetailComponent implements OnInit {
         this.temptGenderMan = 0;
       }
       this.users.insert(i, this.fb.group({
+        name: this.temptName,
         fee: this.temptfee,
         genderMan: this.temptGenderMan,
         genderFemale: this.temptGenderFemale,

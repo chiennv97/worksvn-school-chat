@@ -355,3 +355,6 @@ nav.side-navbar ul {
   border-radius: 50% !important;
   background-size: cover !important;
 }
+.material-icons {
+  cursor: pointer;
+}

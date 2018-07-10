@@ -7,7 +7,7 @@ export class ListStudentService {
   pageNum = 1;
   totalItem = 0;
   onSubmit(rawObj) {
-    console.log(rawObj);
+    // console.log(rawObj);
     this.listStudent = [];
     this.totalItem = rawObj.data.totalItem;
     for ( const obj of rawObj.data.results) {

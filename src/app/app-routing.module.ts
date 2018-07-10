@@ -13,6 +13,7 @@ import {ListEnrollmentsComponent} from './list-enrollments/list-enrollments.comp
 import {EnrollmentDetailComponent} from './enrollment-detail/enrollment-detail.component';
 import {ManagerStudentComponent} from './manager-student/manager-student.component';
 import {EventModule} from './event/event.module';
+import {ManageCooperationComponent} from './manage-cooperation/manage-cooperation.component';
 const routes: Routes = [
   { path: 'event', loadChildren: './event/event.module#EventModule'},
   { path: '', component: HomeComponent },
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'enrollment-detail/:id', component: EnrollmentDetailComponent},
   { path: 'list-enrollments', component: ListEnrollmentsComponent},
   { path: 'manage-student', component: ManagerStudentComponent},
+  { path: 'manage-cooperation', component: ManageCooperationComponent},
 ];
 
 @NgModule({
