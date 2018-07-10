@@ -10,13 +10,13 @@ import { EventService } from '../service/event.service';
 })
 export class EventComponent implements OnInit {
   urlListEvent = DEVSERVER + 'api/schools/activeEvents';
+  token;
   constructor(
     private http: HttpClient,
     private eventService: EventService,
   ) { }
 
   ngOnInit() {
-
   }
 
 }

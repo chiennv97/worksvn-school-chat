@@ -80,6 +80,7 @@ export class HomeComponent implements OnInit {
       // this.authorizationService.changeAccessTokenAuth(user.data.accessToken);
       // this.signInService.add(email);
       // this.getProfile(user);
+      console.log(user.data.accessToken);
       swal({
         type: 'success',
         title: 'Đăng nhập thành công!',

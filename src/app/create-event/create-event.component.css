@@ -29,7 +29,10 @@ input.ng-invalid.ng-touched, textarea.ng-invalid.ng-touched {
   text-align: left;
 }
 
-
+.control-label{
+  font-weight: 600;
+  font-size: 20px;
+}
 
 table {
   border-collapse: collapse;
