@@ -14,6 +14,7 @@ import {EnrollmentDetailComponent} from './enrollment-detail/enrollment-detail.c
 import {ManagerStudentComponent} from './manager-student/manager-student.component';
 import {EventModule} from './event/event.module';
 import {ManageCooperationComponent} from './manage-cooperation/manage-cooperation.component';
+import {ChatComponent} from './chat/chat.component';
 const routes: Routes = [
   { path: 'event', loadChildren: './event/event.module#EventModule'},
   { path: '', component: HomeComponent },
@@ -29,6 +30,7 @@ const routes: Routes = [
   { path: 'list-enrollments', component: ListEnrollmentsComponent},
   { path: 'manage-student', component: ManagerStudentComponent},
   { path: 'manage-cooperation', component: ManageCooperationComponent},
+  { path: 'chat/:roomid', component: ChatComponent},
 ];
 
 @NgModule({

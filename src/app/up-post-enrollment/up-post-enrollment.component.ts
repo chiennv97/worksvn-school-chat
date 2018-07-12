@@ -83,7 +83,8 @@ export class UpPostEnrollmentComponent implements OnInit {
     this.jobNameIdService.onSubmit(2);
     this.skillService.onSubmit(2);
     this.options = {
-      multiple: true
+      multiple: true,
+      placeholder: 'Kỹ năng đạt được'
     };
     this.shiftOptionService.fee = new Array<boolean>();
     this.shiftOptionService.soluongtheogioitinh = new Array<boolean>();
@@ -91,7 +92,7 @@ export class UpPostEnrollmentComponent implements OnInit {
     this.shiftOptionService.soluongtheogioitinh.push(true);
     this.enrollmentPostService.addNewUser();
     this.users.insert(0, this.fb.group({
-      name: null,
+      name: [null, Validators.required],
       fee: null,
       genderMan: null,
       genderFemale: null,
@@ -106,6 +107,9 @@ export class UpPostEnrollmentComponent implements OnInit {
   }
   get users(): FormArray {
     return this.formUploadService.formUpload.get('users') as FormArray;
+  }
+  name(i) {
+    return this.users.at(i).get('name');
   }
   onSubmit() {
     this.checkBeforeUp();

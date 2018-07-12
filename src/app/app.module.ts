@@ -35,7 +35,15 @@ import {AmazingTimePickerModule, AmazingTimePickerService} from 'amazing-time-pi
 import {UpOrEditService} from './service/up-or-edit.service';
 import {JobIdService} from './service/job-id.service';
 import {ChoosePostTypeService} from './service/choose-post-type.service';
-import {DateAdapter, MatDatepickerModule, MatNativeDateModule, MatSnackBarModule, MatTabsModule} from '@angular/material';
+import {
+  DateAdapter,
+  MatDatepickerModule, MatGridListModule,
+  MatListModule,
+  MatNativeDateModule,
+  MatSidenavModule,
+  MatSnackBarModule,
+  MatTabsModule
+} from '@angular/material';
 import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {DateFormat} from './class/date-format';
 import {ListEnrollmentsComponent} from './list-enrollments/list-enrollments.component';
@@ -63,6 +71,13 @@ import {ManageCooperationService} from './service/manage-cooperation.service';
 import { ProfileEmployerComponent } from './profile-employer/profile-employer.component';
 import {ProfileEmployerService} from './service/profile-employer.service';
 import {CooperationService} from './service/cooperation.service';
+import {HoptacService} from './service/hoptac.service';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {LoadingBarHttpClientModule} from '@ngx-loading-bar/http-client';
+import { ChatComponent } from './chat/chat.component';
+import {IdRoomChatService} from './service/id-room-chat.service';
+import {AngularFirestoreModule} from 'angularfire2/firestore';
+import {TruncatePipe} from './pipe/truncate.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -83,9 +98,11 @@ import {CooperationService} from './service/cooperation.service';
     CandidateApplyComponent,
     ProfilePipe,
     IdentityCardPipe,
+    TruncatePipe,
     ManagerStudentComponent,
     ManageCooperationComponent,
-    ProfileEmployerComponent
+    ProfileEmployerComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
@@ -109,7 +126,13 @@ import {CooperationService} from './service/cooperation.service';
     NgxPaginationModule,
     MatTabsModule,
     BrowserAnimationsModule,
-    AmazingTimePickerModule
+    AmazingTimePickerModule,
+    LoadingBarHttpClientModule,
+    AngularFirestoreModule,
+    MatSidenavModule,
+    MatListModule,
+    MatGridListModule,
+    NgbModule.forRoot()
   ],
   providers: [
     SignInService,
@@ -137,6 +160,8 @@ import {CooperationService} from './service/cooperation.service';
     ManageCooperationService,
     ProfileEmployerService,
     CooperationService,
+    HoptacService,
+    IdRoomChatService,
     { provide: DateAdapter, useClass: DateFormat },
   ],
   bootstrap: [AppComponent]
