@@ -37,7 +37,7 @@ import {JobIdService} from './service/job-id.service';
 import {ChoosePostTypeService} from './service/choose-post-type.service';
 import {
   DateAdapter,
-  MatDatepickerModule, MatGridListModule,
+  MatDatepickerModule, MatExpansionModule, MatGridListModule,
   MatListModule,
   MatNativeDateModule,
   MatSidenavModule,
