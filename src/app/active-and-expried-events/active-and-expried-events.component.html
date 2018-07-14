@@ -1,14 +1,229 @@
-<p>
-  active-and-expried-events works!
-  fffffffffff
-  d
+<div class="container-fluid">
+  <div *ngFor="let event of listEvent, let i = index">
+  <img src="{{event?.schoolLogoUrl}}" alt="">
+    <div>
+      <span>{{event?.startTime | date:'d MMMM, y, h:mm:ss a'}}</span> -
+      <span>{{event?.endTime | date:'d MMMM, y, h:mm:ss a'}}</span>
+    </div>
+  <h4>{{event?.title}}</h4>
+    <div>{{event?.address}}</div>
+    <div>{{event?.interestedEmployerCount}} người quan tâm </div>
+  </div>
+<section id=timeline>
+  <h1>A Flexbox Timeline</h1>
+  <p class="leader">All cards must be the same height and width for space calculations on large screens.</p>
+  <div class="demo-card-wrapper">
+      <!--<div *ngFor="let event of listEvent, let i = index">-->
+        <!--<div class="demo-card" [ngClass]="i%2 ? ' demo-card&#45;&#45;step1' : ' demo-card&#45;&#45;step2'">-->
+        <!--<div class="head">-->
+          <!--<div class="number-box">-->
+            <!--<span>{{i}}</span>-->
+          <!--</div>-->
+          <!--<h2><span class="small">Subtitle</span> Technology</h2>-->
+        <!--</div>-->
+        <!--<div class="body">-->
+          <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p>-->
+          <!--<img src="http://placehold.it/1000x500" alt="Graphic">-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--</div>-->
+  </div>
+</section>
 
 
-  df
-  df
-  d
-  f
-  dfd
-  f
-</p>
-<h1>aaaaaaaaaa</h1>
+<section class="timeline">
+  <div class="container">
+
+    <div class="timeline-item"  *ngFor="let event of listEvent, let i = index">
+
+      <div class="timeline-img"></div>
+
+      <div class="timeline-content timeline-card js--fadeInRight">
+        <div class="timeline-img-header">
+          <img src="{{event?.schoolLogoUrl}}" alt="">
+          <h2>Card Title</h2>
+        </div>
+        <div class="date">{{event?.startTime | date:'d MMMM, y' }}</div>
+        <p>{{event?.title}}</p>
+        <span><img src="../assets/img/address.png" alt=""> <span style="padding: 10px">   {{event?.address}}</span></span>
+        <div>{{event?.interestedEmployerCount}} người quan tâm </div>
+        <a class="bnt-more" routerLink="/events/event-detial/{{event?.id}}">Chi tiết</a>
+        <button (click)="deleteEvent( event?.id, i )">
+          <i class="icon-input"><img src="../assets/img/create.png" alt=""> </i>
+        </button>
+        <button (click)="deleteEvent( event?.id, i )">
+          <i class="icon-input"><img src="../assets/img/trash.png" alt=""> </i>
+        </button>
+      </div>
+
+    </div>
+    <div class="timeline-item"  *ngFor="let event of listEvent, let i = index">
+
+      <div class="timeline-img"></div>
+
+      <div class="timeline-content js--fadeInLeft">
+        <div class="date">{{event?.startTime | date:'d MMMM, y' }}</div>
+        <h2>{{event?.title}}</h2>
+        <blockquote>        <span><img src="../assets/img/address.png" alt=""> <span style="padding: 10px">   {{event?.address}}</span></span>
+        </blockquote>
+        <div>{{event?.interestedEmployerCount}} người quan tâm </div>
+        <a class="bnt-more" routerLink="/events/event-detial/{{event?.id}}">Chi tiết</a>
+        <button data-toggle="modal" data-target="#myModalEditEvent"
+                (click)="editEvent(i, event.id, event.title, event.address, event.startTime, event.endTime, event.contactEmail,
+                event.contactPhone)">
+          <i class="icon-input"><img src="../assets/img/create.png" alt=""> </i>
+        </button>
+        <button (click)="deleteEvent( event?.id, i )">
+          <i class="icon-input"><img src="../assets/img/trash.png" alt=""> </i>
+        </button>
+      </div>
+    </div>
+
+
+
+  </div>
+</section>
+</div>
+<div class="modal" id="myModalEditEvent">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Chỉnh sửa thông tin sự kiện</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <form (ngSubmit)="onSubmit();" [formGroup]="formEvent">
+          <div class="form-inline">
+            <label class="col-sm-2 control-label" for="name">Tên sự kiện</label>
+            <div class="col-sm-9">
+              <input type="text" id="name" placeholder="Ví dụ: Works" class="form-control"
+                     formControlName="title" name="title">
+              <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert-dangerous">
+                <div *ngIf="title.errors?.required">
+                  Bạn không được để trống trường này.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-inline">
+            <div class="col-sm-2"><label class="control-label">Thời gian</label></div>
+            <div class="col-sm-5 form-inline">
+              <label class="col-sm-4 control-label" for="startTime">Bắt đầu</label>
+              <div class="col-sm-6">
+                <input matInput class="form-control" name="startTime" id="startTime" [matDatepicker]="picker1"
+                       placeholder="Chọn ngày" required
+                       (dateInput)="changeExpirationDate1('input',$event)" formControlName="startTime">
+                <!--(dateChange)="changeExpirationDate('change', $event)"-->
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1 touchUi="true"></mat-datepicker>
+                <div *ngIf="startTime.invalid && (startTime.dirty || startTime.touched)" class="alert-dangerous">
+                  <div *ngIf="startTime.errors.required">
+                    Bạn không được để trống trường này.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-5 form-inline">
+              <label class="col-sm-4 control-label" for="endTime">Kết thúc</label>
+              <div class="col-sm-6">
+                <input matInput class="form-control" name="endTime" id="endTime" [matDatepicker]="picker2"
+                       placeholder="Chọn ngày" required
+                       (dateInput)="changeExpirationDate2('input',$event)" formControlName="endTime">
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2 touchUi="true"></mat-datepicker>
+                <div *ngIf="endTime.invalid && (endTime.dirty || endTime.touched)" class="alert-dangerous">
+                  <div *ngIf="endTime.errors?.required">
+                    Bạn không được để trống trường này.
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <div class="form-inline">
+            <label class="col-sm-2 control-label" for="email">Email</label>
+            <div class="col-sm-9">
+              <input type="email" id="email" class="form-control" placeholder="Email" formControlName="contactEmail">
+              <div *ngIf="contactEmail.invalid && (contactEmail.dirty || contactEmail.touched)" class="alert-dangerous">
+                <div *ngIf="contactEmail.errors.required">
+                  Bạn không được để trống trường này.
+                </div>
+                <div *ngIf="contactEmail.errors.pattern">
+                  Email chưa đúng định dạng!
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="form-inline">
+            <label class="col-sm-2 control-label" for="phone_number">Điện Thoại</label>
+            <div class="col-sm-9">
+              <input type="text" id="phone_number" class="form-control" placeholder="Số điện thoại"
+                     formControlName="contactPhone"
+                     required>
+              <div *ngIf="contactPhone.invalid && (contactPhone.dirty || contactPhone.touched)" class="alert-dangerous">
+                <div *ngIf="contactPhone.errors.required">
+                  Bạn không được để trống trường này.
+                </div>
+                <div *ngIf="contactPhone.errors.pattern">
+                  Số điện thoại chưa đúng!
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-inline">
+            <label class="col-sm-2 control-label" for="address">Địa chỉ</label>
+            <div class="col-sm-9">
+              <input type="text" id="address" placeholder="Ví dụ: 144 Xuân Thủy, Dịch Vọng Hậu, Cầu Giấy, Hà Nội"
+                     class="form-control" formControlName="address" name="address">
+              <div *ngIf="address.invalid && (address.dirty || address.touched)" class="alert-dangerous">
+                <div *ngIf="address.errors?.required">
+                  Bạn không được để trống trường này.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--<div class="form-inline">-->
+            <!--<label class="col-sm-2 control-label" for="website">website</label>-->
+            <!--<div class="col-sm-9">-->
+              <!--<input type="text" id="website" placeholder="Ví dụ: Works.vn" class="form-control"-->
+                     <!--formControlName="website" name="website">-->
+              <!--<div *ngIf="website.invalid && (website.dirty || website.touched)" class="alert-dangerous">-->
+                <!--<div *ngIf="website.errors?.required">-->
+                  <!--Bạn không được để trống trường này.-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="form-inline">-->
+            <!--<label class="col-sm-2 control-label" for="name">Mô tả</label>-->
+            <!--<div class="col-sm-9">-->
+        <!--<textarea id="description" maxlength="10000" class="form-control" cols="30" rows="7"-->
+                  <!--placeholder="Mô tả về sự kiện..." formControlName="description">-->
+        <!--</textarea>-->
+              <!--<div class="clearfix hint-container">-->
+                <!--<em class="char-counter gray-light" data-max-lengh="10000">Bạn còn có thể nhập <span-->
+                  <!--class='num'>10000</span> ký tự</em>-->
+              <!--</div>-->
+              <!--<div *ngIf="description.invalid && (description.dirty || description.touched)" class="alert-dangerous">-->
+                <!--<div *ngIf="description.errors?.required">-->
+                  <!--Bạn không được để trống trường này.-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+          <div class="text-right col-sm-11" style="padding-bottom: 15px">
+            <button type="submit" class="btn btn-primary" data-dismiss="modal"
+                    [disabled]="formEvent.invalid">Tạo sự kiện
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -78,14 +78,14 @@ export class CooperateComponent implements OnInit {
       window.scroll({top: 0, left: 0, behavior: 'smooth'});
       swal({
         type: 'success',
-        title: 'Đăng kí thành công, bạn vui lòng vào email để kích hoạt tài khoản!',
-        showConfirmButton: false,
-        timer: 3000
+        title: 'Đăng kí hợp tác thành công, bộ phận khách hàng sẽ liên hệ trực tiếp để tư vấn!',
+        showConfirmButton: true,
+        // timer: 3000
       });
-      setTimeout(() => {
-          this.router.navigate(['/']);
-        },
-        3000);
+      // setTimeout(() => {
+      //     this.router.navigate(['/']);
+      //   },
+      //   3000);
     }
     if (user.code === 404) {
       swal({

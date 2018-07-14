@@ -41,7 +41,7 @@ export class BranchComponent implements OnInit {
   constructor(private mapsAPILoader: MapsAPILoader,
               private ngZone: NgZone,
               private ref: ChangeDetectorRef,
-              private http: HttpClient,) {
+              private http: HttpClient, ) {
   }
 
   newBranch = new InforBranch('', '', '', this.lat, this.lng);

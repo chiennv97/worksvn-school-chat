@@ -19,7 +19,7 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { PasswordResetComponent } from './password-reset/password-reset.component';
 import { BranchComponent } from './branch/branch.component';
-import {EventService} from './service/event.service';
+import { EventService} from './service/event.service';
 
 import {UpPostEnrollmentComponent} from './up-post-enrollment/up-post-enrollment.component';
 import {BranchsService} from './service/branchs.service';
@@ -38,7 +38,6 @@ import {ChoosePostTypeService} from './service/choose-post-type.service';
 import {DateAdapter, MatDatepickerModule, MatNativeDateModule, MatSnackBarModule, MatTabsModule} from '@angular/material';
 import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {DateFormat} from './class/date-format';
-import {ListEnrollmentsComponent} from './list-enrollments/list-enrollments.component';
 import {PaginationService} from './service/pagination.service';
 import {OverviewPostService} from './service/overview-post.service';
 import {NgxPaginationModule} from 'ngx-pagination';
@@ -57,12 +56,13 @@ import { ManagerStudentComponent } from './manager-student/manager-student.compo
 import {YearService} from './service/year.service';
 import {MajorService} from './service/major.service';
 import {ListStudentService} from './service/list-student.service';
-import {EventModule} from './event/event.module';
 import { ManageCooperationComponent } from './manage-cooperation/manage-cooperation.component';
 import {ManageCooperationService} from './service/manage-cooperation.service';
 import { ProfileEmployerComponent } from './profile-employer/profile-employer.component';
 import {ProfileEmployerService} from './service/profile-employer.service';
 import {CooperationService} from './service/cooperation.service';
+import { SidebarModule} from './sidebar/sidebar.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -76,7 +76,6 @@ import {CooperationService} from './service/cooperation.service';
     BranchComponent,
     UpPostEnrollmentComponent,
     ConvertTimePipe,
-    ListEnrollmentsComponent,
     EnrollmentDetailComponent,
     TabEnrollmentDetailComponent,
     TabEnrollmentApplyComponent,
@@ -85,7 +84,7 @@ import {CooperationService} from './service/cooperation.service';
     IdentityCardPipe,
     ManagerStudentComponent,
     ManageCooperationComponent,
-    ProfileEmployerComponent
+    ProfileEmployerComponent,
   ],
   imports: [
     BrowserModule,
@@ -100,7 +99,6 @@ import {CooperationService} from './service/cooperation.service';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     Select2Module,
-    EventModule,
     MatSnackBarModule,
     NoopAnimationsModule,
     MatDatepickerModule,
@@ -109,7 +107,9 @@ import {CooperationService} from './service/cooperation.service';
     NgxPaginationModule,
     MatTabsModule,
     BrowserAnimationsModule,
-    AmazingTimePickerModule
+    AmazingTimePickerModule,
+    SidebarModule,
+
   ],
   providers: [
     SignInService,

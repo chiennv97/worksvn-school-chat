@@ -21,3 +21,6 @@
 .dropdown-menu{
   margin-top: 0;
 }
+#toggle-btn{
+  cursor: pointer;
+}

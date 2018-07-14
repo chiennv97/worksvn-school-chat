@@ -1,10 +1,6 @@
 import {ModuleWithProviders, NgModule} from '@angular/core';
 import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 import {CommonModule} from '@angular/common';
-import { EventComponent } from './event.component';
-import { CreateEventComponent } from '../create-event/create-event.component';
-import { EventService } from '../service/event.service';
-import { ActiveAndExpriedEventsComponent } from '../active-and-expried-events/active-and-expried-events.component';
 import {Select2Module} from 'ng2-select2';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -14,18 +10,30 @@ import {BrowserModule} from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
 import {DateAdapter, MatDatepickerModule, MatNativeDateModule, MatSnackBarModule, MatTabsModule} from '@angular/material';
 import {DateFormat} from '../class/date-format';
+import {SidebarComponent} from './sidebar.component';
+import {ListEnrollmentsComponent} from '../list-enrollments/list-enrollments.component';
+import {UpPostEnrollmentComponent} from '../up-post-enrollment/up-post-enrollment.component';
+import {EnrollmentDetailComponent} from '../enrollment-detail/enrollment-detail.component';
+import {CreateEventComponent} from '../create-event/create-event.component';
 import {EventDetailComponent} from '../event-detail/event-detail.component';
-// const eventRoutes: Routes = [
-//   {
-//     path: 'events',
-//     component: EventComponent,
-//     children: [
-//       { path: 'create', component: CreateEventComponent },
-//       { path: 'active', component: ActiveAndExpriedEventsComponent },
-//       { path: 'event-detial/:id', component: EventDetailComponent},
-//     ]
-//   }
-// ];
+import {ActiveAndExpriedEventsComponent} from '../active-and-expried-events/active-and-expried-events.component';
+import {EventComponent} from '../event/event.component';
+const eventRoutes: Routes = [
+  {
+    path: 'manage',
+    component: SidebarComponent,
+    children: [
+      { path: 'events/create', component: CreateEventComponent },
+      { path: 'events/active', component: ActiveAndExpriedEventsComponent },
+      { path: 'events/event-detial/:id', component: EventDetailComponent},
+      { path: 'list-enrollments', component: ListEnrollmentsComponent},
+      { path: 'up-post-enrollment/:type', component: UpPostEnrollmentComponent},
+      { path: 'edit-post-enrollment/:type/:id', component: UpPostEnrollmentComponent},
+      { path: 'enrollment-detail/:id', component: EnrollmentDetailComponent},
+
+    ]
+  }
+];
 @NgModule({
   imports: [
     CommonModule,
@@ -33,7 +41,7 @@ import {EventDetailComponent} from '../event-detail/event-detail.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    // RouterModule.forChild(eventRoutes),
+    RouterModule.forChild(eventRoutes),
     Select2Module,
     UiSwitchModule,
     NgxPaginationModule,
@@ -44,15 +52,15 @@ import {EventDetailComponent} from '../event-detail/event-detail.component';
     MatSnackBarModule,
   ],
   declarations: [
+    SidebarComponent,
+    ListEnrollmentsComponent,
     CreateEventComponent,
-    EventComponent,
     ActiveAndExpriedEventsComponent,
     EventDetailComponent,
   ],
   exports: [RouterModule],
   providers: [
-    EventService,
     { provide: DateAdapter, useClass: DateFormat },
   ]
 })
-export class EventModule {}
+export class SidebarModule {}

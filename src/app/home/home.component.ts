@@ -88,7 +88,7 @@ export class HomeComponent implements OnInit {
         timer: 3000
       });
       setTimeout(() => {
-          this.router.navigate(['/profile']);
+          this.router.navigate(['/manage/list-enrollments']);
         },
         3000);
     }

@@ -138,7 +138,7 @@
                 <button class="btn btn-success" [disabled]="!selectedFiles"
                         (click)="upload2()">Upload</button>
                 <span class="upload" #upload (click)="logo.click()">
-                  <img src="../assets/img/create.png" alt="">
+                  <i class="material-icons">add_a_photo</i>
                 </span>
                 <input #logo type="file" (change)="selectFile($event)" hidden ng2FileSelect>
                 <div class="panel panel-primary">
@@ -184,7 +184,7 @@
               <label class="col-sm-3 control-label">Hình ảnh nhà trường</label>
               <div class="col-sm-9">
                 <!--<span class="upload" #upload (click)="file.click()" [hidden]="buttonUpImg">-->
-                  <i class="fas fa-camera"></i>
+                <i class="material-icons">add_a_photo</i>
                 <!--</span>-->
                 <!--<input #file type="file" (change)="upanh($event, profile.id, 'url2')" hidden ng2FileSelect>-->
 

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { DEVSERVER } from '../service/serve';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Event} from '../class/event';
+import {PaginationService} from '../service/pagination.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -19,6 +20,7 @@ export class EventService {
   httpOptions;
   constructor(
     private http: HttpClient,
+    private paginationService: PaginationService,
   ) {
     this.accessToken = localStorage.getItem('accessToken');
     // console.log(this.accessToken);
@@ -49,8 +51,39 @@ export class EventService {
         'Content-Type': 'application/json',
         'Authorization': this.Authorization,
         'Access-Control-Allow-Origin': '*',
-      })
+      }),
+      params: new HttpParams()
+        .set('sortBy', this.paginationService.sortBy)
+        .set('sortType', this.paginationService.sortType)
+        .set('pageIndex', this.paginationService.pageIndex)
+        .set('pageSize', this.paginationService.pageSize)
     };
     return this.http.get(this.urlListEvent, this.httpOptions);
+  }
+  deleteEvent(token: string, url: string, id) {
+    this.Authorization = 'Bearer ' + token;
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': this.Authorization,
+        'Access-Control-Allow-Origin': '*',
+      }),
+      params: new HttpParams()
+        .set('id', id)
+    };
+    return this.http.delete(url , this.httpOptions);
+  }
+  getEventDetail(token: string, url: string, id) {
+    this.Authorization = 'Bearer ' + token;
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': this.Authorization,
+        'Access-Control-Allow-Origin': '*',
+      }),
+      params: new HttpParams()
+        .set('id', id)
+    };
+    return this.http.get(url , this.httpOptions);
   }
 }

@@ -103,7 +103,7 @@ export class ListEnrollmentsComponent implements OnInit {
   }
   redirectToPage(id, i) {
     this.changeTabService.tabChange = 0;
-    this.router.navigate(['enrollment-detail/' + id ]);
+    this.router.navigate(['manage/enrollment-detail/' + id ]);
     window.scroll({top: 0, left: 0});
     this.jobIdService.indexJob = i;
   }
