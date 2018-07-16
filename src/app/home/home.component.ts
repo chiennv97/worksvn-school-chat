@@ -80,6 +80,7 @@ export class HomeComponent implements OnInit {
       // this.authorizationService.changeAccessTokenAuth(user.data.accessToken);
       // this.signInService.add(email);
       // this.getProfile(user);
+      console.log(user.data.accessToken);
       swal({
         type: 'success',
         title: 'Đăng nhập thành công!',
@@ -87,7 +88,7 @@ export class HomeComponent implements OnInit {
         timer: 3000
       });
       setTimeout(() => {
-          this.router.navigate(['/profile']);
+          this.router.navigate(['/manage/list-enrollments']);
         },
         3000);
     }

@@ -19,7 +19,7 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { PasswordResetComponent } from './password-reset/password-reset.component';
 import { BranchComponent } from './branch/branch.component';
-import {EventService} from './service/event.service';
+import { EventService} from './service/event.service';
 
 import {UpPostEnrollmentComponent} from './up-post-enrollment/up-post-enrollment.component';
 import {BranchsService} from './service/branchs.service';
@@ -46,7 +46,6 @@ import {
 } from '@angular/material';
 import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {DateFormat} from './class/date-format';
-import {ListEnrollmentsComponent} from './list-enrollments/list-enrollments.component';
 import {PaginationService} from './service/pagination.service';
 import {OverviewPostService} from './service/overview-post.service';
 import {NgxPaginationModule} from 'ngx-pagination';
@@ -65,7 +64,6 @@ import { ManagerStudentComponent } from './manager-student/manager-student.compo
 import {YearService} from './service/year.service';
 import {MajorService} from './service/major.service';
 import {ListStudentService} from './service/list-student.service';
-import {EventModule} from './event/event.module';
 import { ManageCooperationComponent } from './manage-cooperation/manage-cooperation.component';
 import {ManageCooperationService} from './service/manage-cooperation.service';
 import { ProfileEmployerComponent } from './profile-employer/profile-employer.component';
@@ -78,6 +76,10 @@ import { ChatComponent } from './chat/chat.component';
 import {IdRoomChatService} from './service/id-room-chat.service';
 import {AngularFirestoreModule} from 'angularfire2/firestore';
 import {TruncatePipe} from './pipe/truncate.pipe';
+import { SidebarModule} from './sidebar/sidebar.module';
+import {EventComponent} from './event/event.component';
+import {DetailEventService} from './service/detail-event.service';
+import {ListEmployerEventService} from './service/list-employer-event.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -91,7 +93,6 @@ import {TruncatePipe} from './pipe/truncate.pipe';
     BranchComponent,
     UpPostEnrollmentComponent,
     ConvertTimePipe,
-    ListEnrollmentsComponent,
     EnrollmentDetailComponent,
     TabEnrollmentDetailComponent,
     TabEnrollmentApplyComponent,
@@ -102,7 +103,8 @@ import {TruncatePipe} from './pipe/truncate.pipe';
     ManagerStudentComponent,
     ManageCooperationComponent,
     ProfileEmployerComponent,
-    ChatComponent
+    ChatComponent,
+    EventComponent
   ],
   imports: [
     BrowserModule,
@@ -117,7 +119,6 @@ import {TruncatePipe} from './pipe/truncate.pipe';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     Select2Module,
-    EventModule,
     MatSnackBarModule,
     NoopAnimationsModule,
     MatDatepickerModule,
@@ -132,7 +133,8 @@ import {TruncatePipe} from './pipe/truncate.pipe';
     MatSidenavModule,
     MatListModule,
     MatGridListModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    SidebarModule,
   ],
   providers: [
     SignInService,
@@ -162,6 +164,8 @@ import {TruncatePipe} from './pipe/truncate.pipe';
     CooperationService,
     HoptacService,
     IdRoomChatService,
+    DetailEventService,
+    ListEmployerEventService,
     { provide: DateAdapter, useClass: DateFormat },
   ],
   bootstrap: [AppComponent]

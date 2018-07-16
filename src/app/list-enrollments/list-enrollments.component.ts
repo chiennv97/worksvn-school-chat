@@ -103,7 +103,7 @@ export class ListEnrollmentsComponent implements OnInit {
   }
   redirectToPage(id, i) {
     this.changeTabService.tabChange = 0;
-    this.router.navigate(['enrollment-detail/' + id ]);
+    this.router.navigate(['manage/enrollment-detail/' + id ]);
     window.scroll({top: 0, left: 0});
     this.jobIdService.indexJob = i;
   }
@@ -120,7 +120,7 @@ export class ListEnrollmentsComponent implements OnInit {
     this.jobIdService.indexJob = i;
   }
   redirectToEditPage(id, i) {
-    this.router.navigate(['edit-post-enrollment/editPenPost/' + id]);
+    this.router.navigate(['manage/edit-post-enrollment/editPenPost/' + id]);
     this.jobIdService.idJob = id;
     this.httpOptions = {
       headers: new HttpHeaders({
@@ -185,7 +185,7 @@ export class ListEnrollmentsComponent implements OnInit {
         jobdetail => this.saveToReuse(jobdetail, 1),
         err => console.log(err)
       );
-    this.router.navigate(['up-post-enrollment/upClonePost']);
+    this.router.navigate(['manage/up-post-enrollment/upClonePost']);
   }
   get users(): FormArray {
     return this.formUploadService.formUpload.get('users') as FormArray;
