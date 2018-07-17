@@ -23,6 +23,8 @@
     "@angular/platform-browser": "^6.0.3",
     "@angular/platform-browser-dynamic": "^6.0.3",
     "@angular/router": "^6.0.3",
+    "@ng-bootstrap/ng-bootstrap": "^2.2.0",
+    "@ngx-loading-bar/http-client": "^2.1.1",
     "@types/googlemaps": "^3.30.10",
     "amazing-time-picker": "^1.4.4",
     "angular2-cookie": "^1.2.6",

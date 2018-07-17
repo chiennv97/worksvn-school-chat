@@ -1,15 +1,16 @@
 <div class="container-fluid">
   <div class="bg-white has-shadow">
-    <h3>Đăng bài tuyển sinh</h3>
+    <h3 *ngIf="upOrEditService.type === 1">Đăng bài tuyển sinh</h3>
+    <h3 *ngIf="upOrEditService.type !== 1">Sửa bài đăng tuyển sinh</h3>
     <form (ngSubmit)="onSubmit();" [formGroup]="formUploadService.formUpload">
       <!--tieu de-->
       <div class="form-group">
         <div class="row padding-row">
           <div class="col-md-2 col-12 title">
-            <label class="form-control-label">Tiêu đề công việc</label>
+            <label class="form-control-label">Tiêu đề khóa học</label>
           </div>
           <div class="col-md-9 col-12">
-            <input type="email" placeholder="Tiêu đề công việc" class="form-control" formControlName="enrollmentJobTitle">
+            <input type="email" placeholder="Tiêu đề khóa học" class="form-control" formControlName="enrollmentJobTitle">
             <div *ngIf="enrollmentJobTitle.invalid && (enrollmentJobTitle.dirty || enrollmentJobTitle.touched || upPost)" class="alert-dangerous">
               <div *ngIf="enrollmentJobTitle.errors.required">
                 Bạn không được để trống trường này.
@@ -25,7 +26,7 @@
             <label class="form-control-label">Ngày hết hạn</label>
           </div>
           <div class="col-md-9 col-12">
-            <input matInput formControlName="expirationDate" class="form-control"  [matDatepicker]="picker" placeholder="Choose a date" (dateInput)="changeExpirationDate('input', $event)" (dateChange)="changeExpirationDate('change', $event)">
+            <input matInput formControlName="expirationDate" class="form-control"  [matDatepicker]="picker" placeholder="DD/MM/YYYY   e.g: 20/10/2018" (dateInput)="changeExpirationDate('input', $event)" (dateChange)="changeExpirationDate('change', $event)">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker touchUi="true" ></mat-datepicker>
             <div *ngIf="expirationDate.invalid && (expirationDate.dirty || expirationDate.touched || upPost)" class="alert-dangerous">
@@ -40,7 +41,7 @@
       <div class="form-group">
         <div class="row padding-row">
           <div class="col-md-2 col-12 title">
-            <label class="form-control-label">Chi Nhánh</label>
+            <label class="form-control-label">Địa chỉ học</label>
           </div>
           <div class="col-md-9 col-12">
             <select2 [data]="branchsService?.select2datas" [value]="branchsService?.currentSelectId"
@@ -52,7 +53,7 @@
       <div class="form-group">
         <div class="row padding-row">
           <div class="col-md-2 col-12 title">
-            <label class="form-control-label">Loại công việc</label>
+            <label class="form-control-label">Loại khóa học</label>
           </div>
           <div class="col-md-9 col-12">
             <select2 [data]="jobNameIdService?.select2datas" [value]="jobNameIdService?.currentSelectId"
@@ -64,7 +65,7 @@
       <div class="form-group">
         <div class="row padding-row">
           <div class="col-md-2 col-12 title">
-            <label class="form-control-label">Kỹ Năng</label>
+            <label class="form-control-label">Kỹ năng đạt được</label>
           </div>
           <div class="col-md-9 col-12">
             <select2 [data]="skillService?.select2datas"
@@ -83,7 +84,7 @@
           </div>
           <div class="col-md-9 col-12">
             <textarea spellcheck="false" class="form-control" rows="7" id="comment"
-                      formControlName="description" placeholder="Mô tả công việc"></textarea>
+                      formControlName="description" placeholder="Mô tả khóa học"></textarea>
           </div>
         </div>
       </div>
@@ -102,6 +103,11 @@
                   <span>
                     <input placeholder="Tên lớp học" class="form-control" formControlName="name">
                   </span>
+                  <div *ngIf="name(i).invalid && (name(i).dirty || name(i).touched || upPost)" class="alert-dangerous">
+                    <div *ngIf="name(i).errors.required">
+                      Bạn không được để trống trường này.
+                    </div>
+                  </div>
                 </div>
                 <span class="float-right" (click)="deleteShift(i)" style="position: absolute; top: 0.5em; right: 0.5em;"><i class="material-icons">close</i></span>
               </div>
@@ -218,6 +224,7 @@
                         <span class=".col-lg-6 .col-sm-6 .col-12">
                           <input size="{{widthDisplay > 768 ? 12 : 6}}" type="email" class="new-form" formControlName="fee" placeholder="Phí">
                           </span>
+                        <span> / Khóa học</span>
                       </span>
                     </div>
                   </div>
@@ -227,7 +234,7 @@
             <!--them ca-->
             <div class="float-right-add list-group-item" style="padding: 0.4rem">
               <button type="button" class="btn add-shift" (click)="addShift(enrollmentPostService.shiftBodies.length+1)">
-                <i class="fas fa-plus"></i> <b>Thêm Ca</b>
+                <i class="fas fa-plus"></i> <b>Thêm Lớp</b>
               </button>
             </div>
           </ul>

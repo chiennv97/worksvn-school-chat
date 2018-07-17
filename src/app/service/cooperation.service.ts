@@ -8,18 +8,19 @@ export class CooperationService {
   Authorization;
   httpOptions;
   constructor(
-    private http: HttpClient,
+    public http: HttpClient,
   ) {
     this.Authorization = 'Bearer ' + localStorage.getItem('accessToken');
-  }
-  acceptOrReject(employerID, state) {
     this.httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'Authorization': this.Authorization
       })
     };
-    this.http.put(this.url + employerID + '/' + state, this.httpOptions)
+  }
+  onSubmit(employerID, state) {
+    console.log(this.httpOptions.headers);
+    this.http.put(this.url + employerID + '/state/' + state, this.httpOptions)
       .subscribe(
         rawObject => console.log(rawObject),
         err => console.log(err)

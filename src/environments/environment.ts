@@ -4,13 +4,21 @@
 
 export const environment = {
   production: false,
+  // firebase: {
+  //   apiKey: 'AIzaSyBh6Odwox1bWmoMUHbHNZzX2SxZCrR5194',
+  //   authDomain: 'worksfit-web-uv.firebaseapp.com',
+  //   databaseURL: 'https://worksfit-web-uv.firebaseio.com',
+  //   projectId: 'worksfit-web-uv',
+  //   storageBucket: 'worksfit-web-uv.appspot.com',
+  //   messagingSenderId: '965443624804'
+  // }
   firebase: {
-    apiKey: 'AIzaSyBh6Odwox1bWmoMUHbHNZzX2SxZCrR5194',
+    apiKey: 'AIzaSyCM9BYBnJhfL5KPSoFlORjJWrawAVoGUXg',
     authDomain: 'worksfit-web-uv.firebaseapp.com',
     databaseURL: 'https://worksfit-web-uv.firebaseio.com',
-    projectId: 'worksfit-web-uv',
+    projectId: 'worksfit-ntd-web',
     storageBucket: 'worksfit-web-uv.appspot.com',
-    messagingSenderId: '965443624804'
+    messagingSenderId: '156541642328'
   }
 };
 

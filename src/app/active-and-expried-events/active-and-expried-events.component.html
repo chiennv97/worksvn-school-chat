@@ -47,8 +47,8 @@
         <p>{{event?.title}}</p>
         <span><img src="../assets/img/address.png" alt=""> <span style="padding: 10px">   {{event?.address}}</span></span>
         <div>{{event?.interestedEmployerCount}} người quan tâm </div>
-        <a class="bnt-more" routerLink="/events/event-detial/{{event?.id}}">Chi tiết</a>
-        <button (click)="deleteEvent( event?.id, i )">
+        <a class="bnt-more" routerLink="/manage/events/event-detial/{{event?.id}}">Chi tiết</a>
+        <button (click)="edit(event.id)">
           <i class="icon-input"><img src="../assets/img/create.png" alt=""> </i>
         </button>
         <button (click)="deleteEvent( event?.id, i )">
@@ -67,14 +67,12 @@
         <blockquote>        <span><img src="../assets/img/address.png" alt=""> <span style="padding: 10px">   {{event?.address}}</span></span>
         </blockquote>
         <div>{{event?.interestedEmployerCount}} người quan tâm </div>
-        <a class="bnt-more" routerLink="/events/event-detial/{{event?.id}}">Chi tiết</a>
-        <button data-toggle="modal" data-target="#myModalEditEvent"
-                (click)="editEvent(i, event.id, event.title, event.address, event.startTime, event.endTime, event.contactEmail,
-                event.contactPhone)">
-          <i class="icon-input"><img src="../assets/img/create.png" alt=""> </i>
+        <a class="bnt-more" routerLink="/manage/events/event-detial/{{event?.id}}">Chi tiết</a>
+        <button (click)="edit(event.id)">
+          <i class="icon-input"><img src="../assets/img/create.png" alt=""></i>
         </button>
         <button (click)="deleteEvent( event?.id, i )">
-          <i class="icon-input"><img src="../assets/img/trash.png" alt=""> </i>
+          <i class="icon-input"><img src="../assets/img/trash.png" alt=""></i>
         </button>
       </div>
     </div>

@@ -5,6 +5,8 @@ import {DEVSERVER} from '../service/serve';
 import swal from 'sweetalert2';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MatDatepickerInputEvent} from '@angular/material';
+import {Router} from '@angular/router';
+import {FormUploadService} from '../service/form-upload.service';
 
 @Component({
   selector: 'app-active-and-expried-events',
@@ -16,10 +18,13 @@ export class ActiveAndExpriedEventsComponent implements OnInit {
   formEvent: FormGroup;
   listEvent;
   urlDelete =  DEVSERVER + 'api/schools/events/';
+  urlEventDetail;
   constructor(
     private eventService: EventService,
     private fb: FormBuilder,
     private ref: ChangeDetectorRef,
+    private router: Router,
+    public formUploadService: FormUploadService
 
   ) { }
 
@@ -78,7 +83,7 @@ export class ActiveAndExpriedEventsComponent implements OnInit {
   changeExpirationDate2(type: string, event: MatDatepickerInputEvent<Date>) {
     console.log( event.value.getTime());
   }
-    getevent(json) {
+  getevent(json) {
     console.log(json);
     if (json.code === 200) {
       this.listEvent = json.data.results;
@@ -139,6 +144,36 @@ export class ActiveAndExpriedEventsComponent implements OnInit {
     self.formEvent.patchValue({contactEmail: contactEmail});
     self.formEvent.patchValue({contactPhone: contactPhone});
     // self.formEvent.patchValue({description: description});
-
+  }
+  edit(id) {
+    this.router.navigate(['manage/events/post/edit/' + id]);
+    this.token = localStorage.getItem('accessToken');
+    this.urlEventDetail =  DEVSERVER + 'api/schools/schoolCooperations/activeEvents/' + id;
+    this.eventService.getEventDetail(this.token, this.urlEventDetail, id)
+      .subscribe(
+        json => this.afterGetEdit(json),
+        error => console.log(error)
+      );
+  }
+  afterGetEdit(json) {
+    const startTimeDate = new Date(json.data.startTime);
+    const endTimeDate = new Date(json.data.endTime);
+    this.formUploadService.formEvent.patchValue({
+        title: json.data.title,
+        startTime: startTimeDate,
+        startTimeHours: startTimeDate.toLocaleTimeString(),
+        endTimeHours: endTimeDate.toLocaleTimeString(),
+        endTime: endTimeDate,
+        address: json.data.address,
+        contactEmail: json.data.contactEmail,
+        contactPhone: json.data.contactPhone,
+        website: json.data.website,
+        description: json.data.description
+      }
+    );
+    this.formUploadService.newEvent.startTimeHours = startTimeDate.getMinutes() + startTimeDate.getHours() * 60;
+    this.formUploadService.newEvent.endTimeHours = endTimeDate.getMinutes() + endTimeDate.getHours() * 60;
+    this.formUploadService.newEvent.startTimeDate = json.data.startTime - this.formUploadService.newEvent.startTimeHours * 60000;
+    this.formUploadService.newEvent.endTimeDate = json.data.endTime - this.formUploadService.newEvent.endTimeHours * 60000;
   }
 }

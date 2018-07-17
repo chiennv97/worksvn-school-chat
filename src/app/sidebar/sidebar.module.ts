@@ -20,12 +20,16 @@ import {ActiveAndExpriedEventsComponent} from '../active-and-expried-events/acti
 import {ManageCooperationComponent} from '../manage-cooperation/manage-cooperation.component';
 import {BranchComponent} from '../branch/branch.component';
 import {ManagerStudentComponent} from '../manager-student/manager-student.component';
+import {ConvertTimePipe} from '../pipe/convert-time.pipe';
+import {ConvertTimePipe2} from '../pipe/convert-time2.pipe';
+import {ChatComponent} from '../chat/chat.component';
 const eventRoutes: Routes = [
   {
     path: 'manage',
     component: SidebarComponent,
     children: [
-      { path: 'events/create', component: CreateEventComponent },
+      { path: 'events/post/:type', component: CreateEventComponent },
+      { path: 'events/post/:type/:id', component: CreateEventComponent },
       { path: 'events/active', component: ActiveAndExpriedEventsComponent },
       { path: 'events/event-detial/:id', component: EventDetailComponent},
       { path: 'list-enrollments', component: ListEnrollmentsComponent},
@@ -35,6 +39,8 @@ const eventRoutes: Routes = [
       { path: 'branchs', component: BranchComponent},
       { path: 'manage-student', component: ManagerStudentComponent},
       { path: 'manage-cooperation', component: ManageCooperationComponent},
+      { path: 'chat/:roomid', component: ChatComponent},
+
     ]
   }
 ];
@@ -61,6 +67,7 @@ const eventRoutes: Routes = [
     CreateEventComponent,
     ActiveAndExpriedEventsComponent,
     EventDetailComponent,
+    ConvertTimePipe2
   ],
   exports: [RouterModule],
   providers: [

@@ -3,6 +3,7 @@ import { DEVSERVER } from '../service/serve';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Event} from '../class/event';
 import {PaginationService} from '../service/pagination.service';
+import {st} from '@angular/core/src/render3';
 @Injectable({
   providedIn: 'root'
 })
@@ -11,7 +12,7 @@ export class EventService {
   urlCreateEvent = DEVSERVER + 'api/schools/events';
   urlDeleteEvent = DEVSERVER + 'api/schools/events/';
   urlPutEvent = DEVSERVER + 'api/schools/events/';
-  urlInterestedEmployersEvent = DEVSERVER + '/api/schools/events/{id}/interestedEmployers';
+  urlInterestedEmployersEvent = DEVSERVER + '/api/schools/events/';
   urlExpiredEvent = DEVSERVER + 'api/schools/expiredEvents';
   urlActiveEvent = DEVSERVER + 'api/schools/schoolCooperations/activeEvents/';
   event: Event;
@@ -85,5 +86,15 @@ export class EventService {
         .set('id', id)
     };
     return this.http.get(url , this.httpOptions);
+  }
+  getListEmployerEvent(id) {
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': this.Authorization,
+        'Access-Control-Allow-Origin': '*',
+      })
+    };
+    return this.http.get(this.urlInterestedEmployersEvent + id + '/interestedEmployers' , this.httpOptions);
   }
 }

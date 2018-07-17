@@ -4,7 +4,9 @@ import {DEVSERVER} from '../service/serve';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {ProfileEmployerService} from '../service/profile-employer.service';
 import {CooperationService} from '../service/cooperation.service';
-
+import {HoptacService} from '../service/hoptac.service';
+declare var jquery: any;
+declare var $: any;
 @Component({
   selector: 'app-manage-cooperation',
   templateUrl: './manage-cooperation.component.html',
@@ -13,8 +15,8 @@ import {CooperationService} from '../service/cooperation.service';
 export class ManageCooperationComponent implements OnInit {
   Authorization;
   httpOptions;
-  getEmployerAcceptUrl = DEVSERVER + 'api/schools/employerCooperations/accepted';
-  getEmployerPenUrl = DEVSERVER + 'api/schools/employerCooperations/pending';
+  getEmployerAcceptUrl = DEVSERVER + 'api/schools/employerCooperations/state/accepted';
+  getEmployerPenUrl = DEVSERVER + 'api/schools/employerCooperations/state/pending';
   getEmployerProfile = DEVSERVER + 'api/employers/';
   styles;
   chooseType = 1;
@@ -22,9 +24,9 @@ export class ManageCooperationComponent implements OnInit {
     public manageCooperationService: ManageCooperationService,
     private http: HttpClient,
     public profileEmployerService: ProfileEmployerService,
-    public cooperationService: CooperationService
+    public cooperationService: HoptacService
   ) {
-    this.Authorization = 'Bearer' + localStorage.getItem('accessToken');
+    this.Authorization = 'Bearer ' + localStorage.getItem('accessToken');
   }
   ngOnInit() {
     this.onSubmit(this.getEmployerAcceptUrl, 1);
@@ -36,6 +38,7 @@ export class ManageCooperationComponent implements OnInit {
         'Authorization': this.Authorization
       })
     };
+    console.log(this.httpOptions);
     this.http.get(url , this.httpOptions)
       .subscribe(
         rawObject => this.manageCooperationService.onSubmit(rawObject, type),
@@ -73,11 +76,23 @@ export class ManageCooperationComponent implements OnInit {
       );
   }
   accept(i) {
-    this.cooperationService.acceptOrReject(this.manageCooperationService.listEmployer[i].id, 'accept');
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': this.Authorization
+      })
+    };
+    this.cooperationService.onSubmit(this.manageCooperationService.listEmployer[i].id, 'accepted', this.httpOptions);
     this.onSubmit(this.getEmployerPenUrl, 2);
   }
   reject(i) {
-    this.cooperationService.acceptOrReject(this.manageCooperationService.listEmployer[i].id, 'reject');
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': this.Authorization
+      })
+    };
+    this.cooperationService.onSubmit(this.manageCooperationService.listEmployer[i].id, 'rejected', this.httpOptions);
     this.onSubmit(this.getEmployerPenUrl, 2);
   }
 }

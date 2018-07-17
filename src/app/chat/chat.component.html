@@ -1,0 +1,179 @@
+
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+  <mat-sidenav-container class="example-sidenav-container"
+                         [style.marginTop.px]="mobileQuery.matches ? 0 : 52">
+    <mat-sidenav #snav position="end" [mode]="mobileQuery.matches ? 'over' : 'side'" [(opened)]="sideNavOpened"
+                 [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+      <mat-nav-list>
+        <!--<a mat-list-item routerLink="." *ngFor="let nav of fillerNav">{{nav}}</a>-->
+        <div class="people-list" id="people-list">
+          <!--<div class="search">-->
+          <!--<input type="text" placeholder="search" />-->
+          <!--<i class="fa fa-search"></i>-->
+          <!--</div>-->
+          <div class="message-header">
+            Danh Sách Tin Nhắn
+          </div>
+          <ul class="list" *ngIf="items$ | async; let items">
+            <li class="clearfix list-room" *ngFor="let item of items; index as i" (click)="redirectToRoom(item.id, i, item.candidate.id)" [ngStyle]="{'background-color': i === roomIndex ? '#eaeaea' : ''}">
+              <!--<img src="{{item.candidate.avatarUrl}}" alt="avatar" />-->
+              <div class="image-cropper" style="display: inline-block">
+                <span class="rounded rounded-big" [ngStyle]="{'background' : 'url('+ item.candidate.avatarUrl+ '), url(../assets/img/avartar.png) center no-repeat', 'background-size' : 'cover'}"></span>
+              </div>
+              <div class="about">
+                <span class="name">{{ item.candidate.lastName }} {{ item.candidate.firstName }} </span>
+                <span class="status" *ngIf="mapCandidate.get(mapRoom.get(item.id))">
+                  <i class="fa fa-circle online"></i>
+                </span>
+                <div class="demoview">
+                  <span *ngIf="item.lastMessage.ownerID === myid">Bạn: </span>
+                  <span *ngIf="item.lastMessage.ownerID !== myid">{{item.candidate.firstName}}: </span>
+                  <span *ngIf="item.lastMessage.type === 'text'">{{item.lastMessage?.message | truncate:[25]}}</span>
+                  <span *ngIf="item.lastMessage.type === 'emoji'" style="display: inline-block;">
+                     <img src="{{'./assets/emoji/' + item.lastMessage?.emojiGroup + '/' + item.lastMessage?.emojiID}}" style="width: 20px; height: 20px;" alt="">
+                  </span>
+                </div>
+              </div>
+              <span class="time-small" *ngIf="today - item.lastMessage?.createdDate?.seconds*1000 < 86400000">{{item.lastMessage?.createdDate?.seconds*1000 | date:'HH:mm a' }}</span>
+              <span class="time-small" *ngIf="today - item.lastMessage?.createdDate?.seconds*1000 > 86400000">
+                <span *ngIf="item.lastMessage?.createdDate?.seconds*1000 !== 0">
+                  {{item.lastMessage?.createdDate?.seconds*1000 | date:'dd/MM/yyyy' }}
+                </span>
+              </span>
+            </li>
+          </ul>
+        </div>
+        <!--<ul>-->
+        <!--<li *ngIf="item !== undefined | async">-->
+        <!--<pre>{{ item | json }}</pre>-->
+        <!--</li>-->
+        <!--</ul>-->
+        <!--<div *ngIf="items$ | async; let items; else loading">-->
+        <!--<ul>-->
+        <!--<li *ngFor="let item of items">-->
+        <!--{{ item.candidate.firstName }}-->
+        <!--</li>-->
+        <!--</ul>-->
+        <!--<div *ngIf="items.length === 0">No results, try clearing filters</div>-->
+        <!--</div>-->
+        <!--<button (click)="click()">click me</button>-->
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <!--<mat-toolbar color="primary" class="example-toolbar">-->
+      <!--<h1 class="example-app-name">Responsive App</h1>-->
+      <!--</mat-toolbar>-->
+      <div class="containers clearfix">
+        <div class="row">
+          <div class="chat col-xl-12">
+            <div class="chat-header clearfix" *ngIf="items$ | async; let items">
+              <div class="image-cropper" style="display: inline-block" data-toggle="modal" data-target="#candidate-apply" (click)="showProfileCan()">
+                <span class="rounded rounded-small" [ngStyle]="{'background' : 'url('+ items[roomIndex]?.candidate.avatarUrl+ '), url(../assets/img/avartar.png) center no-repeat', 'background-size' : 'cover'}"></span>
+              </div>
+              <div class="chat-about" data-toggle="modal" data-target="#candidate-apply" (click)="showProfileCan()">
+                <span class="chat-with">{{ items[roomIndex]?.candidate.lastName }} {{ items[roomIndex]?.candidate.firstName }}</span>
+                <span class="chat-num-messages" *ngIf="mapCandidate.get(candidateCurrentRoom)">
+                  <i class="fa fa-circle online"></i>
+                </span>
+              </div>
+              <!--<i class="fa fa-star"></i>-->
+              <div *ngIf="sideNavOpened" mat-icon-button (click)="snav.toggle()" class="button-hidden"><i class="fas fa-arrow-right fa-lg"></i></div>
+              <div *ngIf="!sideNavOpened" mat-icon-button (click)="snav.toggle()" class="button-hidden"><i class="fas fa-arrow-left fa-lg"></i></div>
+              <img *ngIf="noti" (click)="enableOrDisNoti(false)" class="fa-noti" src="./assets/images/icons8-audio-48.png" style="width: 25px; height: 25px">
+              <img *ngIf="!noti" (click)="enableOrDisNoti(true)" class="fa-noti" src="./assets/images/icons8-no-audio-48.png" style="width: 25px; height: 25px">
+            </div> <!-- end chat-header -->
+            <div class="chat-history" #scrollMe [scrollTop]="height" (scroll)="thisScroll()">
+              <div class="spinner" *ngIf="loading">
+                <div class="bounce1 bounce"></div>
+                <div class="bounce2 bounce"></div>
+                <div class="bounce3 bounce"></div>
+              </div>
+              <div *ngIf="tasksArray.length === 0" style="text-align: center">
+                <a class="my-message message">Hãy bắt đầu trò chuyện!</a>
+              </div>
+              <ul>
+                <li *ngFor="let task of tasksArray.reverse(); index as i">
+                  <div *ngIf="task?.ownerID === myid" class="row" style="justify-content: flex-end;">
+                    <!--<div class="message-data align-right">-->
+                    <!--<span class="message-data-name" >Olia</span> <i class="fa fa-circle me"></i>-->
+                    <!--</div>-->
+                    <div class="message other-message" *ngIf="task?.type === 'text'" (click)="showDetail(i)">
+                      {{ task?.message }}
+                    </div>
+                    <div *ngIf="task?.type === 'emoji'" (click)="showDetail(i)">
+                      <img src="{{'./assets/emoji/' + task?.emojiGroup + '/' + task?.emojiID}}" alt="" style="width: 55px;">
+                    </div>
+                    <div class="col-12">
+                      <div class="message-data-time" *ngIf="showDetailMess === true && numShowDetailMess === i" style="text-align: right">
+                        {{task?.createdDate.seconds*1000 | date:'dd/MM/yyyy HH:mm a'}}
+                        <div *ngIf="task?.seen === true">Đã Xem</div>
+                        <div *ngIf="task?.seen === false">Đã Gửi</div>
+                      </div>
+                    </div>
+                    <div class="margin-bottom"></div>
+                  </div>
+                  <div *ngIf="task?.ownerID !== myid" class="row">
+                    <span class="rounded rounded-smallest" [ngStyle]="{'background' : 'url('+ urlCandidateAvatar+ '), url(../assets/img/avartar.png) center no-repeat', 'background-size' : 'cover'}"></span>
+                    <span class="message my-message" *ngIf="task?.type === 'text'" (click)="showDetail(i)">
+                      {{ task?.message }}
+                    </span>
+                    <span *ngIf="task?.type === 'emoji'" (click)="showDetail(i)">
+                      <img src="{{'./assets/emoji/' + task?.emojiGroup + '/' + task?.emojiID}}" alt="" style="width: 55px;">
+                    </span>
+                    <div class="col-12">
+                      <div class="message-data-time" *ngIf="showDetailMess === true && numShowDetailMess === i">
+                        {{task?.createdDate.seconds*1000 | date:'dd/MM/yyyy HH:mm a'}}
+                        <div *ngIf="task?.seen === true">Đã Xem</div>
+                        <div *ngIf="task?.seen === false">Đã Gửi</div>
+                      </div>
+                    </div>
+                    <div class="margin-bottom"></div>
+                  </div>
+                </li>
+                <div *ngIf="(candidateTyping | async)?.isTyping">
+                  <i class="fa fa-circle online"></i>
+                  <i class="fa fa-circle online" style="color: #AED2A6"></i>
+                  <i class="fa fa-circle online" style="color:#DAE9DA"></i>
+                </div>
+              </ul>
+              <!--<ul>-->
+              <!--<li *ngFor="let task of tasks | async">-->
+              <!--<pre>{{ task?.message }}</pre>-->
+              <!--</li>-->
+              <!--</ul>-->
+            </div> <!-- end chat-history -->
+            <div class="chat-message clearfix row">
+              <div class="dropdown margin-auto">
+                <img onclick="emoji()" class="dropbtn3" src="./assets/img/icons8-happy-48.png" alt="" style="width: 32px; height: 32px; margin: auto 15px">
+                <div id="emoji" class="dropdown-content">
+                  <mat-tab-group [@.disabled]="true">
+                    <mat-tab *ngFor="let emoji of chatEmojis" label="{{emoji.groupID}}">
+                      <ng-template mat-tab-label>
+                        <img src="{{'./assets/emoji/' + emoji.groupID + '/' + emoji.icon[0]}}" style="width: 32px; height: 32px;" alt="">
+                      </ng-template>
+                      <mat-grid-list cols="4" rowHeight="1:1">
+                        <mat-grid-tile *ngFor="let i of emoji.icon" (click)="addMessEmoji(emoji.groupID, i)"><img src="{{'./assets/emoji/'+ emoji.groupID +'/'+i}}" style="width: 50px; height: 50px;" alt=""></mat-grid-tile>
+                      </mat-grid-list>
+                    </mat-tab>
+                  </mat-tab-group>
+                </div>
+              </div>
+              <!--<i class="far fa-smile fa-2x" style="margin: auto"></i>-->
+              <textarea spellcheck="false" (click)="clickTextbox()" name="message-to-send" id="message-to-send" placeholder ="Type your message" rows="2" #box (keyup.enter)="addMessText(box.value.trim()); box.value = ''" (keyup)="typing(box.value)"></textarea>
+              <i class="material-icons margin-auto icon-send" (click)="addMessText(box.value.trim()); box.value = ''">send</i>
+            </div> <!-- end chat-message -->
+            <!--<push-notification  #notification-->
+            <!--title="ng2-notifications"-->
+            <!--body="Native Push Notifications in Angular 2"-->
+            <!--icon="https://goo.gl/3eqeiE"-->
+            <!--closeDelay="2000"-->
+            <!--(load)="notification.show()">-->
+            <!--</push-notification >-->
+            <!--<button (click)="notification.show()">Show Notification</button>-->
+          </div> <!-- end chat -->
+        </div>
+      </div> <!-- end container -->
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

@@ -18,7 +18,7 @@
 
 .form-inline label {
   justify-content: right;
-  text-align: right;
+  /*text-align: right;*/
   display: block;
 }
 input.ng-invalid.ng-touched, textarea.ng-invalid.ng-touched {
@@ -45,4 +45,7 @@ table, th, td {
 }
 .success {
   color: green;
+}
+.form-inline {
+  align-items: baseline;
 }

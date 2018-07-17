@@ -35,7 +35,15 @@ import {AmazingTimePickerModule, AmazingTimePickerService} from 'amazing-time-pi
 import {UpOrEditService} from './service/up-or-edit.service';
 import {JobIdService} from './service/job-id.service';
 import {ChoosePostTypeService} from './service/choose-post-type.service';
-import {DateAdapter, MatDatepickerModule, MatNativeDateModule, MatSnackBarModule, MatTabsModule} from '@angular/material';
+import {
+  DateAdapter,
+  MatDatepickerModule, MatExpansionModule, MatGridListModule,
+  MatListModule,
+  MatNativeDateModule,
+  MatSidenavModule,
+  MatSnackBarModule,
+  MatTabsModule
+} from '@angular/material';
 import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {DateFormat} from './class/date-format';
 import {PaginationService} from './service/pagination.service';
@@ -61,8 +69,16 @@ import {ManageCooperationService} from './service/manage-cooperation.service';
 import { ProfileEmployerComponent } from './profile-employer/profile-employer.component';
 import {ProfileEmployerService} from './service/profile-employer.service';
 import {CooperationService} from './service/cooperation.service';
+import {HoptacService} from './service/hoptac.service';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {LoadingBarHttpClientModule} from '@ngx-loading-bar/http-client';
+import { ChatComponent } from './chat/chat.component';
+import {IdRoomChatService} from './service/id-room-chat.service';
+import {AngularFirestoreModule} from 'angularfire2/firestore';
+import {TruncatePipe} from './pipe/truncate.pipe';
 import { SidebarModule} from './sidebar/sidebar.module';
-
+import {DetailEventService} from './service/detail-event.service';
+import {ListEmployerEventService} from './service/list-employer-event.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -82,9 +98,11 @@ import { SidebarModule} from './sidebar/sidebar.module';
     CandidateApplyComponent,
     ProfilePipe,
     IdentityCardPipe,
+    TruncatePipe,
     ManagerStudentComponent,
     ManageCooperationComponent,
     ProfileEmployerComponent,
+    ChatComponent,
   ],
   imports: [
     BrowserModule,
@@ -108,8 +126,13 @@ import { SidebarModule} from './sidebar/sidebar.module';
     MatTabsModule,
     BrowserAnimationsModule,
     AmazingTimePickerModule,
+    LoadingBarHttpClientModule,
+    AngularFirestoreModule,
+    MatSidenavModule,
+    MatListModule,
+    MatGridListModule,
+    NgbModule.forRoot(),
     SidebarModule,
-
   ],
   providers: [
     SignInService,
@@ -137,6 +160,10 @@ import { SidebarModule} from './sidebar/sidebar.module';
     ManageCooperationService,
     ProfileEmployerService,
     CooperationService,
+    HoptacService,
+    IdRoomChatService,
+    DetailEventService,
+    ListEmployerEventService,
     { provide: DateAdapter, useClass: DateFormat },
   ],
   bootstrap: [AppComponent]
