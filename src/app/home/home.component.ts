@@ -77,9 +77,6 @@ export class HomeComponent implements OnInit {
       this.signInService.changeStatuslogin(true);
       // this.signInService.changeStatusUser(email);
       this.signInService.changeAccessToken(user.data.accessToken);
-      // this.authorizationService.changeAccessTokenAuth(user.data.accessToken);
-      // this.signInService.add(email);
-      // this.getProfile(user);
       console.log(user.data.accessToken);
       swal({
         type: 'success',

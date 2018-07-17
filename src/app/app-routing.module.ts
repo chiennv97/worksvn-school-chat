@@ -21,9 +21,6 @@ const routes: Routes = [
   { path: 'forgot-password', component: ForgotPasswordComponent},
   { path: 'password-reset/:id', component: PasswordResetComponent},
   { path: 'change-password', component: ChangePasswordComponent},
-  { path: 'branchs', component: BranchComponent},
-  { path: 'manage-student', component: ManagerStudentComponent},
-  { path: 'manage-cooperation', component: ManageCooperationComponent},
 ];
 
 @NgModule({

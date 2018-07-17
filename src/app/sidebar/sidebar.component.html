@@ -1,88 +1,138 @@
 <div class="">
-<div class="sidebar">
-  <div class="sidebar-inner">
-    <div class="sidebar-logo">
-      <div class="peers ai-c fxw-nw">
-        <div class="peer peer-greed"><a class="sidebar-link td-n"
-                                        href="https://colorlib.com/polygon/adminator/index.html">
-          <div class="peers ai-c fxw-nw">
-            <div class="peer">
-              <div class="logo"><img src="../assets/img/logo.png" alt="" style="height: 50px"></div>
-            </div>
+  <div class="sidebar">
+    <div class="sidebar-inner">
+      <!-- ### $Sidebar Header ### -->
+      <div class="sidebar-logo">
+        <div class="peers ai-c fxw-nw">
+          <div class="peer peer-greed">
+            <a class="sidebar-link td-n" href="index.html">
+              <div class="peers ai-c fxw-nw">
+                <div class="peer">
+                  <div class="logo" style="padding: 10px 20px 20px 21px">
+                    <img src="../assets/img/logo.png" alt="" style="height: 50px">
+                  </div>
+                </div>
+                <!--<div class="peer peer-greed">-->
+                <!--<h5 class="lh-1 mB-0 logo-text">Adminator</h5>-->
+                <!--</div>-->
+              </div>
+            </a>
           </div>
-        </a></div>
-        <div class="peer">
-          <div class="mobile-toggle sidebar-toggle"><a href="" class="td-n"><i class="ti-arrow-circle-left"></i></a>
+          <div class="peer">
+            <div class="mobile-toggle sidebar-toggle">
+              <a href="" class="td-n">
+                <i class="ti-arrow-circle-left"></i>
+              </a>
+            </div>
           </div>
         </div>
       </div>
+
+      <!-- ### $Sidebar Menu ### -->
+      <ul class="sidebar-menu scrollable pos-r">
+        <!--<li class="nav-item mT-30 active">-->
+          <!--<a class="sidebar-link" routerLink="/manage/list-enrollments">-->
+                <!--<span class="icon-holder">-->
+                  <!--<i class="c-blue-500 ti-home">-->
+                    <!--<i class="material-icons">list_alt</i>-->
+                  <!--</i>-->
+                <!--</span>-->
+            <!--<span class="title">Quản lý bài đăng</span>-->
+          <!--</a>-->
+        <!--</li>-->
+        <li class="nav-item dropdown">
+          <a class="dropdown-toggle sidebar-link" href="javascript:void(0);">
+                <span class="icon-holder">
+                  <i class="c-orange-500 ti-layout-list-thumb">
+                    <i class="material-icons">list_alt</i>
+                  </i>
+                </span>
+            <span class="title">Quản lý</span>
+            <span class="arrow">
+                  <i class="ti-angle-right"></i>
+                </span>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class='sidebar-link' routerLink="/manage/list-enrollments">Quản lý bài đăng</a>
+            </li>
+            <li>
+              <a class='sidebar-link' routerLink="/manage/manage-student">Quản lý sinh viên</a>
+            </li>
+            <li>
+              <a class='sidebar-link' routerLink="/manage/manage-cooperation">Quản lý đối tác</a>
+            </li>
+          </ul>
+        </li>
+
+        <!--<li class="nav-item">-->
+          <!--<a class='sidebar-link' href="email.html">-->
+                <!--<span class="icon-holder">-->
+                  <!--<i class="c-brown-500 ti-email">-->
+                    <!--<i class="material-icons">mail_outline</i>-->
+                  <!--</i>-->
+                <!--</span>-->
+            <!--<span class="title">Email</span>-->
+          <!--</a>-->
+        <!--</li>-->
+        <li class="nav-item">
+          <a class='sidebar-link' routerLink="/manage/up-post-enrollment/upPost">
+                <span class="icon-holder">
+                  <i class="c-blue-500 ti-share">
+                    <i class="fas fa-pencil-alt"></i>
+                  </i>
+                </span>
+            <span class="title">Đăng tuyển</span>
+          </a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="dropdown-toggle sidebar-link" href="javascript:void(0);">
+                <span class="icon-holder">
+                  <i class="c-orange-500 ti-layout-list-thumb">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADOSURBVEhL3ZVNDsIgFIS7NV7CpTfxEsQVP2su5bFc1HNYfdM8DJWHCA2J9UsmATpvhkXTDv+LtfYB8TbLt76ELgVa65MxZgxDtcIsMjguhUy396FaoYTjUqSBFnFcimRuEcelSOYWcVxK0VBgWwXOuTPpwNuZ5gKl1J6XM/QqOvJNpKv3fsfHbQW4JYIQin0UPoWzgDS/QDLQXpFC4CVaL8IBndcXgOjWeC6Gg9z8i08GhJLuuXCwqgDQsyMvRVYXlPiJgr6f6+4/nA0yDE9ieLga/qp5vQAAAABJRU5ErkJggg==">                  </i>
+                </span>
+            <span class="title">Sự kiện</span>
+            <span class="arrow">
+                  <i class="ti-angle-right"></i>
+                </span>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class='sidebar-link' routerLink="/manage/events/create">Tạo sự kiện</a>
+            </li>
+            <li>
+              <a class='sidebar-link' routerLink="/manage/events/active">Quản lý sự kiện</a>
+            </li>
+            <!--<li>-->
+              <!--<a class='sidebar-link' href="#">Sự kiện hết hạn</a>-->
+            <!--</li>-->
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class='sidebar-link' href="/manage/branchs">
+                <span class="icon-holder">
+                  <i class="c-deep-purple-500 ti-comment-alt">
+                    <img
+                      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACySURBVEhL3ZBtCoQwDER7t4W9SXvt/biIm0gqoXGSgfWXD4JT86aC7V703p9jjLfMlo14L3k+rMYjxe96GRpxP1bjmWU7Qlgv4Is+X/brprjmy37dlOx4gN6vlJ4XmKxkuwCSUVayXQAJZdEoPS8wWcl2ASSjrGS7ABLKolF6XmCyku0CSEZZyXYBJJRFo/SmgMY7e0HIdoEpoPHOXhCyHQ1b/PsD7FiN5+ySbKx2C1r7AWDSzK4BZaeHAAAAAElFTkSuQmCC">
+                  </i>
+                </span>
+            <span class="title">Chi nhánh</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class='sidebar-link' href="chat.html">
+                <span class="icon-holder">
+                  <i class="c-deep-purple-500 ti-comment-alt">
+                    <img
+                      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGjSURBVEhL3ZU7TgJRFIYx2khl4WMD2uh6sLCQkAGGkqmMFZswLsGAj5jZgMQ9UAiVMag1wZhQGP0OnnEul8t1xmjjn/y5zDn/+ebJTOF/K4qi1TAMD+v1+nmtVhuwvoj1d0d6ktF4Li0BCfEzoHefyTxJVue+F0NF3DEhWcxO2qxFxbhVKpWWCcXmYE7HwlDcvDiKY8dQXh8pblZBEGyxg7FjIJdhjISl2FQ0ItdAYvoD3wHQezC2m4pNReDWCNjuNRqNzWq1uic7Sur8fmONqe9Lxqh3FZuKxmMSsDyFa6xQLpfXAFzhU/4HO9KTjDlDb6jxVDQmZkg9A7dVqVQ2JGPNiCcaSUXRPoMpnBu2zRGdsH0pR69xH9x9BhS7Rqin1zWmLtc5qfe5LLs+uJiZG8WmotE0AuYTMWN6Y/x1oxd4/imiuM7gyArmtjAW3jea3v9CFgtDcU7JW/TCNZjFzF4L4xO1QATlbeoE+Az8jNX/Nk1kD/sMeMiTFehoNlmQvl62e9ZXVvmi3eE2PvjRFy0Byyex1WqtaPn39Gfg31eh8AFRAZdfEmYb0wAAAABJRU5ErkJggg==">                  </i>
+                </span>
+            <span class="title">Chat</span>
+          </a>
+        </li>
+      </ul>
     </div>
-    <ul class="sidebar-menu scrollable pos-r ps">
-      <li class="nav-item mT-30 active">
-        <a class="sidebar-link" routerLink="/manage/list-enrollments" default="">
-        <span class="icon-holder">
-          <i class="c-blue-500 ti-home"><i class="material-icons">list_alt</i></i>
-        </span>
-          <span class="title">Quản lý</span>
-        </a>
-      </li>
-      <li class="nav-item"><a class="sidebar-link" href="email.html"><span class="icon-holder"><i
-        class="c-brown-500 ti-email"><i class="material-icons">mail_outline</i></i> </span><span class="title">Email</span></a></li>
-      <li class="nav-item">
-        <a class="sidebar-link" routerLink="/manage/up-post-enrollment/upPost">
-          <span class="icon-holder">
-            <i class="c-blue-500 ti-share">
-              <i class="fas fa-pencil-alt"></i>
-            </i>
-          </span>
-          <span class="title">Đăng tuyển</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="sidebar-link" routerLink="/manage/events/create">
-          <span class="icon-holder">
-            <i class="c-deep-orange-500 ti-calendar">
-              <i class="material-icons">event</i>
-            </i>
-          </span>
-          <span class="title">Sự kiện</span>
-        </a>
-      </li>
-      <li class="nav-item"><a class="sidebar-link" href="chat.html"><span class="icon-holder"><i
-        class="c-deep-purple-500 ti-comment-alt"><i class="material-icons">chat</i></i> </span><span class="title">Chat</span></a></li>
-      <li class="nav-item dropdown"><a class="dropdown-toggle" href="javascript:void(0);"><span class="icon-holder"><i
-        class="c-red-500 ti-files"></i> </span><span class="title">Pages</span> <span class="arrow"><i
-        class="ti-angle-right"></i></span></a>
-        <ul class="dropdown-menu">
-          <li><a class="sidebar-link" href="404.html">404</a></li>
-          <li><a class="sidebar-link" href="500.html">500</a></li>
-          <li><a class="sidebar-link" href="signin.html">Sign In</a></li>
-          <li><a class="sidebar-link" href="signup.html">Sign Up</a></li>
-        </ul>
-      </li>
-      <li class="nav-item dropdown"><a class="dropdown-toggle" href="javascript:void(0);"><span class="icon-holder"><i
-        class="c-teal-500 ti-view-list-alt"></i> </span><span class="title">Multiple Levels</span> <span
-        class="arrow"><i class="ti-angle-right"></i></span></a>
-        <ul class="dropdown-menu">
-          <li class="nav-item dropdown"><a href="javascript:void(0);"><span>Menu Item</span></a></li>
-          <li class="nav-item dropdown"><a href="javascript:void(0);"><span>Menu Item</span> <span class="arrow"><i
-            class="ti-angle-right"></i></span></a>
-            <ul class="dropdown-menu">
-              <li><a href="javascript:void(0);">Menu Item</a></li>
-              <li><a href="javascript:void(0);">Menu Item</a></li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-      <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
-        <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
-      </div>
-      <div class="ps__rail-y" style="top: 0px; right: 0px;">
-        <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
-      </div>
-    </ul>
   </div>
-</div>
+
   <div class="page">
     <router-outlet></router-outlet>
   </div>

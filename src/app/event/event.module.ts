@@ -2,9 +2,7 @@ import {ModuleWithProviders, NgModule} from '@angular/core';
 import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 import {CommonModule} from '@angular/common';
 import { EventComponent } from './event.component';
-import { CreateEventComponent } from '../create-event/create-event.component';
 import { EventService } from '../service/event.service';
-import { ActiveAndExpriedEventsComponent } from '../active-and-expried-events/active-and-expried-events.component';
 import {Select2Module} from 'ng2-select2';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -14,7 +12,6 @@ import {BrowserModule} from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
 import {DateAdapter, MatDatepickerModule, MatNativeDateModule, MatSnackBarModule, MatTabsModule} from '@angular/material';
 import {DateFormat} from '../class/date-format';
-import {EventDetailComponent} from '../event-detail/event-detail.component';
 // const eventRoutes: Routes = [
 //   {
 //     path: 'events',
@@ -44,10 +41,7 @@ import {EventDetailComponent} from '../event-detail/event-detail.component';
     MatSnackBarModule,
   ],
   declarations: [
-    CreateEventComponent,
     EventComponent,
-    ActiveAndExpriedEventsComponent,
-    EventDetailComponent,
   ],
   exports: [RouterModule],
   providers: [

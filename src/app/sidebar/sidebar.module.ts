@@ -17,7 +17,9 @@ import {EnrollmentDetailComponent} from '../enrollment-detail/enrollment-detail.
 import {CreateEventComponent} from '../create-event/create-event.component';
 import {EventDetailComponent} from '../event-detail/event-detail.component';
 import {ActiveAndExpriedEventsComponent} from '../active-and-expried-events/active-and-expried-events.component';
-import {EventComponent} from '../event/event.component';
+import {ManageCooperationComponent} from '../manage-cooperation/manage-cooperation.component';
+import {BranchComponent} from '../branch/branch.component';
+import {ManagerStudentComponent} from '../manager-student/manager-student.component';
 const eventRoutes: Routes = [
   {
     path: 'manage',
@@ -30,7 +32,9 @@ const eventRoutes: Routes = [
       { path: 'up-post-enrollment/:type', component: UpPostEnrollmentComponent},
       { path: 'edit-post-enrollment/:type/:id', component: UpPostEnrollmentComponent},
       { path: 'enrollment-detail/:id', component: EnrollmentDetailComponent},
-
+      { path: 'branchs', component: BranchComponent},
+      { path: 'manage-student', component: ManagerStudentComponent},
+      { path: 'manage-cooperation', component: ManageCooperationComponent},
     ]
   }
 ];

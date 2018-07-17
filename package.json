@@ -25,6 +25,7 @@
     "@angular/router": "^6.0.3",
     "@types/googlemaps": "^3.30.10",
     "amazing-time-picker": "^1.4.4",
+    "angular2-cookie": "^1.2.6",
     "angular2-ui-switch": "git+https://github.com/daominhsangvn/angular2-ui-switch.git",
     "angularfire2": "^5.0.0-rc.11",
     "bootstrap": "^4.1.1",
