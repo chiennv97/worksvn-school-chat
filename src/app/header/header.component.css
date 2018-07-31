@@ -1,36 +1,14 @@
-.navbar-brand{
-  width: 30%;
-  text-align: center;
-}
-.navbar-nav{
-  width: 70%;
-}
-.nav-item{
-  width: 16.66%;
-  text-align: center;
-}
-.nav-item:hover{
-  background-color: #e0e2e4;
-}
-.navbar {
-   padding: 0;
-}
-.dropdown:hover>.dropdown-menu {
-  display: block;
-}
-.dropdown-menu{
-  margin-top: 0;
-}
-#toggle-btn{
-  cursor: pointer;
-}
 
 
 
 .bdrs-50p  { border-radius: 50% !important; }
 .bdrs-10em { border-radius: 10em !important; }
-.w-2r, .sz-2r {
+.sz-2r {
    width: 2rem;
+}
+.w-2r {
+  width: 1.8rem;
+  vertical-align: text-bottom;
 }
 .w-3r, .sz-3r {
   width: 3rem;
@@ -50,7 +28,9 @@
 .mB-5 {
   margin-bottom: 5px !important;
 }
-
+li{
+  list-style: none;
+}
 .jc-sb {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
@@ -87,6 +67,10 @@
   margin: 0;
   padding: 0;
 }
+.peer-greed, .peers-greed>.peer, .peers-greed>.peers {
+  -webkit-box-flex: 1;
+  flex: 1 1 auto;
+}
 .mR-10 {
   margin-right: 10px !important;
 }
@@ -103,6 +87,7 @@
 }
 .td-n {
    text-decoration: none !important;
+  flex-wrap: nowrap;
 }
 
 .pY-5 {
@@ -171,7 +156,7 @@ a:hover {
 
 .header .header-container .nav-left > li > a i,
 .header .header-container .nav-right > li > a i {
-  font-size: 17px;
+  font-size: 24px;
 }
 
 .header .header-container .nav-left > li > a:hover, .header .header-container .nav-left > li > a:focus,
@@ -290,4 +275,10 @@ a:hover {
 }
 .header.active{
   width: calc(100% - 68px);
+}
+.loadmore{
+  width: 100%;
+  background-color: white;
+  border: none;
+  padding-bottom: 10px;
 }

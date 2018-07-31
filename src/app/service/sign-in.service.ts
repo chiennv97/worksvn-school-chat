@@ -31,7 +31,7 @@ export class SignInService {
   changeStatuslogin(login: boolean) {
     this.signin.next(login);
   }
-  changeStatusUser(user: string){
+  changeStatusUser(user: string) {
     this.user.next(user);
   }
   changeAccessToken(token: string) {

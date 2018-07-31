@@ -7,7 +7,6 @@ import {AppComponent} from './app.component';
 import {HomeComponent} from './home/home.component';
 import {AppRoutingModule} from './app-routing.module';
 import {HttpClientModule} from '@angular/common/http';
-import { HeaderComponent } from './header/header.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SignInService } from './service/sign-in.service';
 import { AngularFireModule } from 'angularfire2';
@@ -83,7 +82,6 @@ import {ListEmployerEventService} from './service/list-employer-event.service';
   declarations: [
     AppComponent,
     HomeComponent,
-    HeaderComponent,
     ProfileComponent,
     CooperateComponent,
     ChangePasswordComponent,

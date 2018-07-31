@@ -23,6 +23,9 @@ import {ManagerStudentComponent} from '../manager-student/manager-student.compon
 import {ConvertTimePipe} from '../pipe/convert-time.pipe';
 import {ConvertTimePipe2} from '../pipe/convert-time2.pipe';
 import {ChatComponent} from '../chat/chat.component';
+import {ProfileComponent} from '../profile/profile.component';
+import {ChangePasswordComponent} from '../change-password/change-password.component';
+import {HeaderComponent} from '../header/header.component';
 const eventRoutes: Routes = [
   {
     path: 'manage',
@@ -40,7 +43,8 @@ const eventRoutes: Routes = [
       { path: 'manage-student', component: ManagerStudentComponent},
       { path: 'manage-cooperation', component: ManageCooperationComponent},
       { path: 'chat/:roomid', component: ChatComponent},
-
+      { path: 'profile', component: ProfileComponent},
+      { path: 'change-password', component: ChangePasswordComponent},
     ]
   }
 ];
@@ -67,7 +71,8 @@ const eventRoutes: Routes = [
     CreateEventComponent,
     ActiveAndExpriedEventsComponent,
     EventDetailComponent,
-    ConvertTimePipe2
+    ConvertTimePipe2,
+    HeaderComponent,
   ],
   exports: [RouterModule],
   providers: [

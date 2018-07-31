@@ -1,41 +1,3 @@
-<nav class="navbar navbar-expand-sm bg-light navbar-light fixed-top" style="display: none">
-  <a class="navbar-brand" routerLink="/">
-    <img src="../assets/img/logo.png" alt="logo" style="height:50px;">
-  </a>
-  <ul class="navbar-nav">
-    <li class="nav-item active">
-      <a class="nav-link" href="#">Giới thiệu</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Sản phẩm</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Đăng tuyển</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/list-enrollments">Quản lý</a>
-    </li>
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-        Sự kiện
-      </a>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" routerLink="/manage/events/post/create">Tạo sự kiện</a>
-        <a class="nav-link dropdown-toggle" href="#" id="navbardrop2" data-toggle="dropdown">
-          Quản lý sự kiện
-        </a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" routerLink="/manage/events/active">Sự kiện đang diễn ra</a>
-          <a class="dropdown-item" href="#">Sự kiện hết hạn</a>
-        </div>
-      </div>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="cooperate">Hợp tác</a>
-    </li>
-
-  </ul>
-</nav>
 <div class="header navbar">
   <div class="header-container">
     <ul class="nav-left">
@@ -57,207 +19,65 @@
     </ul>
     <ul class="nav-right">
       <li class="notifications dropdown">
-        <span class="counter bgc-red">3</span>
-        <a href="" class="dropdown-toggle no-after" data-toggle="dropdown">
-          <i class="ti-bell">
-            <i class="material-icons">notifications_none</i>
+        <a onclick="myFunction()" class="dropbtn">
+          <span class="counter bgc-red dropbtn">4</span>
+          <i class="ti-bell dropbtn">
+            <i class="material-icons dropbtn">notifications_none</i>
           </i>
         </a>
-
-        <ul class="dropdown-menu">
-          <li class="pX-20 pY-15 bdB">
-            <i class="ti-bell pR-10">
-            </i>
-            <span class="fsz-sm fw-600 c-grey-900">Notifications</span>
-          </li>
-          <li>
-            <ul class="ovY-a pos-r scrollable lis-n p-0 m-0 fsz-sm">
-              <li>
-                <a href="" class='peers fxw-nw td-n p-20 bdB c-grey-800 cH-blue bgcH-grey-100'>
-                  <div class="peer mR-15">
-                    <img class="w-3r bdrs-50p" src="https://randomuser.me/api/portraits/men/1.jpg" alt="">
-                  </div>
-                  <div class="peer peer-greed">
+        <ul id="myDropdown" class="dropdown-content ovY-a pos-r scrollable lis-n p-0 m-0 fsz-sm">
+          <li *ngFor="let noti of listNotiEmployer">
+            <a *ngIf=" noti.type === 'employer_cooperation' " (click)=" redirectToPend(noti.data?.employerID)"
+               class='peers fxw-nw td-n p-20 bdB c-grey-800 cH-blue bgcH-grey-100'>
+              <div class="peer mR-15">
+                <img class="w-3r bdrs-50p" src="../assets/img/avartar.png" alt="">
+              </div>
+              <div class="peer peer-greed">
                             <span>
-                              <span class="fw-500">John Doe</span>
-                              <span class="c-grey-600">liked your <span class="text-dark">post</span>
+                              <span class="fw-500">{{noti.data?.employerID}}</span>
+                              <span class="c-grey-600"> muốn hợp tác
+                                <!--<span class="text-dark">post</span>-->
                               </span>
                             </span>
-                    <p class="m-0">
-                      <small class="fsz-xs">5 mins ago</small>
-                    </p>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a href="" class='peers fxw-nw td-n p-20 bdB c-grey-800 cH-blue bgcH-grey-100'>
-                  <div class="peer mR-15">
-                    <img class="w-3r bdrs-50p" src="https://randomuser.me/api/portraits/men/2.jpg" alt="">
-                  </div>
-                  <div class="peer peer-greed">
-                            <span>
-                              <span class="fw-500">Moo Doe</span>
-                              <span class="c-grey-600">liked your <span class="text-dark">cover image</span>
-                              </span>
-                            </span>
-                    <p class="m-0">
-                      <small class="fsz-xs">7 mins ago</small>
-                    </p>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a href="" class='peers fxw-nw td-n p-20 bdB c-grey-800 cH-blue bgcH-grey-100'>
-                  <div class="peer mR-15">
-                    <img class="w-3r bdrs-50p" src="https://randomuser.me/api/portraits/men/3.jpg" alt="">
-                  </div>
-                  <div class="peer peer-greed">
-                            <span>
-                              <span class="fw-500">Lee Doe</span>
-                              <span class="c-grey-600">commented on your <span class="text-dark">video</span>
-                              </span>
-                            </span>
-                    <p class="m-0">
-                      <small class="fsz-xs">10 mins ago</small>
-                    </p>
-                  </div>
-                </a>
-              </li>
-            </ul>
+                <p class="m-0">
+                  <small class="fsz-xs"> {{ noti?.createdDate | date:'yyyy-MM-dd HH:mm' }}</small>
+                </p>
+              </div>
+            </a>
           </li>
-          <li class="pX-20 pY-15 ta-c bdT">
-                    <span>
-                      <a href="" class="c-grey-600 cH-blue fsz-sm td-n">View All Notifications <i class="ti-angle-right fsz-xs mL-10"></i></a>
-                    </span>
-          </li>
-        </ul>
-      </li>
-      <li class="notifications dropdown">
-        <span class="counter bgc-blue">3</span>
-        <a href="" class="dropdown-toggle no-after" data-toggle="dropdown">
-          <i class="ti-email">
-            <i class="material-icons">
-              mail_outline
-            </i>
-          </i>
-        </a>
-
-        <ul class="dropdown-menu">
-          <li class="pX-20 pY-15 bdB">
-            <i class="ti-email pR-10"></i>
-            <span class="fsz-sm fw-600 c-grey-900">Emails</span>
-          </li>
-          <li>
-            <ul class="ovY-a pos-r scrollable lis-n p-0 m-0 fsz-sm">
-              <li>
-                <a href="" class='peers fxw-nw td-n p-20 bdB c-grey-800 cH-blue bgcH-grey-100'>
-                  <div class="peer mR-15">
-                    <img class="w-3r bdrs-50p" src="https://randomuser.me/api/portraits/men/1.jpg" alt="">
-                  </div>
-                  <div class="peer peer-greed">
-                    <div>
-                      <div class="peers jc-sb fxw-nw mB-5">
-                        <div class="peer">
-                          <p class="fw-500 mB-0">John Doe</p>
-                        </div>
-                        <div class="peer">
-                          <small class="fsz-xs">5 mins ago</small>
-                        </div>
-                      </div>
-                      <span class="c-grey-600 fsz-sm">
-                                Want to create your own customized data generator for your app...
-                              </span>
-                    </div>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a href="" class='peers fxw-nw td-n p-20 bdB c-grey-800 cH-blue bgcH-grey-100'>
-                  <div class="peer mR-15">
-                    <img class="w-3r bdrs-50p" src="https://randomuser.me/api/portraits/men/2.jpg" alt="">
-                  </div>
-                  <div class="peer peer-greed">
-                    <div>
-                      <div class="peers jc-sb fxw-nw mB-5">
-                        <div class="peer">
-                          <p class="fw-500 mB-0">Moo Doe</p>
-                        </div>
-                        <div class="peer">
-                          <small class="fsz-xs">15 mins ago</small>
-                        </div>
-                      </div>
-                      <span class="c-grey-600 fsz-sm">
-                                Want to create your own customized data generator for your app...
-                              </span>
-                    </div>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a href="" class='peers fxw-nw td-n p-20 bdB c-grey-800 cH-blue bgcH-grey-100'>
-                  <div class="peer mR-15">
-                    <img class="w-3r bdrs-50p" src="https://randomuser.me/api/portraits/men/3.jpg" alt="">
-                  </div>
-                  <div class="peer peer-greed">
-                    <div>
-                      <div class="peers jc-sb fxw-nw mB-5">
-                        <div class="peer">
-                          <p class="fw-500 mB-0">Lee Doe</p>
-                        </div>
-                        <div class="peer">
-                          <small class="fsz-xs">25 mins ago</small>
-                        </div>
-                      </div>
-                      <span class="c-grey-600 fsz-sm">
-                                Want to create your own customized data generator for your app...
-                              </span>
-                    </div>
-                  </div>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="pX-20 pY-15 ta-c bdT">
-                    <span>
-                      <a href="email.html" class="c-grey-600 cH-blue fsz-sm td-n">View All Email <i class="fs-xs ti-angle-right mL-10"></i></a>
-                    </span>
+          <li class="text-center">
+            <button class="text-center loadmore" (click)="loadMoreCandidate()">view more notifications</button>
           </li>
         </ul>
       </li>
       <li class="dropdown">
-        <a href="" class="dropdown-toggle no-after peers fxw-nw ai-c lh-1" data-toggle="dropdown">
-          <div class="peer mR-10">
-            <img class="w-2r bdrs-50p" src="https://randomuser.me/api/portraits/men/10.jpg" alt="">
+        <a onclick="myFunction2()" class="no-after peers fxw-nw ai-c lh-1 dropbtn2">
+          <div class="peer mR-10  dropbtn2">
+            <img class="w-2r bdrs-50p dropbtn2" src="data:image/png;base64,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" alt="">
           </div>
-          <div class="peer">
-            <span class="fsz-sm c-grey-900">John Doe</span>
-          </div>
+          <!--<div class="peer dropbtn2">-->
+            <!--<span class="fsz-sm c-grey-900 dropbtn2">John Doe</span>-->
+          <!--</div>-->
         </a>
-        <ul class="dropdown-menu fsz-sm" style="width: 180px">
+        <ul id="myDropdown2" class="dropdown-content2 fsz-sm">
           <li>
-            <a routerLink="/profile" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
-              <i class="ti-user mR-10"></i>
-              <span>Profile</span>
+            <a routerLink="/manage/profile" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
+              <i class="material-icons mR-10">person_outline</i>
+              <span style="vertical-align: super;">Tài khoản</span>
             </a>
           </li>
 
           <li>
-            <a routerLink="/change-password" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
-              <i class="ti-settings mR-10"></i>
-              <span>Change password</span>
+            <a routerLink="/manage/change-password" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700"
+            style="padding: 0 2px 0 16px">
+              <i class="material-icons mR-10" style="font-size: 20px">vpn_key</i>
+              <span style="vertical-align: super;">Đổi mật khẩu</span>
             </a>
           </li>
           <li>
-            <a href="email.html" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
-              <i class="ti-email mR-10"></i>
-              <span>Messages</span>
-            </a>
-          </li>
-          <li role="separator" class="divider"></li>
-          <li>
-            <a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
-              <i class="ti-power-off mR-10"></i>
-              <span>Logout</span>
+            <a (click)="logout()" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700" style="cursor: pointer;">
+              <i class="material-icons mR-10">power_settings_new</i>
+              <span style="vertical-align: super;">Đăng xuất</span>
             </a>
           </li>
         </ul>
