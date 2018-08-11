@@ -104,7 +104,7 @@ export class ChatComponent implements OnDestroy, AfterViewChecked, OnInit {
     this.items$ = Observable.combineLatest(
       this.idFilter$
     ).switchMap(([size]) =>
-      db.collection<any>('chat_rooms', ref => {
+      db.collection<any>('chat_rooms_school_vs_candidate', ref => {
         let query: firebase.firestore.Query = ref;
         if (size) {
           query = query.where('employer.id', '==', size);

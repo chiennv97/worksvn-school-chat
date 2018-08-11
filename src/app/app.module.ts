@@ -79,6 +79,10 @@ import {TruncatePipe} from './pipe/truncate.pipe';
 import { SidebarModule} from './sidebar/sidebar.module';
 import {DetailEventService} from './service/detail-event.service';
 import {ListEmployerEventService} from './service/list-employer-event.service';
+import {ActiveAndExpriedEventsComponent} from './active-and-expried-events/active-and-expried-events.component';
+import {ListEnrollmentsComponent} from './list-enrollments/list-enrollments.component';
+import {CreateEventComponent} from './create-event/create-event.component';
+import {EventDetailComponent} from './event-detail/event-detail.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -103,6 +107,10 @@ import {ListEmployerEventService} from './service/list-employer-event.service';
     ManageCooperationComponent,
     ProfileEmployerComponent,
     ChatComponent,
+    ListEnrollmentsComponent,
+    CreateEventComponent,
+    ActiveAndExpriedEventsComponent,
+    EventDetailComponent,
   ],
   imports: [
     BrowserModule,

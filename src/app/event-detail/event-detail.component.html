@@ -16,30 +16,20 @@
             <div class="jobName align-center"><h3>{{detailEventService.detailEvent?.title}}</h3></div>
             <!--employerName-->
             <h5 style="color: #5b5b5b;" class="align-center">{{detailEventService.detailEvent?.schoolName}}</h5>
-            <div><i class="material-icons">location_on</i> {{detailEventService.detailEvent?.address}}</div>
             <div class="row align-center">
               <div class="col-xl-6 col-6">
                 <i class="material-icons">access_time</i>
                 <span> Bắt đầu: </span>
-                <span>{{detailEventService.detailEvent?.startTime | date: 'dd/MM/yyyy'}}</span>
+                <span>{{detailEventService.detailEvent?.startTime | date: 'dd/MM/yyyy h:mm a'}}</span>
               </div>
               <div class="col-xl-6 col-6">
                   <span class="expirationDate">
                     <i class="material-icons">date_range</i>
                     <span> Kết Thúc: </span>
-                    <span>{{detailEventService.detailEvent?.endTime | date: 'dd/MM/yyyy'}}</span>
+                    <span>{{detailEventService.detailEvent?.endTime | date: 'dd/MM/yyyy h:mm a'}}</span>
                   </span>
               </div>
             </div>
-            <div class="row align-center">
-              <div class="col-xl-6 col-6">
-                <i class="material-icons">mail_outline</i> {{detailEventService.detailEvent?.contactEmail}}
-              </div>
-              <div class="col-xl-6 col-6">
-                <i class="material-icons">phone</i> {{detailEventService.detailEvent?.contactPhone}}
-              </div>
-            </div>
-            <div><i class="material-icons">language</i> {{detailEventService.detailEvent?.website}}</div>
           </div>
           <!-- Item -->
           <div class="col-xl-3 col-sm-3" align="center" style="margin: auto">
@@ -47,7 +37,8 @@
               <a class="button edit" id="buttonEdit" (click)="edit()">
                 <i class="fas fa-pencil-alt"></i> Sửa bài</a>
             </div>
-            <div><a class="button delete" id="buttonDelete" (click)="deleteEvent()"><i class="far fa-trash-alt"></i> Xóa bài</a>
+            <div><a class="button delete" id="buttonDelete" (click)="deleteEvent()"><i class="far fa-trash-alt"></i> Xóa
+              bài</a>
             </div>
           </div>
         </div>
@@ -57,50 +48,74 @@
       <div class="bg-white has-shadow">
         <mat-tab-group [@.disabled]="true">
           <mat-tab label="Chi tiết">
-            <div>Mô tả: {{detailEventService.detailEvent?.description}}</div>
+            <div class="content-margin">
+              <span class="row-margin"><i class="material-icons">location_on</i><b> ĐỊA CHỈ: </b></span>
+              {{detailEventService.detailEvent?.address}}
+            </div>
+            <div class="content-margin">
+              <span class="row-margin"><i class="material-icons">mail_outline</i><b> MAIL: </b></span>
+              {{detailEventService.detailEvent?.contactEmail}}
+            </div>
+            <div class="content-margin">
+              <span class="row-margin"><i class="material-icons">phone</i><b> SĐT: </b></span>
+              {{detailEventService.detailEvent?.contactPhone}}
+            </div>
+            <div class="content-margin">
+              <span class="row-margin"><i class="material-icons">language</i><b> WEB: </b></span>
+              {{detailEventService.detailEvent?.website}}
+            </div>
+            <div class="describe-margin">
+              <b>MÔ TẢ:</b>
+              <div>{{detailEventService.detailEvent?.description}}</div>
+            </div>
           </mat-tab>
           <mat-tab label="Nhà tuyển dụng">
             <table class="manage-table responsive-table stacktable large-only">
               <tbody>
               <tr style="display: none">
-                <th width="25%" style="text-align: left;padding-left: 55px;">
+                <th width="30%" style="text-align: left;padding-left: 55px;">
                   <i class="fas fa-briefcase"></i> Nhà Tuyển Dụng
                 </th>
-                <th width="20%"><i class="fas fa-map-marker-alt"></i> Địa Chỉ</th>
-                <th width="20%"><i class="fa fa-calendar" ></i> Ngày Hợp Tác</th>
-                <th width="20%"><i class="fas fa-toggle-on"></i> Trạng Thái</th>
-                <th width="15%">action</th>
+                <th width="35%"><i class="fas fa-map-marker-alt"></i> Địa Chỉ</th>
+                <th width="30%"><i class="fa fa-calendar"></i> Ngày Hợp Tác</th>
+                <!--<th width="20%"><i class="fas fa-toggle-on"></i> Trạng Thái</th>-->
+                <!--<th width="15%">action</th>-->
               </tr>
 
               <!--Item #1 -->
               <tr
                 *ngFor="let employer of listEmployerEventService.listEmployer | paginate: { itemsPerPage: 10, currentPage: 1 , totalItems: 1} ; index as i">
                 <!--jobname-->
-                <td (click)="openProfileEmployer(i)"  data-toggle="modal" data-target="#profile-employer" class="title pointer">
+                <td (click)="openProfileEmployer(i)" data-toggle="modal" data-target="#profile-employer"
+                    class="title pointer">
                   <div class="row">
                     <div class="col-4" style="text-align: center">
-                      <span class="rounded" id="rounded" [ngStyle]="{'background' : 'url('+ employer?.logoUrl+ '), url(../assets/img/avartar.png) center no-repeat'}"></span>
+                      <span class="rounded" id="rounded"
+                            [ngStyle]="{'background' : 'url('+ employer?.logoUrl+ '), url(../assets/img/avartar.png) center no-repeat'}"></span>
                     </div>
                     <div class="col-8" style="margin: auto">
                       <span><b>{{employer.employerName}}</b></span>
                     </div>
                   </div>
                 </td>
-                <td class="title pointer" (click)="openProfileEmployer(i)"  data-toggle="modal" data-target="#profile-employer" >
-                  {{employer.address}}
+                <td class="title pointer" (click)="openProfileEmployer(i)" data-toggle="modal"
+                    data-target="#profile-employer">
+                  <i class="material-icons">location_on</i> {{employer.address}}
                 </td>
                 <!--branch-->
-                <td class="pointer" style="text-align: center" (click)="openProfileEmployer(i)"  data-toggle="modal" data-target="#profile-employer" >
-                  {{employer.createdDate |  date: 'dd/MM/yyyy'}}
+                <td class="pointer" style="text-align: center" (click)="openProfileEmployer(i)" data-toggle="modal"
+                    data-target="#profile-employer">
+                  {{employer.createdDate | date: 'dd/MM/yyyy h:mm a'}}
                 </td>
                 <!--time-->
-                <td class="pointer" style="text-align: center" (click)="openProfileEmployer(i)"  data-toggle="modal" data-target="#profile-employer">
-                  <a id="buttonShow" class="button" style="background-color: #57b4ff;">{{employer.state}}</a>
-                </td>
+                <!--<td class="pointer" style="text-align: center" (click)="openProfileEmployer(i)" data-toggle="modal"-->
+                    <!--data-target="#profile-employer">-->
+                  <!--<a id="buttonShow" class="button" style="background-color: #57b4ff;">{{employer.state}}</a>-->
+                <!--</td>-->
                 <!--ung vien-->
-                <td class="centered" style="text-align: center">
-                  <i class="material-icons" style="vertical-align: -.125em;"  placement="top" ngbTooltip="Nhắn Tin">chat_bubble_outline</i>
-                </td>
+                <!--<td class="centered" style="text-align: center">-->
+                  <!--<i class="material-icons" style="vertical-align: -.125em;" placement="top" ngbTooltip="Nhắn Tin">chat_bubble_outline</i>-->
+                <!--</td>-->
               </tr>
               </tbody>
             </table>
@@ -114,3 +129,4 @@
     </div>
   </section>
 </div>
+<app-profile-employer></app-profile-employer>

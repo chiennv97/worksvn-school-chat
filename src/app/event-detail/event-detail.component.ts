@@ -7,6 +7,8 @@ import {DetailEventService} from '../service/detail-event.service';
 import {FormUploadService} from '../service/form-upload.service';
 import swal from 'sweetalert2';
 import {ListEmployerEventService} from '../service/list-employer-event.service';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {ProfileEmployerService} from '../service/profile-employer.service';
 @Component({
   selector: 'app-event-detail',
   templateUrl: './event-detail.component.html',
@@ -16,14 +18,18 @@ export class EventDetailComponent implements OnInit {
   id;
   token;
   urlEventDetail = DEVSERVER + 'api/schools/schoolCooperations/activeEvents/';
+  getEmployerProfile = DEVSERVER + 'api/employers/';
   urlDelete;
+  httpOptions;
+  Authorization;
   constructor(
     private router: Router,
     private eventService: EventService,
     public detailEventService: DetailEventService,
     public formUploadService: FormUploadService,
-    public listEmployerEventService: ListEmployerEventService
-
+    public listEmployerEventService: ListEmployerEventService,
+    public http: HttpClient,
+    public profileEmployerService: ProfileEmployerService,
   ) {
     router.events.subscribe((val) => {
       if (val instanceof ActivationEnd) {
@@ -32,6 +38,7 @@ export class EventDetailComponent implements OnInit {
         }
       }
     });
+    this.Authorization = 'Bearer ' + localStorage.getItem('accessToken');
   }
 
   ngOnInit() {
@@ -123,5 +130,16 @@ export class EventDetailComponent implements OnInit {
     }
   }
   openProfileEmployer(i) {
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': this.Authorization
+      })
+    };
+    this.http.get(this.getEmployerProfile + this.listEmployerEventService.listEmployer[i].id , this.httpOptions)
+      .subscribe(
+        rawObject => this.profileEmployerService.onSubmit(rawObject),
+        err => console.log(err)
+      );
   }
 }

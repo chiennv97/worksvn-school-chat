@@ -477,5 +477,10 @@ nav.side-navbar ul {
 .material-icons {
   cursor: pointer;
 }
-
+.content-margin {
+  margin: 1em 1em 0.8em 1.5em;
+}
+.describe-margin {
+  margin: 2em 1em 0.8em 1.5em;
+}
 

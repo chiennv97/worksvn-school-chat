@@ -63,10 +63,10 @@ const eventRoutes: Routes = [
   ],
   declarations: [
     SidebarComponent,
-    ListEnrollmentsComponent,
-    CreateEventComponent,
-    ActiveAndExpriedEventsComponent,
-    EventDetailComponent,
+    // ListEnrollmentsComponent,
+    // CreateEventComponent,
+    // ActiveAndExpriedEventsComponent,
+    // EventDetailComponent,
     ConvertTimePipe2
   ],
   exports: [RouterModule],
