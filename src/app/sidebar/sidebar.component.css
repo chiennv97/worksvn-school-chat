@@ -122,3 +122,13 @@
 .sidebar-link:hover{
   background-color: #d8d7d7 !important;
 }
+.sidebar-link:active{
+  background-color: #d8d7d7 !important;
+}
+.dropdown-toggle::after {
+  vertical-align: 0.155em;
+  margin-left: 4.5em;
+}
+img{
+  vertical-align: text-bottom;
+}

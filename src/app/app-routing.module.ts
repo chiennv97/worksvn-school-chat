@@ -16,11 +16,9 @@ import {SidebarModule} from './sidebar/sidebar.module';
 const routes: Routes = [
   { path: 'manage', loadChildren: './sidebar/sidebar.module#SidebarModule'},
   { path: '', component: HomeComponent },
-  { path: 'profile', component: ProfileComponent},
   { path: 'cooperate', component: CooperateComponent},
   { path: 'forgot-password', component: ForgotPasswordComponent},
   { path: 'password-reset/:id', component: PasswordResetComponent},
-  { path: 'change-password', component: ChangePasswordComponent},
 
 ];
 
