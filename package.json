@@ -33,7 +33,7 @@
     "bootstrap": "^4.1.1",
     "core-js": "^2.5.4",
     "firebase": "^5.2.0",
-    "jquery": "^3.3.1",
+    "jquery": "^3.5.0",
     "ng2-select2": "git+https://github.com/chiennv97/select2.git",
     "ngx-pagination": "^3.0.3",
     "rxjs": "^6.2.0",
